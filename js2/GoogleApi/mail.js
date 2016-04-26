@@ -19,8 +19,8 @@ WorkGadget.gApi.mail = WorkGadget.gApi.mail || {};
 
     mail = mail
       .replace("$to", tos.To)
-//      .replace("$cc", tos.Cc || "")
-//      .replace("$bcc", tos.Bcc || "")
+      .replace("$cc", tos.Cc || "")
+      .replace("$bcc", tos.Bcc || "")
       .replace("$subject", window.btoa(unescape(encodeURIComponent(subject))))
       .replace("$body", body);
 
@@ -35,6 +35,4 @@ WorkGadget.gApi.mail = WorkGadget.gApi.mail || {};
 
     request.execute();
   }
-
-
 })()
