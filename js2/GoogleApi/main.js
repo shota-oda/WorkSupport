@@ -22,7 +22,7 @@ WorkGadget.gApi = WorkGadget.gApi || {};
 
   self.start = function () {
     self.initAfterClientLoad()
-    WorkGadget.Common.fn.DoAsync(self.checkAuth)
+    WorkGadget.Common.fn.DoAsync(self.checkAuth(true))
   }
 
   self.status = {
@@ -33,9 +33,9 @@ WorkGadget.gApi = WorkGadget.gApi || {};
   
   self.initAfterClientLoad = function () {
     gapi.client.setApiKey(apiKey);
-    self.checkAuth = function () {
+    self.checkAuth = function (im) {
       gapi.auth.authorize(
-      {client_id: clientId, scope: scopes, immediate: false}
+      {client_id: clientId, scope: scopes, immediate: im}
       , self.handleAuth
       );
     }
@@ -56,7 +56,7 @@ WorkGadget.gApi = WorkGadget.gApi || {};
       // auth is fail
       self.status.isAuthorized = false;
       $authButton.on("click", function () {
-        gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, self.handleAuth);
+        self.checkAuth(false)
       })
     }
   }
