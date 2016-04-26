@@ -3,7 +3,7 @@ WorkGadget.gApi = WorkGadget.gApi || {};
 WorkGadget.gApi.mail = WorkGadget.gApi.mail || {};
 
 WorkGadget.gApi.mail.init = function () {
-  WorkGadget.gApi.mail.send = function sendMessage(tos, subject, body){
+  WorkGadget.gApi.mail.send = function (tos, subject, body){
   
     var mail = [
         "To: $to",
