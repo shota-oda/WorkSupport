@@ -18,23 +18,19 @@ WorkGadget.gApi.calendar.init = function () {
     });
 
     request.execute(function(resp) {
-        var events = resp.items;
-        if (events.length > 0) {
-          for (i = 0; i < events.length; i++) {
-            var event = events[i];
-            var when = event.start.dateTime;
-            if (!when) {
-              when = event.start.date;
-            }
-            console.log(event.summary + ' (' + when + ')')
+      var events = resp.items;
+      if (events.length > 0) {
+        for (i = 0; i < events.length; i++) {
+          var event = events[i];
+          var when = event.start.dateTime;
+          if (!when) {
+            when = event.start.date;
           }
-        } else {
-          console.log('No upcoming events found.');
+          console.log(event.summary + ' (' + when + ')')
         }
-
-      });
-    }
-
-    request.execute();
+      } else {
+        console.log('No upcoming events found.');
+      }
+    });
   }
 }
