@@ -23,7 +23,7 @@ WorkGadget.gApi = WorkGadget.gApi || {};
   self.start = function () {
     self.initAfterClientLoad()
     WorkGadget.Common.fn.DoAsync(function () {
-        self.handleAuth(self.checkAuth())
+        self.handleAuth(self.checkAuth)
       }  
     )
   }
@@ -84,7 +84,7 @@ WorkGadget.gApi = WorkGadget.gApi || {};
 
 })();
 
-var gapiInit = function (){
+gapiInit = function (){
     isLibraryReady = true
     WorkGadget.gApi.start()
 }
