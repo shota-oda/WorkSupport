@@ -5,8 +5,8 @@ WorkGadget.gApi.calendar = WorkGadget.gApi.calendar || {};
 WorkGadget.gApi.calendar.init = function () {
   WorkGadget.gApi.calendar.getTodayEvent = function () {
     var date = new Date();
-    tommorrow = new Date(date.getYear(), date.getMonth(), date.getDate() + 1)
-    today = new Date(date.getYear(), date.getMonth(), date.getDate())
+    tommorrow = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1)
+    today = new Date(date.getFullYear(), date.getMonth(), date.getDate())
     var request = gapi.client.calendar.events.list({
       'calendarId': encodeURIComponent("bizreach.co.jp_s8d05g2boqil5gvdj7a091972c@group.calendar.google.com"),
       'timeMin': today.toISOString(),
