@@ -22,7 +22,7 @@ WorkGadget.gApi = WorkGadget.gApi || {};
 
   self.start = function () {
     self.initAfterClientLoad()
-    WorkGadget.Common.fn.DoAsync(self.handleAuth(self.checkAuth()))
+    WorkGadget.Common.fn.DoAsync(self.checkAuth)
   }
 
   self.status = {
@@ -35,24 +35,14 @@ WorkGadget.gApi = WorkGadget.gApi || {};
     gapi.client.setApiKey(apiKey);
     self.checkAuth = function () {
       gapi.auth.authorize(
-      {client_id: clientId, scope: scopes, immediate: true}
-      , function (authResult) {
-        if (authResult && !authResult.error) {
-          // auth is done
-          self.status.isAuthorized = true;
-          return true
-        } else {
-          // auth is fail
-          self.status.isAuthorized = false;
-          console.log(authResult.error)
-          return false
-        }
-      });
+      {client_id: clientId, scope: scopes, immediate: false}
+      , self.handleAuth
+      );
     }
   }
 
   self.handleAuth = function (result) {
-    if (result) {
+    if (result && !result.error) {
       // auth is done
       self.status.isAuthorized = true;
       loadSubClients()
@@ -66,7 +56,7 @@ WorkGadget.gApi = WorkGadget.gApi || {};
       // auth is fail
       self.status.isAuthorized = false;
       $authButton.on("click", function () {
-        gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, self.checkAuth);
+        gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, self.handleAuth);
       })
     }
   }
@@ -83,7 +73,7 @@ WorkGadget.gApi = WorkGadget.gApi || {};
 })();
 
  function gapiInit () {
-    isLibraryReady = true
+    WorkGadget.gapi.status.isLibraryReady = true
     WorkGadget.gApi.start()
 }
 
