@@ -73,7 +73,7 @@ WorkGadget.gApi = WorkGadget.gApi || {};
 })();
 
  function gapiInit () {
-    WorkGadget.gapi.status.isLibraryReady = true
+    WorkGadget.gApi.status.isLibraryReady = true
     WorkGadget.gApi.start()
 }
 
