@@ -22,7 +22,7 @@ WorkGadget.gApi = WorkGadget.gApi || {};
 
   self.start = function () {
     self.initAfterClientLoad()
-    WorkGadget.Common.fn.DoAsync(self.handleAuth(self.checkAuth))
+    WorkGadget.Common.fn.DoAsync(self.handleAuth(self.checkAuth()))
   }
 
   self.status = {
