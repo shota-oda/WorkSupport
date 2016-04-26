@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" data-framework="marionettejs">
+	<head>
+		<meta charset="utf-8">
+		<title>ApiTest</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<style type="text/css">
+		#filter{
+		    position:fixed;
+		    width:100%;
+		    height:100%;
+		    left:0;
+		    top:0;
+		    background:#000;
+		    filter:alpha(opacity=60);
+		    -moz-opacity:0.60;
+		    opacity:0.60;
+		    z-index:100;
+		}
+		#Auth-Button{
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			margin: auto;
+			width: 200px;
+			height: 89px;
+		}
+		</style>
+	</head>
+	<body>
+		<!--Add a button for the user to click to initiate auth sequence -->
+    <button id="authorize-button" style="visibility: hidden">Authorize</button>
+    <script type="text/javascript">
+
+var clientId = '57364377556-pi3vi76p5kqpjsj9l2d6icqugju2u0t2.apps.googleusercontent.com';
+
+  var apiKey = 'AIzaSyDvAoP9X1_8Kos9lmu8aZ2EkwJofe41J54';
+
+  var scopes = [
+      "https://www.googleapis.com/auth/plus.me"           //View User Info
+    , "https://www.googleapis.com/auth/gmail.compose"     //Manage drafts and send emails
+    , "https://www.googleapis.com/auth/gmail.readonly"    //View email message and settings
+    , "https://www.googleapis.com/auth/calendar.readonly" //View Calendar
+  ];
+      function handleClientLoad() {
+        // Step 2: Reference the API key
+        gapi.client.setApiKey(apiKey);
+        window.setTimeout(checkAuth,1);
+      }
+
+      function checkAuth() {
+        gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true}, handleAuthResult);
+      }
+
+      function handleAuthResult(authResult) {
+        var authorizeButton = document.getElementById('authorize-button');
+        if (authResult && !authResult.error) {
+          authorizeButton.style.visibility = 'hidden';
+          makeApiCall();
+        } else {
+          authorizeButton.style.visibility = '';
+          authorizeButton.onclick = handleAuthClick;
+        }
+      }
+
+      function handleAuthClick(event) {
+        // Step 3: get authorization to use private data
+        gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthResult);
+        return false;
+      }
+      </script>
+    <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+   	</body>
+</html>
