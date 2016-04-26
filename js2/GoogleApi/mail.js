@@ -2,7 +2,7 @@ var WorkGadget = WorkGadget || {};
 WorkGadget.gApi = WorkGadget.gApi || {};
 WorkGadget.gApi.mail = WorkGadget.gApi.mail || {};
 
-(function () {
+WorkGadget.gApit.mail.init = function () {
   WorkGadget.gApi.mail.send = function sendMessage(tos, subject, body){
   
     var mail = [
