@@ -22,10 +22,7 @@ WorkGadget.gApi = WorkGadget.gApi || {};
 
   self.start = function () {
     self.initAfterClientLoad()
-    WorkGadget.Common.fn.DoAsync(function () {
-        self.handleAuth(self.checkAuth)
-      }  
-    )
+    WorkGadget.Common.fn.DoAsync(self.handleAuth(self.checkAuth))
   }
 
   self.status = {
@@ -36,7 +33,8 @@ WorkGadget.gApi = WorkGadget.gApi || {};
   
   self.initAfterClientLoad = function () {
     gapi.client.setApiKey(apiKey);
-    self.checkAuth = gapi.auth.authorize(
+    self.checkAuth = function () {
+      gapi.auth.authorize(
       {client_id: clientId, scope: scopes, immediate: true}
       , function (authResult) {
         if (authResult && !authResult.error) {
@@ -49,8 +47,8 @@ WorkGadget.gApi = WorkGadget.gApi || {};
           console.log(authResult.error)
           return false
         }
-      }
-    );
+      });
+    }
   }
 
   self.handleAuth = function (result) {
@@ -84,7 +82,7 @@ WorkGadget.gApi = WorkGadget.gApi || {};
 
 })();
 
-gapiInit = function (){
+ function gapiInit () {
     isLibraryReady = true
     WorkGadget.gApi.start()
 }
