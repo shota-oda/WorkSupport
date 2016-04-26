@@ -35,4 +35,4 @@ WorkGadget.gApit.mail.init = function () {
 
     request.execute();
   }
-})()
+}
