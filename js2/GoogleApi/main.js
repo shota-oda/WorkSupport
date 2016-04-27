@@ -66,7 +66,7 @@ WorkGadget.gApi = WorkGadget.gApi || {};
     return $.when(
         gapi.client.load('plus', 'v1')
       , gapi.client.load('gmail', 'v1')
-      , gapi.client.load('plus', 'v1')
+      , gapi.client.load('calendar', 'v3')
     )
   }
 
