@@ -6,7 +6,7 @@ WorkGadget.gApi.calendar.init = function () {
   
   //async
   WorkGadget.gApi.calendar.getTommorrowEvents = function (){
-    var d = new $.Deffered();
+    var d = new $.Deferred();
     var date = new Date();
     var from = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1)
     var to = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 2)
@@ -28,14 +28,13 @@ WorkGadget.gApi.calendar.init = function () {
         var event = events[i];
         if(event.start.dateTime){
           d.resolve(event.summary)
-          console.log(event.summary)
         }
       }
     });
   }
 
   WorkGadget.gApi.calendar.getTodayEvent = function () {
-    var d = new $.Deffered();
+    var d = new $.Deferred();
     var date = new Date();
     var tommorrow = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1)
     var today = new Date(date.getFullYear(), date.getMonth(), date.getDate())
@@ -57,7 +56,6 @@ WorkGadget.gApi.calendar.init = function () {
         var event = events[i];
         if(event.start.dateTime){
           d.resolve(event.summary)
-          console.log(event.summary)
         }
       }
     });
