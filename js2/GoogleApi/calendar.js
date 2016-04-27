@@ -31,6 +31,8 @@ WorkGadget.gApi.calendar.init = function () {
         }
       }
     });
+
+    return d;
   }
 
   WorkGadget.gApi.calendar.getTodayEvent = function () {
@@ -59,5 +61,7 @@ WorkGadget.gApi.calendar.init = function () {
         }
       }
     });
+
+    return d;
   }
 }
