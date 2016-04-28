@@ -25,10 +25,6 @@ var WorkGadget = WorkGadget || {};
 			
 		},
 
-		Entry: function(){
-			var filter = new WorkGadget.View.
-		},
-
 		DailyReport: function(){
 			var review = new WorkGadget.View.DailyReport({
 				model: new WorkGadget.Model.DailyReport()
