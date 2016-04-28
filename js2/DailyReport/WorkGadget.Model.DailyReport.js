@@ -10,7 +10,7 @@ var WorkGadget = WorkGadget || {};
 	WorkGadget.Model = WorkGadget.Model || {};
 	WorkGadget.Model.DailyReport = Backbone.Model.extend({
 		defaults: {
-			to:''.
+			to:'',
 			cc: '',
 			subject: '',
 			col1: '',
