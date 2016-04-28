@@ -19,6 +19,13 @@ function main () {
     	if (result){
     		$filter.hide();
     	} else {
+    		$authButton.on("click", function(){
+    			WorkGadget.gApi.checkAuth(false, function(result) {
+    				if (result){
+    					$authButton.hide()
+    					$filter.hide()
+    			});
+    		});
     		$authButton.show();
     	}
     }));
