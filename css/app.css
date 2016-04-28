@@ -16,6 +16,7 @@ a{
     margin: auto;
 }
 #LoadFrame > p{
+    color: #FFF;
     margin-top: 100px;
 }
 #Filter{
