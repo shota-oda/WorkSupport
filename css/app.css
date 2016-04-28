@@ -4,6 +4,9 @@ body {
 a{
     cursor: pointer;
 }
+#LoadFrame{
+    text-align: center;
+}
 #LoadFrame > img{
     position: absolute;
     top: 0;
@@ -13,7 +16,6 @@ a{
     margin: auto;
 }
 #LoadFrame > p{
-    margin: 0 auto;
     margin-top: 200px;
 }
 #filter{
