@@ -16,29 +16,19 @@ WorkGadget.gApi = WorkGadget.gApi || {};
     , "https://www.googleapis.com/auth/calendar.readonly" //View Calendar
   ];
 
-  var $filter = $("#filter")
-  var $authButton = $("#Auth-Button")
-  var $output = $("#Out")
-
-  self.start = function () {
-    self.initAfterClientLoad()
-    WorkGadget.Common.fn.DoAsync(self.checkAuth(true))
+  self.init = function () {
+    gapi.client.setApiKey(apiKey);
+    self.checkAuth = function (im,fn) {
+      gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: im}, function(result){
+          fn((result && !result.error));
+      });
+    }
   }
 
   self.status = {
       isAuthorized: false
     , isLibraryReady: false
     , isSubLibraryReady: false
-  }
-  
-  self.initAfterClientLoad = function () {
-    gapi.client.setApiKey(apiKey);
-    self.checkAuth = function (im) {
-      gapi.auth.authorize(
-      {client_id: clientId, scope: scopes, immediate: im}
-      , self.handleAuth
-      );
-    }
   }
 
   self.handleAuth = function (result) {
@@ -49,6 +39,7 @@ WorkGadget.gApi = WorkGadget.gApi || {};
       .done(function (){
         self.status.isSubLibraryReady = true
         $filter.hide()
+        
       }).fail(function (){
         self.status.isSubLibraryReady = false
       })
@@ -72,10 +63,7 @@ WorkGadget.gApi = WorkGadget.gApi || {};
 
 })();
 
- function gapiInit () {
-    WorkGadget.gApi.status.isLibraryReady = true
-    WorkGadget.gApi.start()
-}
+
 
 
 

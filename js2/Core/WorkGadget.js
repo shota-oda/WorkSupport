@@ -1,36 +1,59 @@
 /*global Backbone, WorkGadget:true */
 
 var WorkGadget = WorkGadget || {};
+WorkGadget.gApi = WorkGadget.gApi || {};
 
-(function () {
+function main () {
 	'use strict';
-	
-	WorkGadget.App = new Backbone.Marionette.Application()
-	
-	// The Application Object is responsible for kicking off
-	// a Marionette application when its start function is called
-	//
-	// This application has a singler root Layout that is attached
-	// before it is started.  Other system components can listen
-	// for the application start event, and perform initialization
-	// on that event
 
-	WorkGadget.App.on('before:start', function () {
-		console.log("Phase: before Start")
-		WorkGadget.App.View = {};
-		WorkGadget.App.View.Root = new WorkGadget.View.RootLayoutView();
-	});
+	var $load = $("#LoadFrame");
+	var $filter = $("#Filter");
+	var $authButton = $("#AuthButton")
 
-	WorkGadget.App.on('start', function () {
-		console.log("Phase: Start")
+    WorkGadget.gApi.status.isLibraryReady = true
+    WorkGadget.gApi.init()
 
-		var controller = new WorkGadget.Controller();
-		controller.router = new WorkGadget.Router({
-			controller: controller
+	function appStart(){
+	    WorkGadget.App = new Backbone.Marionette.Application()
+		
+		WorkGadget.App.on('before:start', function () {
+
+			WorkGadget.App.View = {};
+			WorkGadget.App.View.Root = new WorkGadget.View.RootLayoutView();
 		});
 
-		Backbone.history.start();
-	});
+		WorkGadget.App.on('start', function () {
+			
+			var controller = new WorkGadget.Controller();
+			controller.router = new WorkGadget.Router({
+				controller: controller
+			});
 
-	WorkGadget.App.start();
-})();
+			Backbone.history.start();
+		});
+
+		WorkGadget.App.start();
+	}
+
+    //silently check authed or not
+    WorkGadget.Common.fn.DoAsync(WorkGadget.gApi.checkAuth(true, function(result) {
+    	$load.hide();
+    	if (result){
+    		$filter.hide();
+    		appStart();
+    	} else {
+    		$authButton.on("click", function(){
+    			WorkGadget.gApi.checkAuth(false, function(result) {
+    				if (result){
+    					$authButton.hide()
+    					$filter.hide();
+    					appStart();
+    				}
+	    		});
+	    	});
+	    	$authButton.show();
+    	}
+    }));
+
+
+}

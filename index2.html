@@ -5,14 +5,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://rawgit.com/shota-oda/WorkSupport/gh-pages/css/app.css">
     <!-- Original CSS -->
     <style>
-      body {
-      padding-top: 70px; 
-      }
-      a{
-      cursor: pointer;
-      }
     </style>
   </head>
   <body>
@@ -42,9 +37,23 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
+    <div id="LoadFrame">
+      <div>
+        <img src="resource/load.gif" alt="loaging...">
+        <br>
+        <p>please wait. loading submodules ...</p>
+      </div>
+    </div>
+    <button id="AuthButton" class="btn btn-default" style="display:none;">
+      Start Gadget
+    </button>
+    <div id="Filter"></div>
     <section id="Main">
     </section>
     <footer id="Footer"></footer>
+    <script type="text/html" id="template-EntryFilter">
+      
+    </script>
     <script type="text/html" id="template-DailyReport">
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
@@ -69,6 +78,8 @@
               <h3 class="panel-title">Daily Report Preview</h3>
             </div>
             <div class="panel-body">
+              to : <pre><%- to %></pre>
+              cc : <pre><%- cc %></pre>
               title : <pre><%- subject %></pre>
               body : <pre id="Report-Preview"><%- body %></pre>
             </div>
@@ -87,11 +98,24 @@
     <script src="node_modules/backbone.marionette/lib/backbone.marionette.js"></script>
     <script src="node_modules/backbone.radio/build/backbone.radio.js"></script>
     <!-- application -->
-    <script src="js2/Core/WorkGadget.View.RootLayoutView.js"></script>
-    <script src="js2/DailyReport/WorkGadget.Model.DailyReport.js"></script>
-    <script src="js2/DailyReport/WorkGadget.View.DailyReport.js"></script>
-    <script src="js2/Core/WorkGadget.Router.js"></script>
-    <script src="js2/Core/WorkGadget.js"></script>
+    <!-- Common -->
+    <script src="https://rawgit.com/shota-oda/WorkSupport/gh-pages/js2/Common/Common.js"></script>
+
+    <script src="https://rawgit.com/shota-oda/WorkSupport/gh-pages/js2/Core/WorkGadget.View.RootLayoutView.js"></script>
+
+    <script src="https://rawgit.com/shota-oda/WorkSupport/gh-pages/js2/DailyReport/WorkGadget.Model.DailyReport.js"></script>
+    <script src="https://rawgit.com/shota-oda/WorkSupport/gh-pages/js2/DailyReport/WorkGadget.View.DailyReport.js"></script>
+    <script src="https://rawgit.com/shota-oda/WorkSupport/gh-pages/js2/Core/WorkGadget.Router.js"></script>
+    <script src="https://rawgit.com/shota-oda/WorkSupport/gh-pages/js2/Core/WorkGadget.js"></script>
+
+
+    <!-- Google Api Faced -->
+    <script src="https://rawgit.com/shota-oda/WorkSupport/gh-pages/js2/GoogleApi/main.js"></script>
+    <script src="https://rawgit.com/shota-oda/WorkSupport/gh-pages/js2/GoogleApi/mail.js"></script>
+    <script src="https://rawgit.com/shota-oda/WorkSupport/gh-pages/js2/GoogleApi/calendar.js"></script>
+
+    <!-- Google Api must call at last -->
+    <script src="https://apis.google.com/js/client.js?onload=main"></script>
   </body>
 </html>
 
