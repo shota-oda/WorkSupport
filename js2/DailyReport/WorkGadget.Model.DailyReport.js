@@ -23,6 +23,9 @@ var WorkGadget = WorkGadget || {};
 
 		initialize: function () {
 
+			WorkGadget.gApi.mail.init();
+			WorkGadget.gApi.Calendar.init();
+
 			this.cal = new Date();
 			
 			this.set('subject', this.getSubject())
@@ -31,13 +34,27 @@ var WorkGadget = WorkGadget || {};
 
 			this.col1 = this.getColumn(1, '勤怠', this.getDateString() + '\n出勤:' + (this.isMonday() ? '08:30' : '09:30') + '\n退社:' + (this.isMonday() ? '17:30' : '18:30'));
 			
-			this.col2 = this.getColumn(2, '本日の業務', this.getTodayTask().reduce(function(p, c){
-				return p + '\n' + c;
-			}));
+			WorkGadget.gApi.Calendar.getTodayTask()
+				.done(function (tts){
+					this.set("col2", this.getColumn(2, "本日の業務", tts.reduce(function(p, c){
+						return p + '\n' + c;
+					})));
+				});
 
-			this.col3 = this.getColumn(3, '明日の業務と直近の主な完了予定', this.getTommorrowTask().reduce(function(p, c){
-				return p + '\n・' + c;
-			}));
+			WorkGadget.gApi.Calendar.getTommorrowTask()
+				.done(function (tts){
+					this.set("col3", this.getColumn(2, "明日の業務と直近の主な完了予定", tts.reduce(function(p, c){
+						return p + '\n・' + c;
+					})));
+				});
+
+			// this.col2 = this.getColumn(2, '本日の業務', this.getTodayTask().reduce(function(p, c){
+			// 	return p + '\n' + c;
+			// }));
+
+			// this.col3 = this.getColumn(3, '明日の業務と直近の主な完了予定', this.getTommorrowTask().reduce(function(p, c){
+			// 	return p + '\n・' + c;
+			// }));
 
 			this.col4 = this.getColumnHeader(4, '本日の気づきと学び');
 
@@ -54,12 +71,12 @@ var WorkGadget = WorkGadget || {};
 
 		getTodayTask: function () {
 			//TOOD Google Calendar 連携
-			return ["タスクA", "タスクB", "タスクC"];
+			return WorkGadget.gApi.Calendar.getTodayTask();
 		},
 
 		getTommorrowTask: function () {
 			//TOOD Google Calendar 連携
-			return ["タスクA", "タスクB", "タスクC"];
+			return WorkGadget.gApi.Calendar.getTommorrowTask();
 		},
 
 		getColumnHeader: function (colNum, colTitle) {

@@ -24,12 +24,15 @@ WorkGadget.gApi.calendar.init = function () {
       var events = resp.items;
       if (events.length <= 0) return;
       
+      var summaries = [];
       for (i = 0; i < events.length; i++) {
         var event = events[i];
         if(event.start.dateTime){
-          d.resolve(event.summary)
+          summaries.push(event.summary)
         }
       }
+
+      d.resolve(summaries);
     });
 
     return d;
@@ -54,12 +57,15 @@ WorkGadget.gApi.calendar.init = function () {
       var events = resp.items;
       if (events.length <= 0) return;
       
+      var summaries = [];
       for (i = 0; i < events.length; i++) {
         var event = events[i];
         if(event.start.dateTime){
-          d.resolve(event.summary)
+          summaries.push(event.summary)
         }
       }
+
+      d.resolve(summaries);
     });
 
     return d;
