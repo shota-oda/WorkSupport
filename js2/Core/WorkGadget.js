@@ -14,6 +14,12 @@ function main () {
     WorkGadget.gApi.init()
 
 	function appStart(){
+		WorkGadget.gApi.loadSubClients()
+			.done(function () {
+				$load.hide();
+				$filter.hide();
+			})
+
 	    WorkGadget.App = new Backbone.Marionette.Application()
 		
 		WorkGadget.App.on('before:start', function () {
@@ -37,16 +43,13 @@ function main () {
 
     //silently check authed or not
     WorkGadget.Common.fn.DoAsync(WorkGadget.gApi.checkAuth(true, function(result) {
-    	$load.hide();
     	if (result){
-    		$filter.hide();
     		appStart();
     	} else {
     		$authButton.on("click", function(){
     			WorkGadget.gApi.checkAuth(false, function(result) {
     				if (result){
     					$authButton.hide()
-    					$filter.hide();
     					appStart();
     				}
 	    		});
