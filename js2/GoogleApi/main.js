@@ -19,7 +19,9 @@ WorkGadget.gApi = WorkGadget.gApi || {};
   self.init = function () {
     gapi.client.setApiKey(apiKey);
     self.checkAuth = function (im,fn) {
-      gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: im}, fn);
+      gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: im}, function(result){
+          fn((result && !result.error));
+      });
     }
   }
 
@@ -27,10 +29,6 @@ WorkGadget.gApi = WorkGadget.gApi || {};
       isAuthorized: false
     , isLibraryReady: false
     , isSubLibraryReady: false
-  }
-  
-  self.initAfterClientLoad = function () {
-    
   }
 
   self.handleAuth = function (result) {

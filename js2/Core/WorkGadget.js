@@ -6,12 +6,20 @@ WorkGadget.gApi = WorkGadget.gApi || {};
 function main () {
 	'use strict';
 
+	$("#LoadFrame").hide();
+
+	var $filter = $("#filter");
+
     WorkGadget.gApi.status.isLibraryReady = true
     WorkGadget.gApi.init()
 
     //silently check authed or not
     WorkGadget.Common.fn.DoAsync(WorkGadget.gApi.checkAuth(true, function(result) {
-    	
+    	if (result){
+    		$filter.hide();
+    	} else {
+
+    	}
     });
 
 
