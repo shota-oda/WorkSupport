@@ -17,11 +17,6 @@
     </style>
   </head>
   <body>
-    <div id="filter">
-      <button id="Auth-Button" class="btn btn-primary">
-        Start Gadget
-      </button>
-    </div>
     <nav id="Header" class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -51,6 +46,13 @@
     <section id="Main">
     </section>
     <footer id="Footer"></footer>
+    <script type="text/html" id="template-EntryFilter">
+      <div id="filter">
+        <button id="Auth-Button" class="btn btn-primary">
+          Start Gadget
+        </button>
+      </div>
+    </script>
     <script type="text/html" id="template-DailyReport">
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
@@ -112,7 +114,7 @@
     <script src="https://rawgit.com/shota-oda/WorkSupport/gh-pages/js2/GoogleApi/calendar.js"></script>
 
     <!-- Google Api must call at last -->
-    <script src="https://apis.google.com/js/client.js?onload=gapiInit"></script>
+    <script src="https://apis.google.com/js/client.js?onload=main"></script>
   </body>
 </html>
 

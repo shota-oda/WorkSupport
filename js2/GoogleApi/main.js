@@ -20,7 +20,7 @@ WorkGadget.gApi = WorkGadget.gApi || {};
   var $authButton = $("#Auth-Button")
   var $output = $("#Out")
 
-  self.start = function () {
+  self.init = function () {
     self.initAfterClientLoad()
     WorkGadget.Common.fn.DoAsync(self.checkAuth(true))
   }
@@ -35,8 +35,8 @@ WorkGadget.gApi = WorkGadget.gApi || {};
     gapi.client.setApiKey(apiKey);
     self.checkAuth = function (im) {
       gapi.auth.authorize(
-      {client_id: clientId, scope: scopes, immediate: im}
-      , self.handleAuth
+         {client_id: clientId, scope: scopes, immediate: im}
+        ,self.handleAuth
       );
     }
   }
@@ -49,6 +49,7 @@ WorkGadget.gApi = WorkGadget.gApi || {};
       .done(function (){
         self.status.isSubLibraryReady = true
         $filter.hide()
+        
       }).fail(function (){
         self.status.isSubLibraryReady = false
       })
@@ -72,10 +73,7 @@ WorkGadget.gApi = WorkGadget.gApi || {};
 
 })();
 
- function gapiInit () {
-    WorkGadget.gApi.status.isLibraryReady = true
-    WorkGadget.gApi.start()
-}
+
 
 
 
