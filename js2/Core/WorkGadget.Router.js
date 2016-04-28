@@ -9,7 +9,8 @@ var WorkGadget = WorkGadget || {};
 	// the active vs complete todo items
 	WorkGadget.Router = Backbone.Marionette.AppRouter.extend({
 		appRoutes: {
-			 '': 'DailyReport'
+			 '': 'DailyReport',
+			 'Read': 'ReadReport'
 		}
 	});
 	
@@ -26,6 +27,10 @@ var WorkGadget = WorkGadget || {};
 
 			WorkGadget.App.View.Root.showChildView('main', review);
 		},
+
+		ReadReport: function(){
+			console.log("aaa");
+		}
 
  	});
 })();
