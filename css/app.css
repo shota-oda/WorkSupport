@@ -12,6 +12,10 @@ a{
     left: 0;
     margin: auto;
 }
+#LoadFrame > p{
+    margin: 0 auto;
+    margin-top: 200px;
+}
 #filter{
     position:fixed;
     width:100%;
