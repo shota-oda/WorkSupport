@@ -24,7 +24,7 @@ var WorkGadget = WorkGadget || {};
 		initialize: function () {
 
 			WorkGadget.gApi.mail.init();
-			WorkGadget.gApi.Calendar.init();
+			WorkGadget.gApi.calendar.init();
 
 			this.cal = new Date();
 			
