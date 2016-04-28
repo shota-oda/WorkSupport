@@ -9,6 +9,12 @@ function main () {
     WorkGadget.gApi.status.isLibraryReady = true
     WorkGadget.gApi.init()
 
+    //silently check authed or not
+    WorkGadget.Common.fn.DoAsync(WorkGadget.gApi.checkAuth(true, function(result) {
+    	
+    });
+
+
     WorkGadget.App = new Backbone.Marionette.Application()
 	
 	WorkGadget.App.on('before:start', function () {

@@ -16,13 +16,11 @@ WorkGadget.gApi = WorkGadget.gApi || {};
     , "https://www.googleapis.com/auth/calendar.readonly" //View Calendar
   ];
 
-  var $filter = $("#filter")
-  var $authButton = $("#Auth-Button")
-  var $output = $("#Out")
-
   self.init = function () {
-    self.initAfterClientLoad()
-    WorkGadget.Common.fn.DoAsync(self.checkAuth(true))
+    gapi.client.setApiKey(apiKey);
+    self.checkAuth = function (im,fn) {
+      gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: im}, fn);
+    }
   }
 
   self.status = {
@@ -32,13 +30,7 @@ WorkGadget.gApi = WorkGadget.gApi || {};
   }
   
   self.initAfterClientLoad = function () {
-    gapi.client.setApiKey(apiKey);
-    self.checkAuth = function (im) {
-      gapi.auth.authorize(
-         {client_id: clientId, scope: scopes, immediate: im}
-        ,self.handleAuth
-      );
-    }
+    
   }
 
   self.handleAuth = function (result) {
