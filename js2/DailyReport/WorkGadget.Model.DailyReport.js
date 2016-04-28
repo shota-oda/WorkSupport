@@ -111,7 +111,6 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		isMonday: function () {
-			console.log(this.cal.getDay())
 			return this.cal.getDay() === 0;
 		},
 	});
