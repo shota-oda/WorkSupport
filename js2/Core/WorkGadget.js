@@ -14,6 +14,8 @@ function main () {
     WorkGadget.gApi.init()
 
 	function appStart(){
+		
+		$load.show();
 		WorkGadget.gApi.loadSubClients()
 			.done(function () {
 				$load.hide();
@@ -43,6 +45,7 @@ function main () {
 
     //silently check authed or not
     WorkGadget.Common.fn.DoAsync(WorkGadget.gApi.checkAuth(true, function(result) {
+    	$load.hide();
     	if (result){
     		appStart();
     	} else {
