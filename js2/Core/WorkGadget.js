@@ -21,7 +21,7 @@ function main () {
     	} else {
     		$authButton.show();
     	}
-    });
+    }));
 
 
     WorkGadget.App = new Backbone.Marionette.Application()
