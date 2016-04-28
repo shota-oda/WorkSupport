@@ -48,10 +48,10 @@ function main () {
     					$authButton.hide()
     					$filter.hide();
     					appStart();
-    			});
-    		});
-    		$authButton.show();
-    		}
+    				}
+	    		});
+	    	});
+	    	$authButton.show();
     	}
     }));
 
