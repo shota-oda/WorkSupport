@@ -6,8 +6,6 @@ a{
 }
 #LoadFrame{
     text-align: center;
-}
-#LoadFrame > img{
     position: absolute;
     top: 0;
     right: 0;
@@ -15,9 +13,11 @@ a{
     left: 0;
     margin: auto;
 }
+#LoadFrame > img{
+    
+}
 #LoadFrame > p{
     color: #FFF;
-    margin-top: 100px;
 }
 #Filter{
     position:fixed;
