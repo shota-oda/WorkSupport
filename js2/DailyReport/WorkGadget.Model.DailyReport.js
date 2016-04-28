@@ -10,6 +10,8 @@ var WorkGadget = WorkGadget || {};
 	WorkGadget.Model = WorkGadget.Model || {};
 	WorkGadget.Model.DailyReport = Backbone.Model.extend({
 		defaults: {
+			to:''.
+			cc: '',
 			subject: '',
 			col1: '',
 			col2: '',
@@ -24,6 +26,8 @@ var WorkGadget = WorkGadget || {};
 			this.cal = new Date();
 			
 			this.set('subject', this.getSubject())
+			this.set('to', 'daily_report_rookie2016@bizreach.co.jp');
+			this.set('cc', 'rookie_2016@bizreach.co.jp');
 
 			this.col1 = this.getColumn(1, '勤怠', this.getDateString() + '\n出勤:' + (this.isMonday() ? '08:30' : '09:30') + '\n退社:' + (this.isMonday() ? '17:30' : '18:30'));
 			
