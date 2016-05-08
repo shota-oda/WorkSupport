@@ -9,24 +9,14 @@ var WorkGadget = WorkGadget || {};
 	// the active vs complete todo items
 	WorkGadget.Router = Backbone.Marionette.AppRouter.extend({
 		appRoutes: {
-			 '': 'Entry'
-			,'DailyReport': 'DailyReport'
+			 '': 'DailyReport',
+			 'Read': 'ReadReport'
 		}
 	});
 	
-	// Controller (Mediator)
-	// ------------------------------
-	//
-	// Control the workflow and logic that exists at the application
-	// level, above the implementation detail of views and models
-	// Marionette.Controller is deprecate, instead use Marionette.Object
 	WorkGadget.Controller = Backbone.Marionette.Object.extend({
 
 		initialize: function () {
-			
-		},
-
-		Entry: function(){
 			
 		},
 
@@ -37,6 +27,10 @@ var WorkGadget = WorkGadget || {};
 
 			WorkGadget.App.View.Root.showChildView('main', review);
 		},
+
+		ReadReport: function(){
+			console.log("aaa");
+		}
 
  	});
 })();

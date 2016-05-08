@@ -31,7 +31,7 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		modelEvents: {
-
+			'change': 'render',
 		},
 
 		initialize: function () {
