@@ -5,9 +5,9 @@ WorkGadget.gApi = WorkGadget.gApi || {};
   'use strict';
   var self = WorkGadget.gApi
 
-  var clientId = '57364377556-pi3vi76p5kqpjsj9l2d6icqugju2u0t2.apps.googleusercontent.com';
+  var clientId = '328832966473-0fsrg90kk2tejcdaebnl8fhdm1sr544l.apps.googleusercontent.com';
 
-  var apiKey = 'AIzaSyDvAoP9X1_8Kos9lmu8aZ2EkwJofe41J54';
+  var apiKey = 'AIzaSyDy0yhlVkweavvUpPcEHLxgV-9AqHp-lTg';
 
   var scopes = [
       "https://www.googleapis.com/auth/plus.me"           //View User Info
