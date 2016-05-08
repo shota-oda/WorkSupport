@@ -18,6 +18,7 @@ function main () {
 		$load.show();
 		WorkGadget.gApi.loadSubClients()
 			.done(function () {
+				WorkGadget.App.start();
 				$load.hide();
 				$filter.hide();
 			})
@@ -39,8 +40,6 @@ function main () {
 
 			Backbone.history.start();
 		});
-
-		WorkGadget.App.start();
 	}
 
     //silently check authed or not
