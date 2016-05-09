@@ -37,6 +37,8 @@ function main () {
 
 		WorkGadget.gApi.loadSubClients()
 			.done(function () {
+				WorkGadget.gApi.mail.init();
+				WorkGadget.gApi.calendar.init();
 				WorkGadget.App.start();
 				$load.hide();
 				$filter.hide();
