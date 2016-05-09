@@ -30,14 +30,14 @@ var WorkGadget = WorkGadget || {};
 
 			this.col1 = this.getColumn(1, '勤怠', this.getDateString() + '\n出勤:' + (this.isMonday() ? '08:30' : '09:30') + '\n退社:' + (this.isMonday() ? '17:30' : '18:30'));
 			
-			WorkGadget.gApi.calendar.getTodayEvent()
+			WorkGadget.gApi.calendar.getTodayEvents()
 				.done(function (tts){
 					this.set("col2", this.getColumn(2, "本日の業務", tts.reduce(function(p, c){
 						return p + '\n' + c;
 					})));
 				});
 
-			WorkGadget.gApi.calendar.getTommorrowEvent()
+			WorkGadget.gApi.calendar.getTommorrowEvents()
 				.done(function (tts){
 					this.set("col3", this.getColumn(2, "明日の業務と直近の主な完了予定", tts.reduce(function(p, c){
 						return p + '\n・' + c;
