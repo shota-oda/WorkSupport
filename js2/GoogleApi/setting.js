@@ -53,7 +53,7 @@ WorkGadget.gApi = WorkGadget.gApi || {};
   }
 
   self.loadSubClients = function () {
-    consoloe.log("loadSubClients");
+    console.log("loadSubClients");
     return $.when(
         gapi.client.load('plus', 'v1')
       , gapi.client.load('gmail', 'v1')
