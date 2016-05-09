@@ -5,7 +5,7 @@ var WorkGadget = WorkGadget || {};
 (function () {
 	'use strict';
 
-	// Todo Model
+	// DailyReport Model
 	// ----------
 	WorkGadget.Model = WorkGadget.Model || {};
 	WorkGadget.Model.DailyReport = Backbone.Model.extend({
@@ -38,7 +38,7 @@ var WorkGadget = WorkGadget || {};
 						return p + '\n' + c;
 					});
 					console.log(taskListStr);
-					thisModel.set("col2", thisModel.getColumn(2, "本日の業務", taskListStr));
+					thisModel.col2 = thisModel.getColumn(2, "本日の業務", taskListStr));
 				});
 
 			WorkGadget.gApi.calendar.getTommorrowEvents()
@@ -46,12 +46,12 @@ var WorkGadget = WorkGadget || {};
 					var taskListStr = data.reduce(function(p, c){
 						return p + '\n' + c;
 					});
-					thisModel.set("col3", thisModel.getColumn(2, "明日の業務と直近の主な完了予定", taskListStr));
+					thisModel.col3 = thisModel.getColumn(3, "明日の業務と直近の主な完了予定", taskListStr));
 				});
 
-			this.set('col4', this.getColumnHeader(4, '本日の気づきと学び'));
+			this.col4 = this.getColumnHeader(4, '本日の気づきと学び'));
 
-			this.set('col5', this.getColumnHeader(5, '振り返り・明日への宣言'));
+			this.col5 = this.getColumnHeader(5, '振り返り・明日への宣言'));
 		},
 
 		updateTodayInsight: function (text) {
