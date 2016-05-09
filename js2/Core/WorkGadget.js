@@ -21,15 +21,13 @@ function main () {
 		
 		WorkGadget.App.on('before:start', function () {
 
-			WorkGadget.App.View = {};
 			WorkGadget.App.View.Root = new WorkGadget.View.RootLayoutView();
 		});
 
 		WorkGadget.App.on('start', function () {
 			
-			var controller = new WorkGadget.Controller();
-			controller.router = new WorkGadget.Router({
-				controller: controller
+			WorkGadget.App.Router = new WorkGadget.Router({
+				controller: new WorkGadget.Controller()
 			});
 
 			Backbone.history.start();
