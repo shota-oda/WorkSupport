@@ -18,9 +18,12 @@ var WorkGadget = WorkGadget || {};
 	WorkGadget.Controller = Backbone.Marionette.Object.extend({
 
 		initialize: function () {
+			console.log("call init ")
+			WorkGadget.App.View.Root.showChildView("header", new WorkGadget.View.Header());
 		},
 
 		start: function () {
+			console.log("call Start ")
 			WorkGadget.App.View.Root.showChildView("header", new WorkGadget.View.Header());
 		},
 
