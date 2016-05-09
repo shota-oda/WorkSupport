@@ -48,6 +48,9 @@ WorkGadget.gApi.calendar.init = function () {
     var date = new Date();
     var tommorrow = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1)
     var today = new Date(date.getFullYear(), date.getMonth(), date.getDate())
+    if(!gapi.client.calendar.events.list){
+      console.log("error, gapi.client.calendar.events.list is undefined");
+    }
     var request = gapi.client.calendar.events.list({
       'calendarId': "bizreach.co.jp_s8d05g2boqil5gvdj7a091972c@group.calendar.google.com",
       'timeMin': today.toISOString(),
