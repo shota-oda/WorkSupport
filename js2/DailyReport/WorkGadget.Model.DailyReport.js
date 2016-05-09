@@ -37,6 +37,7 @@ var WorkGadget = WorkGadget || {};
 					var taskListStr = data.reduce(function(p, c){
 						return p + '\n' + c;
 					});
+					console.log(taskListStr);
 					thisModel.set("col2", thisModel.getColumn(2, "本日の業務", taskListStr));
 				});
 
@@ -50,7 +51,7 @@ var WorkGadget = WorkGadget || {};
 
 			this.set('col4', this.getColumnHeader(4, '本日の気づきと学び'));
 
-			this.set('col5', this.getColumnHeader(5, '明日への宣言'));
+			this.set('col5', this.getColumnHeader(5, '振り返り・明日への宣言'));
 		},
 
 		updateTodayInsight: function (text) {
@@ -59,16 +60,6 @@ var WorkGadget = WorkGadget || {};
 
 		getSubject: function () {
 			return '【新卒日報】' + this.getDateString() + ' 小田翔太';
-		},
-
-		getTodayTask: function () {
-			//TOOD Google Calendar 連携
-			return WorkGadget.gApi.Calendar.getTodayTask();
-		},
-
-		getTommorrowTask: function () {
-			//TOOD Google Calendar 連携
-			return WorkGadget.gApi.Calendar.getTommorrowTask();
 		},
 
 		getColumnHeader: function (colNum, colTitle) {
