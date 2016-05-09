@@ -27,7 +27,7 @@ var WorkGadget = WorkGadget || {};
 		SendReport: function(){
 			WorkGadget.App.View.Instance.SendReport = 
 					WorkGadget.App.View.Instance.SendReport
-				|| 	new WorkGadget.View.DailyReport({
+				|| 	new WorkGadget.View.SendReport({
 						model: new WorkGadget.Model.SendReport()
 					})
 
@@ -39,7 +39,7 @@ var WorkGadget = WorkGadget || {};
 		ReadReport: function(){
 			WorkGadget.App.View.Instance.SendReport = 
 					WorkGadget.App.View.Instance.SendReport
-				|| 	new WorkGadget.View.DailyReport({
+				|| 	new WorkGadget.View.SendReport({
 						model: new WorkGadget.Model.SendReport()
 					})
 				
