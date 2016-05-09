@@ -7,11 +7,11 @@ var WorkGadget = WorkGadget || {};
 
 	WorkGadget.View = WorkGadget.View || {};
 
-	//Daily Repoert View
+	//Send Repoert View
 	// ------------------
 	WorkGadget.View.SendReport = Backbone.Marionette.ItemView.extend({
 
-		template: '#template-DailyReport',
+		template: '#template-SendReport',
 
 		// UI bindings create cached attributes that
 		// point to jQuery selected objects
