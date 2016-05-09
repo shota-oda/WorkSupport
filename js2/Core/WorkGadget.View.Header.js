@@ -17,27 +17,29 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		events: {
-			 "click @ui.SendReport": "navToSend"
-			,"click @ui.ReadReport": "navToRead"
+			  "click SendReport": "navToSend"
+			 ,"click ReadReport": "navToRead"
+			
 		},
 
 		initialize: function(){
 		},
 
 		navToSend: function(){
-			this.ui.ReadReport.removeClass("active");
-
-			this.ui.SendReport.addClass("active");
-
+			this.$("li.active").toggleClass("active", false);
+			this.ui.SendReport.toggleClass("active", true);
 			Backbone.history.navigate('Send', true);
 		},
 
 		navToRead: function(){
-			this.ui.SendReport.removeClass("active");
-
-			this.ui.ReadReport.addClass("active");
+			this.$("li.active").toggleClass("active", false);
+			this.ui.ReadReport.toggleClass("active", true);
 
 			Backbone.history.navigate('Read', true);
+		},
+
+		render: function () {
+			/* thru */
 		}
 	});
 })();
