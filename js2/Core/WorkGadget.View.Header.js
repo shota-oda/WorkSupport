@@ -7,7 +7,7 @@ var WorkGadget = WorkGadget || {};
 	WorkGadget.View = WorkGadget.View || {};
 	WorkGadget.View.Header = Backbone.Marionette.View.extend({
 		
-		//attach static html elments not reference
+		//attach static html elments not reference/template
 		el: $("#Header"),
 
 		//nav buttons
@@ -19,14 +19,12 @@ var WorkGadget = WorkGadget || {};
 		events: {
 			  "click @ui.SendReport": "navToSend"
 			 ,"click @ui.ReadReport": "navToRead"
-			
 		},
 
 		initialize: function(){
 		},
 
 		navToSend: function(){
-			console.log("aaa")
 			this.$("li.active").toggleClass("active", false);
 			this.ui.SendReport.toggleClass("active", true);
 
@@ -34,7 +32,6 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		navToRead: function(){
-			console.log("bbb")
 			this.$("li.active").toggleClass("active", false);
 			this.ui.ReadReport.toggleClass("active", true);
 

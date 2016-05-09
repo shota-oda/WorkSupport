@@ -20,7 +20,7 @@ function main () {
 	    WorkGadget.App = new Backbone.Marionette.Application()
 		
 		WorkGadget.App.on('before:start', function () {
-
+			WorkGadget.App.View = WorkGadget.App.View || {};
 			WorkGadget.App.View.Root = new WorkGadget.View.RootLayoutView();
 		});
 
@@ -38,6 +38,7 @@ function main () {
 				
 				WorkGadget.gApi.mail.init();
 				WorkGadget.gApi.calendar.init();
+
 				WorkGadget.App.start();
 				$load.hide();
 				$filter.hide();
