@@ -47,7 +47,8 @@ var WorkGadget = WorkGadget || {};
 					var taskListStr = data.reduce(function(p, c){
 						return p + '\n' + c;
 					});
-					thisModel.col3 = thisModel.getColumn(3, "明日の業務と直近の主な完了予定", taskListStr);
+					//thisModel.col3 = thisModel.getColumn(3, "明日の業務と直近の主な完了予定", taskListStr);
+					thisModel.set("col3", thisModel.getColumn(3, "明日の業務と直近の主な完了予定", taskListStr));
 				});
 
 			this.col4 = this.getColumnHeader(4, '本日の気づきと学び');
