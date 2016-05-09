@@ -22,7 +22,7 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		initialize: function () {
-
+			log("model initialize");
 			this.cal = new Date();
 			
 			this.set('subject', this.getSubject())
