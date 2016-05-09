@@ -20,7 +20,7 @@ var WorkGadget = WorkGadget || {};
 		initialize: function () {
 			var header = new WorkGadget.View.Header();
 
-			WorkGadget.App.View.Root.showChildView('header', header);
+			//WorkGadget.App.View.Root.showChildView('header', header);
 		},
 
 		DailyReport: function(){
