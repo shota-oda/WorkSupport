@@ -44,13 +44,13 @@ var WorkGadget = WorkGadget || {};
 					})));
 				});
 
-			this.col2 = this.getColumn(2, '本日の業務', this.getTodayTask().reduce(function(p, c){
-				return p + '\n' + c;
-			}));
+			// this.col2 = this.getColumn(2, '本日の業務', this.getTodayTask().reduce(function(p, c){
+			// 	return p + '\n' + c;
+			// }));
 
-			this.col3 = this.getColumn(3, '明日の業務と直近の主な完了予定', this.getTommorrowTask().reduce(function(p, c){
-				return p + '\n・' + c;
-			}));
+			// this.col3 = this.getColumn(3, '明日の業務と直近の主な完了予定', this.getTommorrowTask().reduce(function(p, c){
+			// 	return p + '\n・' + c;
+			// }));
 
 			this.col4 = this.getColumnHeader(4, '本日の気づきと学び');
 
