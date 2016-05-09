@@ -53,14 +53,15 @@ WorkGadget.gApi = WorkGadget.gApi || {};
   }
 
   self.loadSubClients = function () {
+
     var d_plus = new $.Deferred();
     var d_mail = new $.Deferred();
     var d_cal = new $.Deferred();
 
     gapi.client.load('plus', 'v1').then(function(){d_plus.resolved()}, function(){d_plus.rejected()});
-    gapi.client.load('plus', 'v1').then(function(){d_mail.resolved()}, function(){d_mail.rejected()});
-    gapi.client.load('plus', 'v1').then(function(){d_cal.resolved()}, function(){d_cal.rejected()});
-    
+    gapi.client.load('gmail', 'v1').then(function(){d_mail.resolved()}, function(){d_mail.rejected()});
+    gapi.client.load('calendar', 'v3').then(function(){d_cal.resolved()}, function(){d_cal.rejected()});
+
     return $.when(d_plus, d_mail, d_cal);
   }
 
