@@ -37,6 +37,7 @@ function main () {
 
 		WorkGadget.gApi.loadSubClients()
 			.done(function () {
+				console.log(gapi.client.calendar.events);
 				WorkGadget.gApi.mail.init();
 				WorkGadget.gApi.calendar.init();
 				WorkGadget.App.start();
