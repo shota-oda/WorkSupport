@@ -52,7 +52,7 @@ function main () {
     		appStart();
     	} else {
     		$authButton.on("click", function(){
-    			WorkGadget.gApi.checkAuth(true, function(result) {
+    			WorkGadget.gApi.checkAuth(false, function(result) {
     				if (result){
     					$authButton.hide()
     					appStart();
