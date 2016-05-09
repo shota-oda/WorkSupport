@@ -37,9 +37,9 @@ var WorkGadget = WorkGadget || {};
 					var taskListStr = data.reduce(function(p, c){
 						return p + '\n' + c;
 					});
-					console.log(taskListStr);
-					thisModel.col2 = thisModel.getColumn(2, "本日の業務", taskListStr);
-					thisModel.set('col2', "aaaaa");
+
+					//thisModel.col2 = thisModel.getColumn(2, "本日の業務", taskListStr);
+					thisModel.set("col2", thisModel.getColumn(2, "本日の業務", taskListStr));
 				});
 
 			WorkGadget.gApi.calendar.getTommorrowEvents()
