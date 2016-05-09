@@ -49,9 +49,9 @@ var WorkGadget = WorkGadget || {};
 					thisModel.col3 = thisModel.getColumn(3, "明日の業務と直近の主な完了予定", taskListStr);
 				});
 
-			this.col4 = this.getColumnHeader(4, '本日の気づきと学び'));
+			this.col4 = this.getColumnHeader(4, '本日の気づきと学び');
 
-			this.col5 = this.getColumnHeader(5, '振り返り・明日への宣言'));
+			this.col5 = this.getColumnHeader(5, '振り返り・明日への宣言');
 		},
 
 		updateTodayInsight: function (text) {
