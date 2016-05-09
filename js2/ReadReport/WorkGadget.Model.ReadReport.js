@@ -17,7 +17,19 @@ var WorkGadget = WorkGadget || {};
 			$.map(messageIDs, function(el, i){
 				console.log(el);
 				WorkGadget.gApi.mail.getMessage(el.id)
-				.done(function(m){console.log(m)});
+				.done(function(m){
+					//from
+					$.each(m.payload.headers, function(){
+						if (this.name == "From") {
+							console.log(this.value);
+							return;
+						}
+					})
+					//body
+					$.each(m.payload.parts, function(){
+						console.log(this.body.data);
+					})
+				});
 			})
 		});
 
