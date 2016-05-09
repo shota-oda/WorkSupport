@@ -11,7 +11,7 @@ WorkGadget.gApi.calendar.init = function () {
     var date = new Date();
     var from = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1)
     var to = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 2)
-    if(!gapi.client.calendar.events.list){
+    if(!gapi.client.calendar.events){
       console.log("error, gapi.client.calendar.events.list is undefined");
     }
     var request = gapi.client.calendar.events.list({
@@ -48,7 +48,7 @@ WorkGadget.gApi.calendar.init = function () {
     var date = new Date();
     var tommorrow = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1)
     var today = new Date(date.getFullYear(), date.getMonth(), date.getDate())
-    if(!gapi.client.calendar.events.list){
+    if(!gapi.client.calendar.events){
       console.log("error, gapi.client.calendar.events.list is undefined");
     }
     var request = gapi.client.calendar.events.list({
