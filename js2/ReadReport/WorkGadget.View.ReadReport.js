@@ -9,8 +9,19 @@ var WorkGadget = WorkGadget || {};
 
 	//Read Repoert View
 	// ------------------
-	WorkGadget.View.ReadReport = Backbone.Marionette.CompositeView.extend({
+	WorkGadget.View.ReadReportItem = Backbone.Marionette.ItemView.extend({
+		template: '#template-ReadReportItem',
 
+		modelEvents: {
+			'change': 'render',
+		},
+
+	})
+
+	WorkGadget.View.ReadReport = Backbone.Marionette.CompositeView.extend({
+		
+		itemView: FooItemView,
+		itemViewContainer: '#ReportContainer',
 		template: '#template-ReadReport',
 
 		// UI bindings create cached attributes that

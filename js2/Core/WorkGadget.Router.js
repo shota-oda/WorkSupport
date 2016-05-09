@@ -40,7 +40,9 @@ var WorkGadget = WorkGadget || {};
 			WorkGadget.App.View.Instance.ReadReport = 
 					WorkGadget.App.View.Instance.ReadReport
 				|| 	new WorkGadget.View.ReadReport({
-						model: new WorkGadget.Model.ReadReport()
+						collection: new WorkGadget.View.ReadReportItem({
+							model: new WorkGadget.Model.ReadReport()
+						})
 					})
 				
 			var content = WorkGadget.App.View.Instance.ReadReport
