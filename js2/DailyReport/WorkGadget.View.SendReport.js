@@ -9,9 +9,7 @@ var WorkGadget = WorkGadget || {};
 
 	//Daily Repoert View
 	// ------------------
-	WorkGadget.View.DailyReport = {};
-
-	WorkGadget.View.DailyReport = Backbone.Marionette.ItemView.extend({
+	WorkGadget.View.SendReport = Backbone.Marionette.ItemView.extend({
 
 		template: '#template-DailyReport',
 

@@ -10,7 +10,7 @@ var WorkGadget = WorkGadget || {};
 	WorkGadget.Router = Backbone.Marionette.AppRouter.extend({
 		appRoutes: {
 			 '': 'DailyReport',
-			 'Send': 'DailyReport',
+			 'Send': 'SendReport',
 			 'Read': 'ReadReport'
 		}
 	});
@@ -21,18 +21,23 @@ var WorkGadget = WorkGadget || {};
 
 		initialize: function () {
 			WorkGadget.App.View.Header = new WorkGadget.View.Header();
+			WorkGadget.App.View.Instance = WorkGadget.App.View.Instance || {}
 		},
 
-		DailyReport: function(){
-			var review = new WorkGadget.View.DailyReport({
-				model: new WorkGadget.Model.DailyReport()
-			})
+		SendReport: function(){
+			WorkGadget.App.View.Instance.SendReport = 
+					WorkGadget.App.View.Instance.SendReport
+				|| 	new WorkGadget.View.DailyReport({
+						model: new WorkGadget.Model.DailyReport()
+					})
+				
+			var review = WorkGadget.App.View.Instance.SendReport
 
 			WorkGadget.App.View.Root.showChildView('main', review);
 		},
 
 		ReadReport: function(){
-			console.log("aaa");
+			
 		}
 
  	});

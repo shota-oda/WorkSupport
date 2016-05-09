@@ -5,10 +5,11 @@ var WorkGadget = WorkGadget || {};
 (function () {
 	'use strict';
 
-	// DailyReport Model
-	// ----------
 	WorkGadget.Model = WorkGadget.Model || {};
-	WorkGadget.Model.DailyReport = Backbone.Model.extend({
+	
+	// SendReport Model
+	// ----------
+	WorkGadget.Model.SendReport = Backbone.Model.extend({
 		defaults: {
 			to:'',
 			cc: '',
