@@ -5,9 +5,9 @@ WorkGadget.gApi = WorkGadget.gApi || {};
   'use strict';
   var self = WorkGadget.gApi
 
-  var clientId = '57364377556-pi3vi76p5kqpjsj9l2d6icqugju2u0t2.apps.googleusercontent.com';
+  var clientId = '328832966473-0fsrg90kk2tejcdaebnl8fhdm1sr544l.apps.googleusercontent.com';
 
-  var apiKey = 'AIzaSyDvAoP9X1_8Kos9lmu8aZ2EkwJofe41J54';
+  var apiKey = 'AIzaSyDy0yhlVkweavvUpPcEHLxgV-9AqHp-lTg';
 
   var scopes = [
       "https://www.googleapis.com/auth/plus.me"           //View User Info
@@ -53,11 +53,16 @@ WorkGadget.gApi = WorkGadget.gApi || {};
   }
 
   self.loadSubClients = function () {
-    return $.when(
-        gapi.client.load('plus', 'v1')
-      , gapi.client.load('gmail', 'v1')
-      , gapi.client.load('calendar', 'v3')
-    )
+
+    var d_plus = new $.Deferred();
+    var d_mail = new $.Deferred();
+    var d_cal = new $.Deferred();
+
+    gapi.client.load('plus', 'v1').then(function(){d_plus.resolve()}, function(){d_plus.reject()});
+    gapi.client.load('gmail', 'v1').then(function(){d_mail.resolve()}, function(){d_mail.reject()});
+    gapi.client.load('calendar', 'v3').then(function(){d_cal.resolve()}, function(){d_cal.reject()});
+
+    return $.when(d_plus, d_mail, d_cal);
   }
 
 })();

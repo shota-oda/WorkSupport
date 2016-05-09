@@ -16,11 +16,6 @@ function main () {
 	function appStart(){
 		
 		$load.show();
-		WorkGadget.gApi.loadSubClients()
-			.done(function () {
-				$load.hide();
-				$filter.hide();
-			})
 
 	    WorkGadget.App = new Backbone.Marionette.Application()
 		
@@ -40,7 +35,18 @@ function main () {
 			Backbone.history.start();
 		});
 
-		WorkGadget.App.start();
+		WorkGadget.gApi.loadSubClients()
+			.done(function () {
+				
+				WorkGadget.gApi.mail.init();
+				WorkGadget.gApi.calendar.init();
+				WorkGadget.App.start();
+				$load.hide();
+				$filter.hide();
+			})
+			.fail(function () {
+				console.log("fail");
+			})
 	}
 
     //silently check authed or not

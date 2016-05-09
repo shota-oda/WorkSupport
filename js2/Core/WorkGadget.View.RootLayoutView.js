@@ -16,7 +16,6 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		initialize: function(){
-			console.log("Phase: RootLayoutView is initialized");
 		}
 	});
 })();
