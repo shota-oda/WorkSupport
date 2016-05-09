@@ -5,10 +5,11 @@ var WorkGadget = WorkGadget || {};
 (function () {
 	'use strict';
 
-	// Todo Model
-	// ----------
 	WorkGadget.Model = WorkGadget.Model || {};
-	WorkGadget.Model.DailyReport = Backbone.Model.extend({
+	
+	// SendReport Model
+	// ----------
+	WorkGadget.Model.SendReport = Backbone.Model.extend({
 		defaults: {
 			to:'',
 			cc: '',
@@ -30,31 +31,32 @@ var WorkGadget = WorkGadget || {};
 
 			this.col1 = this.getColumn(1, '勤怠', this.getDateString() + '\n出勤:' + (this.isMonday() ? '08:30' : '09:30') + '\n退社:' + (this.isMonday() ? '17:30' : '18:30'));
 			
+			//for use this in done callback
+			var thisModel = this;
 			WorkGadget.gApi.calendar.getTodayEvents()
-				.done(function (tts){
-					this.set("col2", this.getColumn(2, "本日の業務", tts.reduce(function(p, c){
+				.done(function (data){
+					var taskListStr = data.reduce(function(p, c){
 						return p + '\n' + c;
-					})));
+					});
+
+					//thisModel.col2 = thisModel.getColumn(2, "本日の業務", taskListStr);
+					thisModel.col2 = thisModel.getColumn(2, "本日の業務", taskListStr);
+					thisModel.trigger("change");
 				});
 
 			WorkGadget.gApi.calendar.getTommorrowEvents()
-				.done(function (tts){
-					this.set("col3", this.getColumn(2, "明日の業務と直近の主な完了予定", tts.reduce(function(p, c){
-						return p + '\n・' + c;
-					})));
+				.done(function (data){
+					var taskListStr = data.reduce(function(p, c){
+						return p + '\n' + c;
+					});
+					//thisModel.col3 = thisModel.getColumn(3, "明日の業務と直近の主な完了予定", taskListStr);
+					thisModel.col3 = thisModel.getColumn(3, "明日の業務と直近の主な完了予定", taskListStr);
+					thisModel.trigger("change");
 				});
-
-			// this.col2 = this.getColumn(2, '本日の業務', this.getTodayTask().reduce(function(p, c){
-			// 	return p + '\n' + c;
-			// }));
-
-			// this.col3 = this.getColumn(3, '明日の業務と直近の主な完了予定', this.getTommorrowTask().reduce(function(p, c){
-			// 	return p + '\n・' + c;
-			// }));
 
 			this.col4 = this.getColumnHeader(4, '本日の気づきと学び');
 
-			this.col5 = this.getColumnHeader(5, '明日への宣言');
+			this.col5 = this.getColumnHeader(5, '振り返り・明日への宣言');
 		},
 
 		updateTodayInsight: function (text) {
@@ -63,16 +65,6 @@ var WorkGadget = WorkGadget || {};
 
 		getSubject: function () {
 			return '【新卒日報】' + this.getDateString() + ' 小田翔太';
-		},
-
-		getTodayTask: function () {
-			//TOOD Google Calendar 連携
-			return WorkGadget.gApi.Calendar.getTodayTask();
-		},
-
-		getTommorrowTask: function () {
-			//TOOD Google Calendar 連携
-			return WorkGadget.gApi.Calendar.getTommorrowTask();
 		},
 
 		getColumnHeader: function (colNum, colTitle) {
@@ -107,7 +99,7 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		isMonday: function () {
-			return this.cal.getDay() === 0;
+			return this.cal.getDay() === 1;
 		},
 	});
 

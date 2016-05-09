@@ -9,27 +9,43 @@ var WorkGadget = WorkGadget || {};
 	// the active vs complete todo items
 	WorkGadget.Router = Backbone.Marionette.AppRouter.extend({
 		appRoutes: {
-			 '': 'DailyReport',
+			 '': 'SendReport',
+			 'Send': 'SendReport',
 			 'Read': 'ReadReport'
 		}
 	});
 	
+	// Controller is just Object
+	// For store routing inner logic
 	WorkGadget.Controller = Backbone.Marionette.Object.extend({
 
 		initialize: function () {
-			
+			WorkGadget.App.View.Header = new WorkGadget.View.Header();
+			WorkGadget.App.View.Instance = WorkGadget.App.View.Instance || {}
 		},
 
-		DailyReport: function(){
-			var review = new WorkGadget.View.DailyReport({
-				model: new WorkGadget.Model.DailyReport()
-			})
+		SendReport: function(){
+			WorkGadget.App.View.Instance.SendReport = 
+					WorkGadget.App.View.Instance.SendReport
+				|| 	new WorkGadget.View.DailyReport({
+						model: new WorkGadget.Model.SendReport()
+					})
 
-			WorkGadget.App.View.Root.showChildView('main', review);
+			var content = WorkGadget.App.View.Instance.SendReport
+
+			WorkGadget.App.View.Root.showChildView('main', content);
 		},
 
 		ReadReport: function(){
-			console.log("aaa");
+			WorkGadget.App.View.Instance.SendReport = 
+					WorkGadget.App.View.Instance.SendReport
+				|| 	new WorkGadget.View.DailyReport({
+						model: new WorkGadget.Model.SendReport()
+					})
+				
+			var content = WorkGadget.App.View.Instance.SendReport
+			
+			WorkGadget.App.View.Root.showChildView('main', content);
 		}
 
  	});

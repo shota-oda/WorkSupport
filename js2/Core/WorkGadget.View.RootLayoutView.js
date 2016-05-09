@@ -10,12 +10,9 @@ var WorkGadget = WorkGadget || {};
 		el: 'body',
 
 		regions: {
-			header: "#Header",
-			main: "#Main",
-			footer: "#Footer"
-		},
-
-		initialize: function(){
+			 header: "#Header"
+			,main: "#Main"
+			,footer: "#Footer"
 		}
 	});
 })();
