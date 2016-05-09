@@ -1,176 +1,103 @@
 /*
- * Copyright (c) 2010 Nick Galbreath
- * http://code.google.com/p/stringencoders/source/browse/#svn/trunk/javascript
- *
- * Permission is hereby granted, free of charge, to any person
- * obtaining a copy of this software and associated documentation
- * files (the "Software"), to deal in the Software without
- * restriction, including without limitation the rights to use,
- * copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the
- * Software is furnished to do so, subject to the following
- * conditions:
- *
- * The above copyright notice and this permission notice shall be
- * included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
- * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
- * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
- * OTHER DEALINGS IN THE SOFTWARE.
+ * JavaScript base64 / base64url encoder and decoder
  */
 
-/* base64 encode/decode compatible with window.btoa/atob
- *
- * window.atob/btoa is a Firefox extension to convert binary data (the "b")
- * to base64 (ascii, the "a").
- *
- * It is also found in Safari and Chrome.  It is not available in IE.
- *
- * if (!window.btoa) window.btoa = base64.encode
- * if (!window.atob) window.atob = base64.decode
- *
- * The original spec's for atob/btoa are a bit lacking
- * https://developer.mozilla.org/en/DOM/window.atob
- * https://developer.mozilla.org/en/DOM/window.btoa
- *
- * window.btoa and base64.encode takes a string where charCodeAt is [0,255]
- * If any character is not [0,255], then an DOMException(5) is thrown.
- *
- * window.atob and base64.decode take a base64-encoded string
- * If the input length is not a multiple of 4, or contains invalid characters
- *   then an DOMException(5) is thrown.
+var b64c = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"   // base64 dictionary
+var b64u = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_"   // base64url dictionary
+var b64pad = '='
+
+/* base64_encode_data
+ * Internal helper to encode data to base64 using specified dictionary.
  */
-var base64 = {};
-base64.PADCHAR = '=';
-base64.ALPHA = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+function base64_encode_data(data, len, b64x) {
+    var dst = ""
+    var i
 
-base64.makeDOMException = function() {
-    // sadly in FF,Safari,Chrome you can't make a DOMException
-    var e, tmp;
-
-    try {
-        return new DOMException(DOMException.INVALID_CHARACTER_ERR);
-    } catch (tmp) {
-        // not available, just passback a duck-typed equiv
-        // https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/Error
-        // https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/Error/prototype
-        var ex = new Error("DOM Exception 5");
-
-        // ex.number and ex.description is IE-specific.
-        ex.code = ex.number = 5;
-        ex.name = ex.description = "INVALID_CHARACTER_ERR";
-
-        // Safari/Chrome output format
-        ex.toString = function() { return 'Error: ' + ex.name + ': ' + ex.message; };
-        return ex;
+    for (i = 0; i <= len - 3; i += 3)
+    {
+        dst += b64x.charAt(data.charCodeAt(i) >>> 2)
+        dst += b64x.charAt(((data.charCodeAt(i) & 3) << 4) | (data.charCodeAt(i+1) >>> 4))
+        dst += b64x.charAt(((data.charCodeAt(i+1) & 15) << 2) | (data.charCodeAt(i+2) >>> 6))
+        dst += b64x.charAt(data.charCodeAt(i+2) & 63)
     }
+
+    if (len % 3 == 2)
+    {
+        dst += b64x.charAt(data.charCodeAt(i) >>> 2)
+        dst += b64x.charAt(((data.charCodeAt(i) & 3) << 4) | (data.charCodeAt(i+1) >>> 4))
+        dst += b64x.charAt(((data.charCodeAt(i+1) & 15) << 2))
+        dst += b64pad
+    }
+    else if (len % 3 == 1)
+    {
+        dst += b64x.charAt(data.charCodeAt(i) >>> 2)
+        dst += b64x.charAt(((data.charCodeAt(i) & 3) << 4))
+        dst += b64pad
+        dst += b64pad
+    }
+
+    return dst
 }
 
-base64.getbyte64 = function(s,i) {
-    // This is oddly fast, except on Chrome/V8.
-    //  Minimal or no improvement in performance by using a
-    //   object with properties mapping chars to value (eg. 'A': 0)
-    var idx = base64.ALPHA.indexOf(s.charAt(i));
-    if (idx === -1) {
-        throw base64.makeDOMException();
-    }
-    return idx;
+/* base64_encode
+ * Encode a JavaScript string to base64.
+ * Specified string is first converted from JavaScript UCS-2 to UTF-8.
+ */
+function base64_encode(str) {
+    var utf8str = unescape(encodeURIComponent(str))
+    return base64_encode_data(utf8str, utf8str.length, b64c)
 }
 
-base64.decode = function(s) {
-    // convert to string
-    s = '' + s;
-    var getbyte64 = base64.getbyte64;
-    var pads, i, b10;
-    var imax = s.length
-    if (imax === 0) {
-        return s;
-    }
-
-    if (imax % 4 !== 0) {
-        throw base64.makeDOMException();
-    }
-
-    pads = 0
-    if (s.charAt(imax - 1) === base64.PADCHAR) {
-        pads = 1;
-        if (s.charAt(imax - 2) === base64.PADCHAR) {
-            pads = 2;
-        }
-        // either way, we want to ignore this last block
-        imax -= 4;
-    }
-
-    var x = [];
-    for (i = 0; i < imax; i += 4) {
-        b10 = (getbyte64(s,i) << 18) | (getbyte64(s,i+1) << 12) |
-            (getbyte64(s,i+2) << 6) | getbyte64(s,i+3);
-        x.push(String.fromCharCode(b10 >> 16, (b10 >> 8) & 0xff, b10 & 0xff));
-    }
-
-    switch (pads) {
-    case 1:
-        b10 = (getbyte64(s,i) << 18) | (getbyte64(s,i+1) << 12) | (getbyte64(s,i+2) << 6);
-        x.push(String.fromCharCode(b10 >> 16, (b10 >> 8) & 0xff));
-        break;
-    case 2:
-        b10 = (getbyte64(s,i) << 18) | (getbyte64(s,i+1) << 12);
-        x.push(String.fromCharCode(b10 >> 16));
-        break;
-    }
-    return x.join('');
+/* base64url_encode
+ * Encode a JavaScript string to base64url.
+ * Specified string is first converted from JavaScript UCS-2 to UTF-8.
+ */
+function base64url_encode(str) {
+    var utf8str = unescape(encodeURIComponent(str))
+    return base64_encode_data(utf8str, utf8str.length, b64u)
 }
 
-base64.getbyte = function(s,i) {
-    var x = s.charCodeAt(i);
-    if (x > 255) {
-        throw base64.makeDOMException();
-    }
-    return x;
+/* base64_charIndex
+ * Internal helper to translate a base64 character to its integer index.
+ */
+function base64_charIndex(c) {
+    if (c == "+") return 62
+    if (c == "/") return 63
+    return b64u.indexOf(c)
 }
 
-base64.encode = function(s) {
-    if (arguments.length !== 1) {
-        throw new SyntaxError("Not enough arguments");
-    }
-    var padchar = base64.PADCHAR;
-    var alpha   = base64.ALPHA;
-    var getbyte = base64.getbyte;
+/* base64_decode
+ * Decode a base64 or base64url string to a JavaScript string.
+ * Input is assumed to be a base64/base64url encoded UTF-8 string.
+ * Returned result is a JavaScript (UCS-2) string.
+ */
+function base64_decode(data) {
+    var dst = ""
+    var i, a, b, c, d, z
+    
+    for (i = 0; i < data.length - 3; i += 4) {
+        a = base64_charIndex(data.charAt(i+0))
+        b = base64_charIndex(data.charAt(i+1))
+        c = base64_charIndex(data.charAt(i+2))
+        d = base64_charIndex(data.charAt(i+3))
 
-    var i, b10;
-    var x = [];
-
-    // convert to string
-    s = '' + s;
-
-    var imax = s.length - s.length % 3;
-
-    if (s.length === 0) {
-        return s;
+        dst += String.fromCharCode((a << 2) | (b >>> 4))
+        if (data.charAt(i+2) != b64pad)
+            dst += String.fromCharCode(((b << 4) & 0xF0) | ((c >>> 2) & 0x0F))
+        if (data.charAt(i+3) != b64pad)
+            dst += String.fromCharCode(((c << 6) & 0xC0) | d)
     }
-    for (i = 0; i < imax; i += 3) {
-        b10 = (getbyte(s,i) << 16) | (getbyte(s,i+1) << 8) | getbyte(s,i+2);
-        x.push(alpha.charAt(b10 >> 18));
-        x.push(alpha.charAt((b10 >> 12) & 0x3F));
-        x.push(alpha.charAt((b10 >> 6) & 0x3f));
-        x.push(alpha.charAt(b10 & 0x3f));
-    }
-    switch (s.length - imax) {
-    case 1:
-        b10 = getbyte(s,i) << 16;
-        x.push(alpha.charAt(b10 >> 18) + alpha.charAt((b10 >> 12) & 0x3F) +
-               padchar + padchar);
-        break;
-    case 2:
-        b10 = (getbyte(s,i) << 16) | (getbyte(s,i+1) << 8);
-        x.push(alpha.charAt(b10 >> 18) + alpha.charAt((b10 >> 12) & 0x3F) +
-               alpha.charAt((b10 >> 6) & 0x3f) + padchar);
-        break;
-    }
-    return x.join('');
+
+    dst = decodeURIComponent(escape(dst))
+    return dst
+}
+
+/* base64url_sniff
+ * Check whether specified base64 string contains base64url specific characters.
+ * Return true if specified string is base64url encoded, false otherwise.
+ */
+function base64url_sniff(base64) {
+    if (base64.indexOf("-") >= 0) return true
+    if (base64.indexOf("_") >= 0) return true
+    return false
 }
