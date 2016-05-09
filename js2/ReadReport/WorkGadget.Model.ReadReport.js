@@ -16,7 +16,7 @@ var WorkGadget = WorkGadget || {};
 		.done(function(messageIDs){
 			$.map(messageIDs, function(el, i){
 				console.log(el);
-				WorkGadget.gApi.mail.getMessage(el)
+				WorkGadget.gApi.mail.getMessage(el.id)
 				.done(function(m){console.log(m)});
 			})
 		});
