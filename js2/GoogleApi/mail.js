@@ -35,7 +35,7 @@ WorkGadget.gApi.mail.init = function () {
   }
 
   WorkGadget.gApi.mail.list = function (query) {
-    
+
     var d = new $.Deferred()
 
     var getPageOfMessages = function(request, result) {
@@ -57,7 +57,8 @@ WorkGadget.gApi.mail.init = function () {
 
     var initialRequest = gapi.client.gmail.users.messages.list({
       'userId': "me",
-      'q': query
+      'q': query,
+      "maxResults": 10
     });
 
     getPageOfMessages(initialRequest, []);
