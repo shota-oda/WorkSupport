@@ -36,16 +36,16 @@ var WorkGadget = WorkGadget || {};
 				.done(function (data){
 					var taskListStr = data.reduce(function(p, c){
 						return p + '\n' + c;
-					}));
-					thisModel.set("col2", thisModel.getColumn(2, "本日の業務", taskListStr);
+					});
+					thisModel.set("col2", thisModel.getColumn(2, "本日の業務", taskListStr));
 				});
 
 			WorkGadget.gApi.calendar.getTommorrowEvents()
 				.done(function (data){
 					var taskListStr = data.reduce(function(p, c){
 						return p + '\n' + c;
-					}));
-					thisModel.set("col3", thisModel.getColumn(2, "明日の業務と直近の主な完了予定", taskListStr);
+					});
+					thisModel.set("col3", thisModel.getColumn(2, "明日の業務と直近の主な完了予定", taskListStr));
 				});
 
 			this.set('col4', this.getColumnHeader(4, '本日の気づきと学び'));
@@ -103,7 +103,7 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		isMonday: function () {
-			return this.cal.getDay() === 0;
+			return this.cal.getDay() === 1;
 		},
 	});
 
