@@ -30,14 +30,22 @@ var WorkGadget = WorkGadget || {};
 				|| 	new WorkGadget.View.DailyReport({
 						model: new WorkGadget.Model.DailyReport()
 					})
-				
-			var review = WorkGadget.App.View.Instance.SendReport
 
-			WorkGadget.App.View.Root.showChildView('main', review);
+			var content = WorkGadget.App.View.Instance.SendReport
+
+			WorkGadget.App.View.Root.showChildView('main', content);
 		},
 
 		ReadReport: function(){
+			WorkGadget.App.View.Instance.SendReport = 
+					WorkGadget.App.View.Instance.SendReport
+				|| 	new WorkGadget.View.DailyReport({
+						model: new WorkGadget.Model.DailyReport()
+					})
+				
+			var content = WorkGadget.App.View.Instance.SendReport
 			
+			WorkGadget.App.View.Root.showChildView('main', content);
 		}
 
  	});
