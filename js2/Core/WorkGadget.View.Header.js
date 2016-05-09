@@ -21,6 +21,13 @@ var WorkGadget = WorkGadget || {};
 			 ,"click @ui.ReadReport": "navToRead"
 		},
 
+		//Attaching a view to an existing element is the exception. 
+		//The normal view lifecycle involves calling render, and without doing that there would be nothing for the UI elements to bind to.
+		//so call this.bindUIElements() in your initialize method when need to attach a view to an existing element.
+		initialize: function(){
+			this.bindUIElements();
+		},
+
 		navToSend: function(){
 			this.$("li.active").toggleClass("active", false);
 			this.ui.SendReport.toggleClass("active", true);
