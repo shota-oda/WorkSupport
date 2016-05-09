@@ -50,7 +50,6 @@ var WorkGadget = WorkGadget || {};
 					});
 					//thisModel.col3 = thisModel.getColumn(3, "明日の業務と直近の主な完了予定", taskListStr);
 					thisModel.col3 = thisModel.getColumn(3, "明日の業務と直近の主な完了予定", taskListStr);
-					console.log(thisModel.col3);
 					thisModel.trigger("change");
 				});
 

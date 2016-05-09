@@ -10,6 +10,7 @@ var WorkGadget = WorkGadget || {};
 	WorkGadget.Router = Backbone.Marionette.AppRouter.extend({
 		appRoutes: {
 			 '': 'DailyReport',
+			 'Send': 'DailyReport',
 			 'Read': 'ReadReport'
 		}
 	});
@@ -17,7 +18,9 @@ var WorkGadget = WorkGadget || {};
 	WorkGadget.Controller = Backbone.Marionette.Object.extend({
 
 		initialize: function () {
-			
+			var header = new WorkGadget.View.Header();
+
+			WorkGadget.App.View.Root.showChildView('header', header);
 		},
 
 		DailyReport: function(){
