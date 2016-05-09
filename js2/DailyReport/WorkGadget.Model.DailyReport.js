@@ -33,17 +33,19 @@ var WorkGadget = WorkGadget || {};
 			//for use this in done callback
 			var thisModel = this;
 			WorkGadget.gApi.calendar.getTodayEvents()
-				.done(function (tts){
-					thisModel.set("col2", thisModel.getColumn(2, "本日の業務", tts.reduce(function(p, c){
+				.done(function (data){
+					var taskListStr = data.reduce(function(p, c){
 						return p + '\n' + c;
-					})));
+					}));
+					thisModel.set("col2", thisModel.getColumn(2, "本日の業務", taskListStr);
 				});
 
 			WorkGadget.gApi.calendar.getTommorrowEvents()
-				.done(function (tts){
-					thisModel.set("col3", thisModel.getColumn(2, "明日の業務と直近の主な完了予定", tts.reduce(function(p, c){
-						return p + '\n・' + c;
-					})));
+				.done(function (data){
+					var taskListStr = data.reduce(function(p, c){
+						return p + '\n' + c;
+					}));
+					thisModel.set("col3", thisModel.getColumn(2, "明日の業務と直近の主な完了予定", taskListStr);
 				});
 
 			this.set('col4', this.getColumnHeader(4, '本日の気づきと学び'));
