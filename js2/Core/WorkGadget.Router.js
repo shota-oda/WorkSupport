@@ -40,10 +40,9 @@ var WorkGadget = WorkGadget || {};
 			WorkGadget.App.View.Instance.ReadReport = 
 					WorkGadget.App.View.Instance.ReadReport
 				|| 	new WorkGadget.View.ReadReport({
-						collection: new WorkGadget.View.ReadReportItem({
-							model: new WorkGadget.Model.ReadReport()
-						})
+						collection: new Backbone.Collection(WorkGadget.Model.ReadReportItem())
 					})
+				})
 				
 			var content = WorkGadget.App.View.Instance.ReadReport
 			

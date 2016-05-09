@@ -9,24 +9,16 @@ var WorkGadget = WorkGadget || {};
 	
 	// ReadReport Model
 	// ----------
-	WorkGadget.Model.ReadReport = Backbone.Model.extend({
-		defaults: {
-			to:'',
-			cc: '',
-			subject: '',
-			col1: '',
-			col2: '',
-			col3: '',
-			col4: '',
-			col5: '',
-			cal: {},//For Consistency, set Date() to member
-		},
+	WorkGadget.Model.ReadReportItems = function () {
 
-		initialize: function () {
-			
-		},
+		var query = "(to:daily_report_business2016@bizreach.co.jp OR to:rookie_2016@bizreach.co.jp) subject:新卒"
+		WorkGadget.gApi.mail.list(query)
+		.done(function(messageIDs){
+			$.map(messageIDs, function(el, i){
+				WorkGadget.gApi.mail.getMessage(el)
+				.done(console.log(message));
+			}
+		})
 
-		
-	});
-
+	}
 })();

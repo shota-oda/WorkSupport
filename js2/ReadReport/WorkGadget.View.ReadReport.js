@@ -24,10 +24,6 @@ var WorkGadget = WorkGadget || {};
 		itemViewContainer: '#ReportContainer',
 		template: '#template-ReadReport',
 
-		modelEvents: {
-			'change': 'render',
-		},
-
 		initialize: function () {
 			
 		},
