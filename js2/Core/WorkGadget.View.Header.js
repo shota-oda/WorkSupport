@@ -26,13 +26,15 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		navToSend: function(){
+			console.log("aaa")
 			this.$("li.active").toggleClass("active", false);
 			this.ui.SendReport.toggleClass("active", true);
-			
+
 			Backbone.history.navigate('Send', true);
 		},
 
 		navToRead: function(){
+			console.log("bbb")
 			this.$("li.active").toggleClass("active", false);
 			this.ui.ReadReport.toggleClass("active", true);
 
