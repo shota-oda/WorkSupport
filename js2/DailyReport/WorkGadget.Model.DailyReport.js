@@ -38,7 +38,7 @@ var WorkGadget = WorkGadget || {};
 						return p + '\n' + c;
 					});
 					console.log(taskListStr);
-					thisModel.col2 = thisModel.getColumn(2, "本日の業務", taskListStr));
+					thisModel.col2 = thisModel.getColumn(2, "本日の業務", taskListStr);
 				});
 
 			WorkGadget.gApi.calendar.getTommorrowEvents()
@@ -46,7 +46,7 @@ var WorkGadget = WorkGadget || {};
 					var taskListStr = data.reduce(function(p, c){
 						return p + '\n' + c;
 					});
-					thisModel.col3 = thisModel.getColumn(3, "明日の業務と直近の主な完了予定", taskListStr));
+					thisModel.col3 = thisModel.getColumn(3, "明日の業務と直近の主な完了予定", taskListStr);
 				});
 
 			this.col4 = this.getColumnHeader(4, '本日の気づきと学び'));
