@@ -24,16 +24,6 @@ var WorkGadget = WorkGadget || {};
 		itemViewContainer: '#ReportContainer',
 		template: '#template-ReadReport',
 
-		// UI bindings create cached attributes that
-		// point to jQuery selected objects
-		ui: {
-			,
-		},
-
-		events: {
-			,
-		},
-
 		modelEvents: {
 			'change': 'render',
 		},
