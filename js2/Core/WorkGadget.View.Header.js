@@ -28,6 +28,7 @@ var WorkGadget = WorkGadget || {};
 		navToSend: function(){
 			this.$("li.active").toggleClass("active", false);
 			this.ui.SendReport.toggleClass("active", true);
+			
 			Backbone.history.navigate('Send', true);
 		},
 
