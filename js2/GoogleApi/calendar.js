@@ -6,6 +6,7 @@ WorkGadget.gApi.calendar.init = function () {
   
   //async
   WorkGadget.gApi.calendar.getTommorrowEvents = function (){
+    console.log("will get tommorrow events");
     var d = new $.Deferred();
     var date = new Date();
     var from = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1)
