@@ -17,8 +17,8 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		events: {
-			  "click SendReport": "navToSend"
-			 ,"click ReadReport": "navToRead"
+			  "click @ui.SendReport": "navToSend"
+			 ,"click @ui.ReadReport": "navToRead"
 			
 		},
 
