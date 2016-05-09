@@ -39,7 +39,8 @@ var WorkGadget = WorkGadget || {};
 					});
 
 					//thisModel.col2 = thisModel.getColumn(2, "本日の業務", taskListStr);
-					thisModel.set("col2", thisModel.getColumn(2, "本日の業務", taskListStr));
+					thisModel.col2 = thisModel.getColumn(2, "本日の業務", taskListStr);
+					thisModel.trigger("change");
 				});
 
 			WorkGadget.gApi.calendar.getTommorrowEvents()
@@ -48,7 +49,8 @@ var WorkGadget = WorkGadget || {};
 						return p + '\n' + c;
 					});
 					//thisModel.col3 = thisModel.getColumn(3, "明日の業務と直近の主な完了予定", taskListStr);
-					thisModel.set("col3", thisModel.getColumn(3, "明日の業務と直近の主な完了予定", taskListStr));
+					thisModel.col3 = thisModel.getColumn(3, "明日の業務と直近の主な完了予定", taskListStr);
+					thisModel.trigger("change");
 				});
 
 			this.col4 = this.getColumnHeader(4, '本日の気づきと学び');
