@@ -9,7 +9,7 @@ var WorkGadget = WorkGadget || {};
 	// the active vs complete todo items
 	WorkGadget.Router = Backbone.Marionette.AppRouter.extend({
 		appRoutes: {
-			 '': 'DailyReport',
+			 '': 'SendReport',
 			 'Send': 'SendReport',
 			 'Read': 'ReadReport'
 		}
