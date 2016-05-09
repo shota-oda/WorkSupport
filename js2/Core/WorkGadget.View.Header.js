@@ -21,9 +21,6 @@ var WorkGadget = WorkGadget || {};
 			 ,"click @ui.ReadReport": "navToRead"
 		},
 
-		initialize: function(){
-		},
-
 		navToSend: function(){
 			this.$("li.active").toggleClass("active", false);
 			this.ui.SendReport.toggleClass("active", true);
