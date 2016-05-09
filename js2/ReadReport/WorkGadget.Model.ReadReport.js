@@ -17,8 +17,8 @@ var WorkGadget = WorkGadget || {};
 			$.map(messageIDs, function(el, i){
 				WorkGadget.gApi.mail.getMessage(el)
 				.done(console.log(message));
-			}
-		})
+			})
+		});
 
 	}
 })();

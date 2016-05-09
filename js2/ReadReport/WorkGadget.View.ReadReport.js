@@ -20,7 +20,7 @@ var WorkGadget = WorkGadget || {};
 
 	WorkGadget.View.ReadReport = Backbone.Marionette.CompositeView.extend({
 		
-		itemView: FooItemView,
+		itemView: WorkGadget.View.ReadReportItem,
 		itemViewContainer: '#ReportContainer',
 		template: '#template-ReadReport',
 
