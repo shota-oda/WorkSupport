@@ -37,13 +37,13 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		ReadReport: function(){
-			WorkGadget.App.View.Instance.SendReport = 
-					WorkGadget.App.View.Instance.SendReport
-				|| 	new WorkGadget.View.SendReport({
-						model: new WorkGadget.Model.SendReport()
+			WorkGadget.App.View.Instance.ReadReport = 
+					WorkGadget.App.View.Instance.ReadReport
+				|| 	new WorkGadget.View.ReadReport({
+						model: new WorkGadget.Model.ReadReport()
 					})
 				
-			var content = WorkGadget.App.View.Instance.SendReport
+			var content = WorkGadget.App.View.Instance.ReadReport
 			
 			WorkGadget.App.View.Root.showChildView('main', content);
 		}
