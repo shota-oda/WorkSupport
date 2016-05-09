@@ -35,7 +35,8 @@ WorkGadget.gApi.mail.init = function () {
   }
 
   WorkGadget.gApi.mail.list = function (query) {
-    var d = new $.Deffered();
+    
+    var d = new $.Deferred()
 
     var getPageOfMessages = function(request, result) {
       request.execute(function(resp) {
@@ -66,7 +67,7 @@ WorkGadget.gApi.mail.init = function () {
 
   WorkGadget.gApi.mail.getMessage = function (messageId) {
 
-    var d = new $.Deffered();
+    var d = new $.Deferred()
 
     var request = gapi.client.gmail.users.messages.get({
       'userId': "me",
