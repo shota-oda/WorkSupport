@@ -7,7 +7,8 @@ var WorkGadget = WorkGadget || {};
 	WorkGadget.View = WorkGadget.View || {};
 	WorkGadget.View.Header = Backbone.Marionette.View.extend({
 		
-		el: "#Header",
+		//attach static html elments not reference
+		el: $("#Header"),
 
 		//nav buttons
 		ui: {
