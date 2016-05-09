@@ -21,7 +21,7 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		start: function () {
-			this.view = new WorkGadget.View.Header();
+			WorkGadget.App.View.Root.showChildView("header", new WorkGadget.View.Header());
 		},
 
 		DailyReport: function(){
