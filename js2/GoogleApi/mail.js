@@ -42,16 +42,17 @@ WorkGadget.gApi.mail.init = function () {
       request.execute(function(resp) {
           result = result.concat(resp.messages);
           var nextPageToken = resp.nextPageToken;
-          if (nextPageToken) {
-            request = gapi.client.gmail.users.messages.list({
-                'userId': "me",
-                'pageToken': nextPageToken,
-                'q': query
-            });
-            getPageOfMessages(request, result);
-        } else {
           d.resolve(result);
-        }
+        //   if (nextPageToken) {
+        //     request = gapi.client.gmail.users.messages.list({
+        //         'userId': "me",
+        //         'pageToken': nextPageToken,
+        //         'q': query
+        //     });
+        //     getPageOfMessages(request, result);
+        // } else {
+        //   d.resolve(result);
+        // }
       });
     };
 
