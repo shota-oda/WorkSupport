@@ -15,6 +15,8 @@ var WorkGadget = WorkGadget || {};
 		}
 	});
 	
+	// Controller is just Object
+	// For store routing inner logic
 	WorkGadget.Controller = Backbone.Marionette.Object.extend({
 
 		initialize: function () {
