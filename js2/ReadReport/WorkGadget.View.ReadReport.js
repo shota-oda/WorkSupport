@@ -20,7 +20,7 @@ var WorkGadget = WorkGadget || {};
 		template: '#template-ReadReport',
 
 		ui: {
-			calendar: ".input-group.datepicker"
+			calendar: ".input-group.date"
 		},
 
 		childView: WorkGadget.View.ReadReportItem,
@@ -28,7 +28,7 @@ var WorkGadget = WorkGadget || {};
 		
 		initialize: function (){
 			this.bindUIElements();
-			
+
 			this.setCalendar();
 		},
 
