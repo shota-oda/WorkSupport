@@ -13,19 +13,15 @@ var WorkGadget = WorkGadget || {};
 		
 		template: '#template-ReadReportItem',
 
-		modelEvents: {
-			'change': 'render',
-		},
-
 	})
 
 	WorkGadget.View.ReadReport = Backbone.Marionette.CompositeView.extend({
 		
 		template: '#template-ReadReport',
-		
+
 		itemView: WorkGadget.View.ReadReportItem,
 		itemViewContainer: '#ReportContainer',
 		
-	
+		
 	});
 })();
