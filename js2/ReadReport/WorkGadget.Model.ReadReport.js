@@ -9,9 +9,7 @@ var WorkGadget = WorkGadget || {};
 	
 	// ReadReport Model
 	// ----------
-	WorkGadget.Model.ReadReportItems = function () {
-
-		var d = new $.Deferred();
+	WorkGadget.Model.ReadReportItems = function (callback) {
 
 		var query = "(to:daily_report_business2016@bizreach.co.jp OR to:rookie_2016@bizreach.co.jp) subject:新卒 after:2016/05/09 before:2016/05/10"
 		
@@ -26,16 +24,17 @@ var WorkGadget = WorkGadget || {};
 				.done(function(m){
 					if(!m) return;
 					
-					//from
-					var model = {autor:{}, content:{}};
-					if(!m.payload.headers) return;
+					var model = {author:{}, content:{}};
+					
+					//author
 					$.each(m.payload.headers, function(){
 						if (this.name == "From") {
 							model.author = this.value;
 							return false;
 						}
 					})
-					//body
+
+					//content
 					if(!m.payload.parts) return;
 					$.each(m.payload.parts, function(){
 						if (this.mimeType == "text/plain"){
@@ -44,13 +43,9 @@ var WorkGadget = WorkGadget || {};
 						}
 					})
 					console.log(model);
-					models.push(model);
-
+					callback(model);
 				});
 			});
-
-			d.resolve(models);
 		});
-		return d;
 	}
 })();
