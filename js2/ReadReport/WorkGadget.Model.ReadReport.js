@@ -48,6 +48,6 @@ var WorkGadget = WorkGadget || {};
 
 			d.resolve(models);
 		});
-
+		return d;
 	}
 })();
