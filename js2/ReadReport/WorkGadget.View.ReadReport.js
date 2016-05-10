@@ -20,7 +20,7 @@ var WorkGadget = WorkGadget || {};
 		template: '#template-ReadReport',
 
 		ui: {
-			calendar: ".input-group.date",
+			calendar: ".input-group.date > input",
 			calendarButton: ".input-group.date button"
 		},
 
