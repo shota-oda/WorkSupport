@@ -58,18 +58,18 @@ var WorkGadget = WorkGadget || {};
 			    format: {
 			    	toDisplay: function(date, format, language) {
 			    		var d = new Date(date);
-			    		return d.getFullYear() + "/" + d.getMonth() + "/" + d.getDate();
+			    		return d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate();
 			    	},
         			toValue: function (date, format, language) {
 			            var d = new Date(date);
-			            return d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate();
+			            return d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
         			}
         		}
 			});
 		},
 
 		changeDate: function(){
-
+			
 		}
 
 	});
