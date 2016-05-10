@@ -21,10 +21,11 @@ var WorkGadget = WorkGadget || {};
 
 		ui: {
 			calendar: ".input-group.date",
+			calendarInput: ".input-group.date input",
 		},
 
 		events: {
-			"change @ui.calendar > input": "changeDate",
+			"change @ui.calendarInput": "changeDate",
 		},
 
 		childView: WorkGadget.View.ReadReportItem,
@@ -58,6 +59,10 @@ var WorkGadget = WorkGadget || {};
 			});
 
 		},
+
+		changeDate: function(){
+			
+		}
 
 	});
 })();
