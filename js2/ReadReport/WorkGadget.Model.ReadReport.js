@@ -11,10 +11,12 @@ var WorkGadget = WorkGadget || {};
 	// ----------
 	WorkGadget.Model.ReadReportItems = function (date,callback) {
 		//2016/05/10
-		var query = "(to:daily_report_business2016@bizreach.co.jp OR to:rookie_2016@bizreach.co.jp) subject:新卒 after:$da before:$db"
-		query = query
-			.replace("$da", )
-			.replace()
+		var query = "(to:daily_report_business2016@bizreach.co.jp OR to:rookie_2016@bizreach.co.jp) subject:新卒 after:2016-05-10 before:2016-05-11"
+		
+		// var query = "(to:daily_report_business2016@bizreach.co.jp OR to:rookie_2016@bizreach.co.jp) subject:新卒 after:$da before:$db"
+		// query = query
+		// 	.replace("$da", )
+		// 	.replace()
 
 		var models = [];
 
