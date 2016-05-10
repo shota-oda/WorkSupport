@@ -60,7 +60,7 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		changeDate: function(){
-
+			console.log(this.collection)
 		}
 
 	});
