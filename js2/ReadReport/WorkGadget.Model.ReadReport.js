@@ -19,7 +19,7 @@ var WorkGadget = WorkGadget || {};
 
 		WorkGadget.gApi.mail.list(query)
 		.done(function(messageIDs){
-			
+
 			$.each(messageIDs, function(){
 
 				WorkGadget.gApi.mail.getMessage(this.id)
@@ -32,7 +32,7 @@ var WorkGadget = WorkGadget || {};
 					$.each(m.payload.headers, function(){
 						if (this.name == "From") {
 							model.author = this.value;
-							return;
+							return false;
 						}
 					})
 					//body
@@ -40,10 +40,10 @@ var WorkGadget = WorkGadget || {};
 					$.each(m.payload.parts, function(){
 						if (this.mimeType == "text/plain"){
 							model.content = base64_decode(this.body.data);
-							return;
+							return false;
 						}
 					})
-
+					console.log(model);
 					models.push(model);
 
 				});
