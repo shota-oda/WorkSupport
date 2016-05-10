@@ -20,7 +20,8 @@ var WorkGadget = WorkGadget || {};
 		template: '#template-ReadReport',
 
 		ui: {
-			calendar: ".input-group.date"
+			calendar: ".input-group.date",
+			cal2: ".input-group.datepicker"
 		},
 
 		childView: WorkGadget.View.ReadReportItem,
@@ -33,13 +34,26 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		setCalendar: function(){
+			this.ui.cal2..datepicker({
+			    todayBtn: "linked",
+			    language: "ja",
+			    orientation: "bottom auto",
+			    keyboardNavigation: false,
+			    daysOfWeekDisabled: "0,6",
+			    autoclose: true,
+			    todayHighlight: true
+			});
+			
 			this.ui.calendar.datepicker({
 			    todayBtn: "linked",
 			    language: "ja",
 			    orientation: "bottom auto",
 			    keyboardNavigation: false,
-			    autoclose: true
+			    daysOfWeekDisabled: "0,6",
+			    autoclose: true,
+			    todayHighlight: true
 			});
+
 		},
 	});
 })();
