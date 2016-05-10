@@ -31,8 +31,55 @@ WorkGadget.gApi.mail.init = function () {
       }
     });
 
-    console.log(mail)
-
     request.execute();
   }
+
+  WorkGadget.gApi.mail.list = function (query) {
+
+    var d = new $.Deferred()
+
+    var getPageOfMessages = function(request, result) {
+      request.execute(function(resp) {
+          result = result.concat(resp.messages);
+          var nextPageToken = resp.nextPageToken;
+
+          if (nextPageToken) {
+            request = gapi.client.gmail.users.messages.list({
+                'userId': "me",
+                'pageToken': nextPageToken,
+                'q': query
+            });
+            getPageOfMessages(request, result);
+        } else {
+          d.resolve(result);
+        }
+      });
+    };
+
+    var initialRequest = gapi.client.gmail.users.messages.list({
+      'userId': "me",
+      'q': query,
+    });
+
+    getPageOfMessages(initialRequest, []);
+
+    return d;
+  }
+
+  WorkGadget.gApi.mail.getMessage = function (messageId) {
+
+    var d = new $.Deferred()
+
+    var request = gapi.client.gmail.users.messages.get({
+      'userId': "me",
+      'id': messageId
+    });
+
+    request.execute(function(resp){
+      d.resolve(resp);
+    });
+
+    return d;
+}
+
 }

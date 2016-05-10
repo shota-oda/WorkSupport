@@ -52,7 +52,7 @@
 
     <footer id="Footer"></footer>
 
-    <script type="text/html" id="template-DailyReport">
+    <script type="text/html" id="template-SendReport">
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
           <div class="panel panel-default">
@@ -85,6 +85,19 @@
         </div>
       </div> 
     </script>
+    <script type="text/html" id="template-ReadReport">
+      <div class="row">
+          <div id="ReportContainer" class="col-md-10 col-md-offset-1">
+
+          </div>
+      </div>
+    </script>
+    <script type="text/html" id="template-ReadReportItem">
+      <div class="panel panel-default">
+        <div class="panel-heading"><%- author %></div>
+        <div class="panel-body"><%- content %></div>
+      </div>
+    </script>
     <!-- Load Scripts -->
     <!-- vendor libraries -->
     <script src="node_modules/jquery/dist/jquery.js"></script>
@@ -95,12 +108,18 @@
     <!-- application -->
     <!-- Common -->
     <script src="js2/Common/Common.js"></script>
+    <script src="js2/Common/base64.js"></script>
 
     <script src="js2/Core/WorkGadget.View.RootLayoutView.js"></script>
     <script src="js2/Core/WorkGadget.View.Header.js"></script>
     
-    <script src="js2/DailyReport/WorkGadget.Model.SendReport.js"></script>
-    <script src="js2/DailyReport/WorkGadget.View.SendReport.js"></script>
+    <!-- Send Report-->
+    <script src="js2/SendReport/WorkGadget.Model.SendReport.js"></script>
+    <script src="js2/SendReport/WorkGadget.View.SendReport.js"></script>
+    
+    <!-- Read Report-->
+    <script src="js2/ReadReport/WorkGadget.Model.ReadReport.js"></script>
+    <script src="js2/ReadReport/WorkGadget.View.ReadReport.js"></script>
     
     <script src="js2/Core/WorkGadget.Router.js"></script>
     <script src="js2/Core/WorkGadget.js"></script>

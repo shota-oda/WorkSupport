@@ -25,27 +25,23 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		SendReport: function(){
-			WorkGadget.App.View.Instance.SendReport = 
-					WorkGadget.App.View.Instance.SendReport
-				|| 	new WorkGadget.View.DailyReport({
+			var content = new WorkGadget.View.SendReport({
 						model: new WorkGadget.Model.SendReport()
 					})
-
-			var content = WorkGadget.App.View.Instance.SendReport
 
 			WorkGadget.App.View.Root.showChildView('main', content);
 		},
 
 		ReadReport: function(){
-			WorkGadget.App.View.Instance.SendReport = 
-					WorkGadget.App.View.Instance.SendReport
-				|| 	new WorkGadget.View.DailyReport({
-						model: new WorkGadget.Model.SendReport()
-					})
-				
-			var content = WorkGadget.App.View.Instance.SendReport
+			WorkGadget.Model.ReadReportItems()
+			.done(function (data) {
 			
-			WorkGadget.App.View.Root.showChildView('main', content);
+				var content = new WorkGadget.View.ReadReport({
+						collection:  new Backbone.Collection(data)
+					})
+			
+				WorkGadget.App.View.Root.showChildView('main', content);
+			})
 		}
 
  	});
