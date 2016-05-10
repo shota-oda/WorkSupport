@@ -24,12 +24,11 @@ var WorkGadget = WorkGadget || {};
 
 				WorkGadget.gApi.mail.getMessage(this.id)
 				.done(function(m){
-					if(!m){
-						return;
-					}
+					if(!m) return;
+					
 					//from
-					var model = {};
-					console.log(m.payload.headers)
+					var model = {autor:{}, content:{}};
+					if(!m.payload.headers) return;
 					$.each(m.payload.headers, function(){
 						if (this.name == "From") {
 							model.author = this.value;
@@ -37,7 +36,7 @@ var WorkGadget = WorkGadget || {};
 						}
 					})
 					//body
-					console.log(m.payload.parts)
+					if(!m.payload.parts) return;
 					$.each(m.payload.parts, function(){
 						if (this.mimeType == "text/plain"){
 							model.content = base64_decode(this.body.data);
