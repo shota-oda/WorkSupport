@@ -55,21 +55,12 @@ var WorkGadget = WorkGadget || {};
 			    daysOfWeekDisabled: "0,6",
 			    autoclose: true,
 			    todayHighlight: true,
-			    format: {
-			    	toDisplay: function(date, format, language) {
-			    		var d = new Date(date);
-			    		return d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate();
-			    	},
-        			toValue: function (date, format, language) {
-			            var d = new Date(date);
-			            return d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
-        			}
-        		}
+			    format: "yyyy/mm/dd",
 			});
 		},
 
 		changeDate: function(){
-			
+
 		}
 
 	});
