@@ -33,10 +33,10 @@ var WorkGadget = WorkGadget || {};
 			
 			//for use this in done callback
 			var thisModel = this;
+
 			WorkGadget.gApi.user.getName()
 				.done(function (name) {
-					thisModel.subject = thisModel.getSubject() + name;
-					thisModel.trigger("change");
+					thisModel.set("subject", thisModel.getSubject() + name);
 				});
 
 			WorkGadget.gApi.calendar.getTodayEvents()
@@ -45,7 +45,6 @@ var WorkGadget = WorkGadget || {};
 						return p + '\n' + c;
 					});
 
-					//thisModel.col2 = thisModel.getColumn(2, "本日の業務", taskListStr);
 					thisModel.col2 = thisModel.getColumn(2, "本日の業務", taskListStr);
 					thisModel.trigger("change");
 				});
@@ -55,7 +54,7 @@ var WorkGadget = WorkGadget || {};
 					var taskListStr = data.reduce(function(p, c){
 						return p + '\n' + c;
 					});
-					//thisModel.col3 = thisModel.getColumn(3, "明日の業務と直近の主な完了予定", taskListStr);
+
 					thisModel.col3 = thisModel.getColumn(3, "明日の業務と直近の主な完了予定", taskListStr);
 					thisModel.trigger("change");
 				});

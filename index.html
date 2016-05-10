@@ -5,6 +5,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- bootstrap datepicker -->
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap.datepicker/css/bootstrap-datepicker.min.css">
+
     <link rel="stylesheet" href="https://rawgit.com/shota-oda/WorkSupport/gh-pages/css/app.css">
     <!-- Original CSS -->
     <style>
@@ -87,7 +90,19 @@
     </script>
     <script type="text/html" id="template-ReadReport">
       <div class="row">
-          <div id="ReportContainer" class="col-md-10 col-md-offset-1"></div>
+        <div class="col-sm-3 col-sm-offset-1">
+          <div class="input-group date">
+            <input type="text" class="form-control" disabled="disabled">
+            <span class="input-group-addon">
+              <button class="btn btn-success" type="button">
+                <i class="glyphicon glyphicon-calendar"></i>
+              </button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div id="ReportContainer" class="col-md-10 col-md-offset-1"></div>
       </div>
     </script>
     <script type="text/html" id="template-ReadReportItem">
@@ -96,6 +111,7 @@
         <div class="panel-body"><pre><%- content %></pre></div>
       </div>
     </script>
+    
     <!-- Load Scripts -->
     <!-- vendor libraries -->
     <script src="node_modules/jquery/dist/jquery.js"></script>
@@ -103,6 +119,10 @@
     <script src="node_modules/backbone/backbone.js"></script>
     <script src="node_modules/backbone.localstorage/backbone.localStorage.js"></script>
     <script src="node_modules/backbone.marionette/lib/backbone.marionette.js"></script>
+
+    <script src="node_modules/bootstrap.datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="node_modules/bootstrap.datepicker/locales/bootstrap-datepicker.ja.min.js"></script>
+
     <!-- application -->
     <!-- Common -->
     <script src="js2/Common/Common.js"></script>
