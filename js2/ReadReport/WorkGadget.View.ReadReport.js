@@ -64,11 +64,13 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		changeDate: function(){
+			var $this = this;
 			console.log(this.collection)
 			this.collection.reset()
 			var date = this.ui.calendarInput.val()
+
 			WorkGadget.Model.ReadReportItems(date, function (report){
-				this.collection.add(report);
+				$this.collection.add(report);
 			});
 		}
 
