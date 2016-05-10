@@ -27,7 +27,10 @@ var WorkGadget = WorkGadget || {};
 					})
 					//body
 					$.each(m.payload.parts, function(){
-						console.log(this.body.data);
+						if (this.mimeType == "text/plain"){
+							console.log(base64_decode(this.body.data));
+							return;
+						}
 					})
 				});
 			})
