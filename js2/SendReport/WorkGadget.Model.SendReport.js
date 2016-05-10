@@ -33,6 +33,12 @@ var WorkGadget = WorkGadget || {};
 			
 			//for use this in done callback
 			var thisModel = this;
+			WorkGadget.gApi.user.getName()
+				.done(function (name) {
+					thisModel.subject = thisModel.getSubject() + name;
+					thisModel.trigger("change");
+				});
+
 			WorkGadget.gApi.calendar.getTodayEvents()
 				.done(function (data){
 					var taskListStr = data.reduce(function(p, c){
@@ -64,7 +70,7 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		getSubject: function () {
-			return '【新卒日報】' + this.getDateString() + ' 小田翔太';
+			return '【新卒日報】' + this.getDateString();
 		},
 
 		getColumnHeader: function (colNum, colTitle) {

@@ -41,7 +41,7 @@ var WorkGadget = WorkGadget || {};
 							model.content = base64_decode(this.body.data);
 							return false;
 						}
-					})
+					});
 					callback(model);
 				});
 			});
