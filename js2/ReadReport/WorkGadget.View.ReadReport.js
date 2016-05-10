@@ -25,6 +25,7 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		events: {
+			"change @ui.calendar": "changeDate",
 			"click @ui.calendarButton": "showCalendar"
 		},
 
