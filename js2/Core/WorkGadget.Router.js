@@ -25,13 +25,9 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		SendReport: function(){
-			WorkGadget.App.View.Instance.SendReport = 
-					WorkGadget.App.View.Instance.SendReport
-				|| 	new WorkGadget.View.SendReport({
+			var content = new WorkGadget.View.SendReport({
 						model: new WorkGadget.Model.SendReport()
 					})
-
-			var content = WorkGadget.App.View.Instance.SendReport
 
 			WorkGadget.App.View.Root.showChildView('main', content);
 		},
@@ -39,13 +35,10 @@ var WorkGadget = WorkGadget || {};
 		ReadReport: function(){
 			WorkGadget.Model.ReadReportItems()
 			.done(function (data) {
-				WorkGadget.App.View.Instance.ReadReport = 
-					WorkGadget.App.View.Instance.ReadReport
-				|| 	new WorkGadget.View.ReadReport({
+			
+				var content = new WorkGadget.View.ReadReport({
 						collection:  new Backbone.Collection(data)
 					})
-			
-				var content = WorkGadget.App.View.Instance.ReadReport
 			
 				WorkGadget.App.View.Root.showChildView('main', content);
 			})
