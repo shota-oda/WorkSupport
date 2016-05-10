@@ -37,10 +37,12 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		ReadReport: function(){
+			var reports = new Backbone.Collection();
+			reports.add(WorkGadget.Model.ReadReportItems());
 			WorkGadget.App.View.Instance.ReadReport = 
 					WorkGadget.App.View.Instance.ReadReport
 				|| 	new WorkGadget.View.ReadReport({
-						collection: new Backbone.Collection(WorkGadget.Model.ReadReportItems())
+						collection: reports
 					})
 				
 				
