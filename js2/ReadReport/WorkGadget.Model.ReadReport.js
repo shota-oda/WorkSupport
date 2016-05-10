@@ -26,6 +26,7 @@ var WorkGadget = WorkGadget || {};
 				.done(function(m){
 					//from
 					var model = {};
+					console.log(m.payload.headers)
 					$.each(m.payload.headers, function(){
 						if (this.name == "From") {
 							model.author = this.value;
@@ -33,6 +34,7 @@ var WorkGadget = WorkGadget || {};
 						}
 					})
 					//body
+					console.log(m.payload.parts)
 					$.each(m.payload.parts, function(){
 						if (this.mimeType == "text/plain"){
 							model.content = base64_decode(this.body.data);
