@@ -39,7 +39,8 @@ var WorkGadget = WorkGadget || {};
 			WorkGadget.Model.ReadReportItems(function (report){
 				console.log(report)
 				reports.add(report);
-			})
+				console.log(reports);
+			});
 			
 			WorkGadget.App.View.Root.showChildView('main', content);
 		},

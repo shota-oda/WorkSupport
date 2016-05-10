@@ -42,7 +42,6 @@ var WorkGadget = WorkGadget || {};
 							return false;
 						}
 					})
-					console.log(model);
 					callback(model);
 				});
 			});
