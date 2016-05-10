@@ -37,7 +37,7 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		setCalendar: function(){
-			
+			console.log("init cal")
 			this.ui.calendar.datepicker({
 			    todayBtn: "linked",
 			    orientation: "bottom auto",
