@@ -36,10 +36,9 @@ var WorkGadget = WorkGadget || {};
 
 			WorkGadget.gApi.user.getName()
 				.done(function (name) {
-					thisModel.subject = thisModel.getSubject() + name;
 					thisModel.set("subject", thisModel.getSubject() + name);
 					console.log(thisModel.subject)
-					thisModel.trigger("change");
+					//thisModel.trigger("change");
 				});
 
 			WorkGadget.gApi.calendar.getTodayEvents()
