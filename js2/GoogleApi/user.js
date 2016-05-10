@@ -12,6 +12,7 @@ WorkGadget.gApi.user.init = function () {
 		});
 
 		request.execute(function(resp) {
+			console.log(resp);
 			d.resolve(resp.name.familyName + resp.name.givenName);
 		});
 
