@@ -33,15 +33,15 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		ReadReport: function(){
-				var reports = new Backbone.Collection();
-				var content = new WorkGadget.View.ReadReport({collection : reports})
-				WorkGadget.Model.ReadReportItems(function (report){
-					reports.add(report);
-				})
-				
-				WorkGadget.App.View.Root.showChildView('main', content);
-			}
-		}
+
+			var reports = new Backbone.Collection();
+			var content = new WorkGadget.View.ReadReport({collection : reports})
+			WorkGadget.Model.ReadReportItems(function (report){
+				reports.add(report);
+			})
+			
+			WorkGadget.App.View.Root.showChildView('main', content);
+		},
 
  	});
 })();
