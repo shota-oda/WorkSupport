@@ -89,6 +89,14 @@
       </div> 
     </script>
     <script type="text/html" id="template-ReadReport">
+      <div class="input-group datepicker">
+        <input type="text" disabled="disabled" class="form-control">
+        <span class="input-group-btn">
+            <button class="btn btn-success" type="button">
+              <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+            </button>
+        </span>
+      </div>
       <div class="row">
           <div id="ReportContainer" class="col-md-10 col-md-offset-1"></div>
       </div>
@@ -99,12 +107,7 @@
         <div class="panel-body"><pre><%- content %></pre></div>
       </div>
     </script>
-    <div class="input-group datepicker">
-      <input type="text" disabled="disabled" class="form-control">
-      <span class="input-group-btn">
-          <button class="btn btn-success" type="button"><i class="fa fa-calendar"></i></button>
-      </span>
-    </div>
+    
     <!-- Load Scripts -->
     <!-- vendor libraries -->
     <script src="node_modules/jquery/dist/jquery.js"></script>
