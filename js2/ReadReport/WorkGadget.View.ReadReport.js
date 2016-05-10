@@ -19,8 +19,8 @@ var WorkGadget = WorkGadget || {};
 		
 		template: '#template-ReadReport',
 
-		itemView: WorkGadget.View.ReadReportItem,
-		itemViewContainer: '#ReportContainer',
+		childView: WorkGadget.View.ReadReportItem,
+		childViewContainer: '#ReportContainer',
 		
 		
 	});
