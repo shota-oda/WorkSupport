@@ -20,13 +20,11 @@ var WorkGadget = WorkGadget || {};
 		template: '#template-ReadReport',
 
 		ui: {
-			calendar: ".input-group.date > input",
-			calendarButton: ".input-group.date button"
+			calendar: ".input-group.date",
 		},
 
 		events: {
-			"change @ui.calendar": "changeDate",
-			"click @ui.calendarButton": "showCalendar"
+			"change @ui.calendar > input": "changeDate",
 		},
 
 		childView: WorkGadget.View.ReadReportItem,
@@ -41,14 +39,25 @@ var WorkGadget = WorkGadget || {};
 		setCalendar: function(){
 			
 			this.ui.calendar.datepicker({
-			    language: "ja",
-			    format: 'mm/dd/yyyy',
+			    todayBtn: "linked",
+			    orientation: "bottom auto",
+			    keyboardNavigation: false,
+			    daysOfWeekDisabled: "0,6",
+			    autoclose: true,
+			    todayHighlight: true,
+			    format: { 
+			    	toDisplay: function(date, format, language) {
+			    		var d = new Date(date);
+			    		return d.getFullYear() + "/" + d.getMonth() + "/" + d.getDate()
+			    	},
+        			toValue: function (date, format, language) {
+			            var d = new Date(date);
+			            return d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate()
+        			}
+        		}
 			});
 
 		},
 
-		showCalendar: function(){
-			this.ui.calendar.datepicker("show");
-		},
 	});
 })();

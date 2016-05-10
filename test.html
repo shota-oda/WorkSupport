@@ -26,9 +26,19 @@
 			    todayBtn: "linked",
 			    orientation: "bottom auto",
 			    keyboardNavigation: false,
-			    forceParse: false,
 			    daysOfWeekDisabled: "0,6",
-			    autoclose: true
+			    autoclose: true,
+			    todayHighlight: true,
+			    format: { 
+			    	toDisplay: function(date, format, language) {
+			    		var d = new Date(date);
+			    		return d.getFullYear() + "/" + d.getMonth() + "/" + d.getDate()
+			    	},
+        			toValue: function (date, format, language) {
+			            var d = new Date(date);
+			            return d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate()
+        			}
+        		}
 			});
    		});
    	</script>
