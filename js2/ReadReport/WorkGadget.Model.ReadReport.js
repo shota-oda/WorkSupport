@@ -9,7 +9,7 @@ var WorkGadget = WorkGadget || {};
 	
 	// ReadReport Model
 	// ----------
-	WorkGadget.Model.ReadReportItems = function (date,callback) {
+	WorkGadget.Model.ReadReportItems = function (callback) {
 		//2016/05/10
 		var query = "(to:daily_report_business2016@bizreach.co.jp OR to:rookie_2016@bizreach.co.jp) subject:新卒 after:2016-05-10 before:2016-05-11"
 		
