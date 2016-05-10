@@ -24,6 +24,9 @@ var WorkGadget = WorkGadget || {};
 
 				WorkGadget.gApi.mail.getMessage(this.id)
 				.done(function(m){
+					if(!m){
+						return;
+					}
 					//from
 					var model = {};
 					console.log(m.payload.headers)
