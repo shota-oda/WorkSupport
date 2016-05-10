@@ -35,6 +35,7 @@ var WorkGadget = WorkGadget || {};
 			var thisModel = this;
 			WorkGadget.gApi.user.getName()
 				.done(function (name) {
+					console.log(name);
 					thisModel.subject = thisModel.getSubject() + name;
 					thisModel.trigger("change");
 				});
