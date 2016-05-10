@@ -21,7 +21,11 @@ var WorkGadget = WorkGadget || {};
 
 		ui: {
 			calendar: ".input-group.date",
-			cal2: ".input-group.datepicker"
+			calendarButton: ".input-group.date button"
+		},
+
+		events: {
+			"click @ui.calendarButton": "showCalendar"
 		},
 
 		childView: WorkGadget.View.ReadReportItem,
@@ -34,16 +38,7 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		setCalendar: function(){
-			this.ui.cal2.datepicker({
-			    todayBtn: "linked",
-			    language: "ja",
-			    orientation: "bottom auto",
-			    keyboardNavigation: false,
-			    daysOfWeekDisabled: "0,6",
-			    autoclose: true,
-			    todayHighlight: true
-			});
-
+			
 			this.ui.calendar.datepicker({
 			    todayBtn: "linked",
 			    language: "ja",
@@ -54,6 +49,10 @@ var WorkGadget = WorkGadget || {};
 			    todayHighlight: true
 			});
 
+		},
+
+		showCalendar: function(){
+			this.ui.calendar.show();
 		},
 	});
 })();
