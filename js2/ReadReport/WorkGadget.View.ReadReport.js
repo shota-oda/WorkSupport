@@ -19,9 +19,25 @@ var WorkGadget = WorkGadget || {};
 		
 		template: '#template-ReadReport',
 
+		ui:{
+			calendar: ".input-group.datepicker"
+		}
+
 		childView: WorkGadget.View.ReadReportItem,
 		childViewContainer: '#ReportContainer',
 		
-		
+		initialize: function (){
+			this.setCalendar();
+		},
+
+		setCalendar: function(){
+			this.ui.calendar.datepicker({
+			    todayBtn: "linked",
+			    language: "ja",
+			    orientation: "bottom auto",
+			    keyboardNavigation: false,
+			    autoclose: true
+			});
+		},
 	});
 })();
