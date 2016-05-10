@@ -52,7 +52,7 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		showCalendar: function(){
-			this.ui.calendar.show();
+			this.ui.calendar.datepicker("show");
 		},
 	});
 })();
