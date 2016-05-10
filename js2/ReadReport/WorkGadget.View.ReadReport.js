@@ -42,7 +42,7 @@ var WorkGadget = WorkGadget || {};
 			
 			this.ui.calendar.datepicker({
 			    language: "ja",
-			    
+			    format: 'mm/dd/yyyy',
 			});
 
 		},
