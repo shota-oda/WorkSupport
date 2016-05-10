@@ -22,6 +22,7 @@ var WorkGadget = WorkGadget || {};
 
 				WorkGadget.gApi.mail.getMessage(el.id)
 				.done(function(m){
+					console.log(m)
 					//from
 					var model = {};
 					$.each(m.payload.headers, function(){
