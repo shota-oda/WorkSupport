@@ -11,9 +11,11 @@ WorkGadget.gApi = WorkGadget.gApi || {};
 
   var scopes = [
       "https://www.googleapis.com/auth/plus.me"           //View User Info
+    , "https://www.googleapis.com/auth/plus.login"
     , "https://www.googleapis.com/auth/gmail.compose"     //Manage drafts and send emails
     , "https://www.googleapis.com/auth/gmail.readonly"    //View email message and settings
     , "https://www.googleapis.com/auth/calendar.readonly" //View Calendar
+
   ];
 
   self.init = function () {
