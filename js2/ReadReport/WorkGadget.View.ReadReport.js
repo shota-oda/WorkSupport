@@ -44,6 +44,7 @@ var WorkGadget = WorkGadget || {};
 			    language: "ja",
 			    orientation: "bottom auto",
 			    keyboardNavigation: false,
+			    format: "yyyy/mm/dd",
 			    daysOfWeekDisabled: "0,6",
 			    autoclose: true,
 			    todayHighlight: true
