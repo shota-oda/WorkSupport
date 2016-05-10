@@ -34,7 +34,7 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		setCalendar: function(){
-			this.ui.cal2..datepicker({
+			this.ui.cal2.datepicker({
 			    todayBtn: "linked",
 			    language: "ja",
 			    orientation: "bottom auto",
@@ -43,7 +43,7 @@ var WorkGadget = WorkGadget || {};
 			    autoclose: true,
 			    todayHighlight: true
 			});
-			
+
 			this.ui.calendar.datepicker({
 			    todayBtn: "linked",
 			    language: "ja",
