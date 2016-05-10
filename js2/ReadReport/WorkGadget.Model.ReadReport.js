@@ -11,6 +11,8 @@ var WorkGadget = WorkGadget || {};
 	// ----------
 	WorkGadget.Model.ReadReportItems = function () {
 
+		var d = new $.Deferred();
+
 		var query = "(to:daily_report_business2016@bizreach.co.jp OR to:rookie_2016@bizreach.co.jp) subject:新卒"
 		
 		var models = [];
@@ -44,7 +46,7 @@ var WorkGadget = WorkGadget || {};
 				});
 			});
 
-			return models;
+			d.resolve(models);
 		});
 
 	}

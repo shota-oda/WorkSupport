@@ -37,18 +37,18 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		ReadReport: function(){
-			var reports = new Backbone.Collection();
-			reports.add(WorkGadget.Model.ReadReportItems());
-			WorkGadget.App.View.Instance.ReadReport = 
+			WorkGadget.Model.ReadReportItems()
+			.done(function (data) {
+				WorkGadget.App.View.Instance.ReadReport = 
 					WorkGadget.App.View.Instance.ReadReport
 				|| 	new WorkGadget.View.ReadReport({
-						collection: reports
+						collection:  new Backbone.Collection(data)
 					})
-				
-				
-			var content = WorkGadget.App.View.Instance.ReadReport
 			
-			WorkGadget.App.View.Root.showChildView('main', content);
+				var content = WorkGadget.App.View.Instance.ReadReport
+			
+				WorkGadget.App.View.Root.showChildView('main', content);
+			})
 		}
 
  	});
