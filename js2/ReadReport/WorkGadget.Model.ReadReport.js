@@ -13,7 +13,7 @@ var WorkGadget = WorkGadget || {};
 
 		var d = new $.Deferred();
 
-		var query = "(to:daily_report_business2016@bizreach.co.jp OR to:rookie_2016@bizreach.co.jp) subject:新卒"
+		var query = "(to:daily_report_business2016@bizreach.co.jp OR to:rookie_2016@bizreach.co.jp) subject:新卒 after:2016/05/09 before:2016/05/10"
 		
 		var models = [];
 
@@ -24,7 +24,6 @@ var WorkGadget = WorkGadget || {};
 
 				WorkGadget.gApi.mail.getMessage(this.id)
 				.done(function(m){
-					console.log(m)
 					//from
 					var model = {};
 					$.each(m.payload.headers, function(){
