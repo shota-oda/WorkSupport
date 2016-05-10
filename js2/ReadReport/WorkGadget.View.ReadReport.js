@@ -21,7 +21,7 @@ var WorkGadget = WorkGadget || {};
 
 		ui:{
 			calendar: ".input-group.datepicker"
-		}
+		},
 
 		childView: WorkGadget.View.ReadReportItem,
 		childViewContainer: '#ReportContainer',
