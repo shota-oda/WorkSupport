@@ -17,8 +17,8 @@ var WorkGadget = WorkGadget || {};
 
 		WorkGadget.gApi.mail.list(query)
 		.done(function(messageIDs){
-			$.map(messageIDs, function(el, i){
-				console.log(el);
+			$.each(messageIDs, function(el, i){
+
 				WorkGadget.gApi.mail.getMessage(el.id)
 				.done(function(m){
 					//from
@@ -37,6 +37,7 @@ var WorkGadget = WorkGadget || {};
 						}
 					})
 
+					models.push(model);
 
 				});
 			})
