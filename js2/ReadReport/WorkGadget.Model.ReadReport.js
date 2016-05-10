@@ -18,9 +18,9 @@ var WorkGadget = WorkGadget || {};
 		WorkGadget.gApi.mail.list(query)
 		.done(function(messageIDs){
 			
-			$.each(messageIDs, function(el, i){
+			$.each(messageIDs, function(){
 
-				WorkGadget.gApi.mail.getMessage(el.id)
+				WorkGadget.gApi.mail.getMessage(this.id)
 				.done(function(m){
 					console.log(m)
 					//from
