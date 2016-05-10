@@ -35,7 +35,7 @@ var WorkGadget = WorkGadget || {};
 		ReadReport: function(){
 			WorkGadget.Model.ReadReportItems()
 			.done(function (data) {
-			
+				console.log(data);
 				var content = new WorkGadget.View.ReadReport({
 						collection:  new Backbone.Collection(data)
 					})

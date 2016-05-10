@@ -23,10 +23,6 @@ var WorkGadget = WorkGadget || {};
 		itemView: WorkGadget.View.ReadReportItem,
 		itemViewContainer: '#ReportContainer',
 		template: '#template-ReadReport',
-
-		initialize: function () {
-			
-		},
 	
 	});
 })();
