@@ -17,6 +17,7 @@ var WorkGadget = WorkGadget || {};
 
 		WorkGadget.gApi.mail.list(query)
 		.done(function(messageIDs){
+			
 			$.each(messageIDs, function(el, i){
 
 				WorkGadget.gApi.mail.getMessage(el.id)
@@ -40,7 +41,9 @@ var WorkGadget = WorkGadget || {};
 					models.push(model);
 
 				});
-			})
+			});
+
+			return models;
 		});
 
 	}
