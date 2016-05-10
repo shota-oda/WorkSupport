@@ -34,11 +34,20 @@ var WorkGadget = WorkGadget || {};
 		initialize: function (){
 			this.bindUIElements();
 
-			this.setCalendar();
+			
 		},
 
+		onShow: function () {
+	        // Invoke the datetimepicker plugin
+      	 	this.setCalendar();
+	    },
+
+		onClose: function () {
+        	// Destroy the datetimepicker plugin
+        	this.ui.calendar.datepicker('destroy');
+    	},
+
 		setCalendar: function(){
-			console.log("init cal")
 			this.ui.calendar.datepicker({
 			    todayBtn: "linked",
 			    orientation: "bottom auto",
@@ -46,22 +55,21 @@ var WorkGadget = WorkGadget || {};
 			    daysOfWeekDisabled: "0,6",
 			    autoclose: true,
 			    todayHighlight: true,
-			    format: { 
+			    format: {
 			    	toDisplay: function(date, format, language) {
 			    		var d = new Date(date);
-			    		return d.getFullYear() + "/" + d.getMonth() + "/" + d.getDate()
+			    		return d.getFullYear() + "/" + d.getMonth() + "/" + d.getDate();
 			    	},
         			toValue: function (date, format, language) {
 			            var d = new Date(date);
-			            return d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate()
+			            return d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate();
         			}
         		}
 			});
-
 		},
 
 		changeDate: function(){
-			
+
 		}
 
 	});
