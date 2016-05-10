@@ -33,6 +33,7 @@ var WorkGadget = WorkGadget || {};
 			
 			//for use this in done callback
 			var thisModel = this;
+			console.log("initialize send model")
 			WorkGadget.gApi.user.getName()
 				.done(function (name) {
 					console.log(name);
