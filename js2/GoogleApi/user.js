@@ -7,9 +7,9 @@ WorkGadget.gApi.user.init = function () {
 	//return Promise
 	WorkGadget.gApi.user.getName = function () {
 		var d = new $.Deferred();
+
 		var request = gapi.client.plus.people.get({
 			"userId" : "me",
-			"fields" : "name",
 		});
 
 		request.execute(function(resp) {
