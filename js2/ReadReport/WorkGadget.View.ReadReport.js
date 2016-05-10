@@ -10,23 +10,18 @@ var WorkGadget = WorkGadget || {};
 	//Read Repoert View
 	// ------------------
 	WorkGadget.View.ReadReportItem = Backbone.Marionette.ItemView.extend({
+		
 		template: '#template-ReadReportItem',
-
-		modelEvents: {
-			'change': 'render',
-		},
 
 	})
 
 	WorkGadget.View.ReadReport = Backbone.Marionette.CompositeView.extend({
 		
-		itemView: WorkGadget.View.ReadReportItem,
-		itemViewContainer: '#ReportContainer',
 		template: '#template-ReadReport',
 
-		initialize: function () {
-			
-		},
-	
+		childView: WorkGadget.View.ReadReportItem,
+		childViewContainer: '#ReportContainer',
+		
+		
 	});
 })();

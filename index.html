@@ -87,15 +87,13 @@
     </script>
     <script type="text/html" id="template-ReadReport">
       <div class="row">
-          <div id="ReportContainer" class="col-md-10 col-md-offset-1">
-
-          </div>
+          <div id="ReportContainer" class="col-md-10 col-md-offset-1"></div>
       </div>
     </script>
     <script type="text/html" id="template-ReadReportItem">
       <div class="panel panel-default">
         <div class="panel-heading"><%- author %></div>
-        <div class="panel-body"><%- content %></div>
+        <div class="panel-body"><pre><%- content %></pre></div>
       </div>
     </script>
     <!-- Load Scripts -->
@@ -129,6 +127,7 @@
     <script src="js2/GoogleApi/setting.js"></script>
     <script src="js2/GoogleApi/mail.js"></script>
     <script src="js2/GoogleApi/calendar.js"></script>
+    <script src="js2/GoogleApi/user.js"></script>
 
     <!-- Google Api must call at last because it kicks main method -->
     <script src="https://apis.google.com/js/client.js?onload=main"></script>

@@ -36,10 +36,15 @@ function main () {
 		WorkGadget.gApi.loadSubClients()
 			.done(function () {
 				
+				//google api faced
 				WorkGadget.gApi.mail.init();
 				WorkGadget.gApi.calendar.init();
-
+				WorkGadget.gApi.user.init();
+				
+				//kick
 				WorkGadget.App.start();
+
+				//ui elements
 				$load.hide();
 				$filter.hide();
 			})
