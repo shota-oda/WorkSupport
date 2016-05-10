@@ -41,14 +41,8 @@ var WorkGadget = WorkGadget || {};
 		setCalendar: function(){
 			
 			this.ui.calendar.datepicker({
-			    todayBtn: "linked",
 			    language: "ja",
-			    orientation: "bottom auto",
-			    keyboardNavigation: false,
-			    format: "yyyy/mm/dd",
-			    daysOfWeekDisabled: "0,6",
-			    autoclose: true,
-			    todayHighlight: true
+			    
 			});
 
 		},
