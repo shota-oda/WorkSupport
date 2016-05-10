@@ -28,6 +28,10 @@ var WorkGadget = WorkGadget || {};
 			"change @ui.calendarInput": "changeDate",
 		},
 
+		collectionEvents: {
+        	change: 'render'
+    	},
+
 		childView: WorkGadget.View.ReadReportItem,
 		childViewContainer: '#ReportContainer',
 		
@@ -61,6 +65,11 @@ var WorkGadget = WorkGadget || {};
 
 		changeDate: function(){
 			console.log(this.collection)
+			this.collection.reset()
+			var date = this.ui.calendarInput.val()
+			WorkGadget.Model.ReadReportItems(date,function (report){
+				this.collection.add(report);
+			});
 		}
 
 	});
