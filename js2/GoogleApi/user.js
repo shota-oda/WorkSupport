@@ -2,7 +2,7 @@ var WorkGadget = WorkGadget || {};
 WorkGadget.gApi = WorkGadget.gApi || {};
 WorkGadget.gApi.user = WorkGadget.gApi.user || {};
 
-WorkGadget.gApi.calendar.init = function () {
+WorkGadget.gApi.user.init = function () {
 
 	//return Promise
 	WorkGadget.gApi.user.getName = function () {
