@@ -31,9 +31,11 @@ var WorkGadget = WorkGadget || {};
 					
 					if(!m || m.error){
 						//TODO error
+						console.log("error")
 						return;
 					} else if (!m.payload || !m.payload.headers || !m.payload.parts){
 						//TODO no content
+						console.log("no content\nresponse:\n" + m)
 						return;
 					}
 					
