@@ -23,11 +23,14 @@ var WorkGadget = WorkGadget || {};
 		WorkGadget.gApi.mail.list(query)
 		.done(function(messageID){
 			var index = 0;
-
+			console.log(messageID)
 			WorkGadget.gApi.mail.getMessage(messageID.id)
 			.done(function(m){
-				console.log(m)
-				if(!m) return;
+				
+				if(!m || m.error){
+					console.log("Error occured")
+					return;
+				}
 				
 				var model = {
 					author:{}, 
