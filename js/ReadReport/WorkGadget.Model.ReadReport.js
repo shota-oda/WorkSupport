@@ -21,36 +21,42 @@ var WorkGadget = WorkGadget || {};
 		var models = [];
 
 		WorkGadget.gApi.mail.list(query)
-		.done(function(messageIDs){
+		.done(function(messageID){
 			var index = 0;
-			$.each(messageIDs, function(){
-				WorkGadget.gApi.mail.getMessage(this.id)
-				.done(function(m){
-					if(!m) return;
-					
-					var model = {author:{}, content:{}, cid: "c-" + index, lid: "l-" + index};
-					index++;
-					
-					//author
-					$.each(m.payload.headers, function(){
-						if (this.name == "From") {
-							model.author = this.value;
-							return false;
-						}
-					});
 
-					//content
-					if(!m.payload.parts) return;
-					$.each(m.payload.parts, function(){
-						if (this.mimeType == "text/plain"){
-							model.content = base64_decode(this.body.data);
-							return false;
-						}
-					});
-					
-					callback(model);
+			WorkGadget.gApi.mail.getMessage(messageID.id)
+			.done(function(m){
+				if(!m) return;
+				
+				var model = {
+					author:{}, 
+					content:{}, 
+					cid: "c-" + index, 
+					lid: "l-" + index
+				};
+				index++;
+				
+				//author
+				$.each(m.payload.headers, function(){
+					if (this.name == "From") {
+						model.author = this.value;
+						return false;
+					}
 				});
+
+				//content
+				if(!m.payload.parts) return;
+				$.each(m.payload.parts, function(){
+					if (this.mimeType == "text/plain"){
+						model.content = base64_decode(this.body.data);
+						return false;
+					}
+				});
+				
+				callback(model);
 			});
 		});
-	}
+	},
+	
+
 })();
