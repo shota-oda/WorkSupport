@@ -15,8 +15,6 @@ var WorkGadget = WorkGadget || {};
 		var to = new Date(date)
 		to.setDate(to.getDate() + 1);
 
-		var forTrim = "-------------------------------------------------------------------";
-
 		/**/
 		var query = "(to:daily_report_business2016@bizreach.co.jp OR to:rookie_2016@bizreach.co.jp) subject:新卒 after:$ad before:$bd"
 			.replace("$ad", WorkGadget.Common.fn.getYYYYMMDD(from))
@@ -26,8 +24,11 @@ var WorkGadget = WorkGadget || {};
 
 		WorkGadget.gApi.mail.list(query)
 		.done(function(messageIDs){
+			//create serial id for toggle
 			var index = 0;
-
+			//for trim signature
+			var signForTrim = "-------------------------------------------------------------------";
+			
 			$.each(messageIDs, function(){
 
 				WorkGadget.gApi.mail.getMessage(this.id)
@@ -62,8 +63,8 @@ var WorkGadget = WorkGadget || {};
 					});
 
 					//content
-					//plain text is stored payload > body
-					//rich content is stored payload > parts > body
+					//plain text is stored at payload > body
+					//rich content is stored at payload > parts > body
 					if (m.payload.body.size > 0){
 						model.content = base64_decode(m.payload.body.data)
 					} else {
@@ -74,8 +75,8 @@ var WorkGadget = WorkGadget || {};
 							}
 						});
 					}
-					console.log(model.content);
-					model.content = model.content.substring(0, model.content.indexOf(forTrim));
+
+					model.content = model.content.substring(0, model.content.indexOf(signForTrim));
 					callback(model);
 				});
 			})
