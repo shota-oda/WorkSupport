@@ -22,14 +22,15 @@ var WorkGadget = WorkGadget || {};
 
 		WorkGadget.gApi.mail.list(query)
 		.done(function(messageIDs){
-			
+			var index = 0;
 			$.each(messageIDs, function(){
 				WorkGadget.gApi.mail.getMessage(this.id)
 				.done(function(m){
 					if(!m) return;
 					
-					var model = {author:{}, content:{}};
-
+					var model = {author:{}, content:{}, cid: "c-" + index, lid: "l-" + index};
+					index++;
+					
 					//author
 					$.each(m.payload.headers, function(){
 						if (this.name == "From") {
