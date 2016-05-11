@@ -85,11 +85,11 @@ var WorkGadget = WorkGadget || {};
 			if ($icon.hasClass(expand)){
 				//state is shrink, so change to Hide
 				$icon.removeClass(expand).addClass(shrink);
-				$(this.childViewContainer).children(".collapse").collapse("hide");
+				$(this.childViewContainer + " .collapse").collapse("hide");
 			} else {
 				//state is expand, so change to Show
 				$icon.removeClass(shrink).addClass(expand);
-				$(this.childViewContainer).children(".collapse").collapse("show");
+				$(this.childViewContainer + " .collapse").collapse("show");
 			}
 			
 		},
