@@ -22,7 +22,7 @@ var WorkGadget = WorkGadget || {};
 
 		WorkGadget.gApi.mail.list(query)
 		.done(function(messageIDs){
-
+			if(!messageIDs) return;
 			$.each(messageIDs, function(){
 
 				WorkGadget.gApi.mail.getMessage(this.id)
