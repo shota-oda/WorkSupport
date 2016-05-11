@@ -67,7 +67,7 @@ var WorkGadget = WorkGadget || {};
 					//rich content is stored 
 					//①at payload > parts[] > body
 					//②at payload > parts[] > parts[] > body
-					console.log(JSON.parse(m));
+
 					if (m.payload.body.size > 0){
 						model.content = base64_decode(m.payload.body.data)
 					} else {
@@ -76,6 +76,7 @@ var WorkGadget = WorkGadget || {};
 								model.content = base64_decode(this.body.data);
 								return false;
 							} else if (this.mimeType == "multipart/alternative"){
+								console.log(this)
 								$.each(this.parts, function(){
 									if (this.mimeType == "text/plain"){
 										model.content == base64_decode(this.body.data);
