@@ -75,7 +75,7 @@ var WorkGadget = WorkGadget || {};
 						});
 					}
 					console.log(model.content);
-					model.content = model.content.subString(0, model.content.indexOf(forTrim));
+					model.content = model.content.substring(0, model.content.indexOf(forTrim));
 					callback(model);
 				});
 			})
