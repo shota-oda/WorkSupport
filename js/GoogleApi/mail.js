@@ -41,7 +41,7 @@ WorkGadget.gApi.mail.init = function () {
     var getPageOfMessages = function(request, result) {
       request.execute(function(resp) {
           
-          if (result.resultSizeEstimate === 0){
+          if (resp.resultSizeEstimate === 0){
             d.reject()
             return;
           }
