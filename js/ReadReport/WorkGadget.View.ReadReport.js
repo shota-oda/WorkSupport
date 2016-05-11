@@ -21,12 +21,16 @@ var WorkGadget = WorkGadget || {};
 
 		ui: {
 			calendar: ".input-group.date",
-			calendarButton: ".input-group.date button"
+			calendarInput: ".input-group.date input",
 		},
 
 		events: {
-			"click @ui.calendarButton": "showCalendar"
+			"change @ui.calendarInput": "changeDate",
 		},
+
+		collectionEvents: {
+        	change: 'render'
+    	},
 
 		childView: WorkGadget.View.ReadReportItem,
 		childViewContainer: '#ReportContainer',
@@ -34,25 +38,41 @@ var WorkGadget = WorkGadget || {};
 		initialize: function (){
 			this.bindUIElements();
 
-			this.setCalendar();
+			
 		},
 
+		onShow: function () {
+	        // Invoke the datetimepicker plugin
+      	 	this.setCalendar();
+	    },
+
+		onClose: function () {
+        	// Destroy the datetimepicker plugin
+        	this.ui.calendar.datepicker('destroy');
+    	},
+
 		setCalendar: function(){
-			
 			this.ui.calendar.datepicker({
 			    todayBtn: "linked",
-			    language: "ja",
 			    orientation: "bottom auto",
 			    keyboardNavigation: false,
 			    daysOfWeekDisabled: "0,6",
 			    autoclose: true,
-			    todayHighlight: true
+			    todayHighlight: true,
+			    format: "yyyy/mm/dd",
 			});
-
 		},
 
-		showCalendar: function(){
-			this.ui.calendar.show();
-		},
+		changeDate: function(){
+			var $this = this;
+			console.log(this.collection)
+			this.collection.reset()
+			var date = this.ui.calendarInput.val()
+
+			WorkGadget.Model.ReadReportItems(date, function (report){
+				$this.collection.add(report);
+			});
+		}
+
 	});
 })();

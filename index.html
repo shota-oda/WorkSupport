@@ -5,10 +5,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" href="modules/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="modules/bootstrap/css/bootstrap-theme.min.css">
     <!-- bootstrap datepicker -->
-    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap.datepicker/css/bootstrap-datepicker.min.css">
-
-    <link rel="stylesheet" href="https://rawgit.com/shota-oda/WorkSupport/gh-pages/css/app.css">
+    <link rel="stylesheet" type="text/css" href="modules/bootstrap.datepicker/css/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" href="css/app.css">
     <!-- Original CSS -->
     <style>
     </style>
@@ -18,12 +20,18 @@
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for mobile display -->
         <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#MenuCollapse" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
           <p class="navbar-text">Work Automating</p>
         </div>
 
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse" id="MenuCollapse">
           <ul class="nav navbar-nav">
-            <li id="SendReport" class="active"><a>Send Report</a></li>
+            <li id="SendReport"><a>Send Report</a></li>
             <li id="ReadReport"><a>Read Reports</a></li>
             <li id="fix1"><a>Link</a></li>
             <li id="fix2"><a>Link</a></li>
@@ -90,17 +98,16 @@
     </script>
     <script type="text/html" id="template-ReadReport">
       <div class="row">
-        <div class="col-sm-3 col-sm-offset-1">
-          <div class="input-group date">
-            <input type="text" class="form-control" disabled="disabled">
-            <span class="input-group-addon">
-              <button class="btn btn-success" type="button">
-                <i class="glyphicon glyphicon-calendar"></i>
-              </button>
-            </span>
+        <div class="col-sm-2 col-sm-offset-1">
+          <div class="input-group date" data-provide="datepicker">
+            <input type="text" class="form-control" readonly="readonly">
+            <div class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </div>
           </div>
         </div>
       </div>
+      <br>
       <div class="row">
         <div id="ReportContainer" class="col-md-10 col-md-offset-1"></div>
       </div>
@@ -114,40 +121,40 @@
     
     <!-- Load Scripts -->
     <!-- vendor libraries -->
-    <script src="node_modules/jquery/dist/jquery.js"></script>
-    <script src="node_modules/underscore/underscore.js"></script>
-    <script src="node_modules/backbone/backbone.js"></script>
-    <script src="node_modules/backbone.localstorage/backbone.localStorage.js"></script>
-    <script src="node_modules/backbone.marionette/lib/backbone.marionette.js"></script>
-
-    <script src="node_modules/bootstrap.datepicker/js/bootstrap-datepicker.min.js"></script>
-    <script src="node_modules/bootstrap.datepicker/locales/bootstrap-datepicker.ja.min.js"></script>
+    <script src="modules/jquery/dist/jquery.js"></script>
+    <script src="modules/underscore/underscore.js"></script>
+    <script src="modules/backbone/backbone.js"></script>
+    <script src="modules/backbone.localstorage/backbone.localStorage.js"></script>
+    <script src="modules/backbone.marionette/lib/backbone.marionette.js"></script>
+    
+    <script src="modules/bootstrap/js/bootstrap-datepicker.min.js"></script>
+    <script src="modules/bootstrap.datepicker/js/bootstrap-datepicker.min.js"></script>
 
     <!-- application -->
     <!-- Common -->
-    <script src="js2/Common/Common.js"></script>
-    <script src="js2/Common/base64.js"></script>
+    <script src="js/Common/Common.js"></script>
+    <script src="js/Common/base64.js"></script>
 
-    <script src="js2/Core/WorkGadget.View.RootLayoutView.js"></script>
-    <script src="js2/Core/WorkGadget.View.Header.js"></script>
+    <script src="js/Core/WorkGadget.View.RootLayoutView.js"></script>
+    <script src="js/Core/WorkGadget.View.Header.js"></script>
     
     <!-- Send Report-->
-    <script src="js2/SendReport/WorkGadget.Model.SendReport.js"></script>
-    <script src="js2/SendReport/WorkGadget.View.SendReport.js"></script>
+    <script src="js/SendReport/WorkGadget.Model.SendReport.js"></script>
+    <script src="js/SendReport/WorkGadget.View.SendReport.js"></script>
     
     <!-- Read Report-->
-    <script src="js2/ReadReport/WorkGadget.Model.ReadReport.js"></script>
-    <script src="js2/ReadReport/WorkGadget.View.ReadReport.js"></script>
+    <script src="js/ReadReport/WorkGadget.Model.ReadReport.js"></script>
+    <script src="js/ReadReport/WorkGadget.View.ReadReport.js"></script>
     
-    <script src="js2/Core/WorkGadget.Router.js"></script>
-    <script src="js2/Core/WorkGadget.js"></script>
+    <script src="js/Core/WorkGadget.Router.js"></script>
+    <script src="js/Core/WorkGadget.js"></script>
 
 
     <!-- Google Api Faced -->
-    <script src="js2/GoogleApi/setting.js"></script>
-    <script src="js2/GoogleApi/mail.js"></script>
-    <script src="js2/GoogleApi/calendar.js"></script>
-    <script src="js2/GoogleApi/user.js"></script>
+    <script src="js/GoogleApi/setting.js"></script>
+    <script src="js/GoogleApi/mail.js"></script>
+    <script src="js/GoogleApi/calendar.js"></script>
+    <script src="js/GoogleApi/user.js"></script>
 
     <!-- Google Api must call at last because it kicks main method -->
     <script src="https://apis.google.com/js/client.js?onload=main"></script>
