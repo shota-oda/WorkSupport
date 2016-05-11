@@ -114,9 +114,19 @@
       </div>
     </script>
     <script type="text/html" id="template-ReadReportItem">
-      <div class="panel panel-default">
-        <div class="panel-heading"><%- author %></div>
-        <div class="panel-body"><pre><%- content %></pre></div>
+      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id=<%- lid %>>
+            <a role="button" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <%- author %>
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby=<%- lid %>>
+            <div class="panel-body">
+              <pre><%- content %></pre>
+            </div>
+          </div>
+        </div>
       </div>
     </script>
     

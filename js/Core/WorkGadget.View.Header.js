@@ -14,6 +14,7 @@ var WorkGadget = WorkGadget || {};
 		ui: {
 			 SendReport: "#SendReport"
 			,ReadReport: "#ReadReport"
+			,CollapseMenu: "#MenuCollapse"
 		},
 
 		events: {
@@ -38,10 +39,12 @@ var WorkGadget = WorkGadget || {};
 		},
 		
 		navToSend: function(){
+			this.ui.CollapseMenu.collapse("hide")
 			Backbone.history.navigate('Send', true);
 		},
 
 		navToRead: function(){
+			this.ui.CollapseMenu.collapse("hide")
 			Backbone.history.navigate('Read', true);
 		},
 
