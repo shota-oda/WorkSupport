@@ -16,8 +16,8 @@ var WorkGadget = WorkGadget || {};
 		to.setDate(to.getDate() + 1);
 		var query = "(to:daily_report_business2016@bizreach.co.jp OR to:rookie_2016@bizreach.co.jp) subject:新卒 after:$ad before:$bd"
 			.replace("$ad", WorkGadget.Common.fn.getYYYYMMDD(from))
-			.replace("$ad", WorkGadget.Common.fn.getYYYYMMDD(to));
-
+			.replace("$bd", WorkGadget.Common.fn.getYYYYMMDD(to));
+		console.log(query)
 		var models = [];
 
 		WorkGadget.gApi.mail.list(query)
