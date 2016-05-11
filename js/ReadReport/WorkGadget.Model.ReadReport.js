@@ -64,13 +64,23 @@ var WorkGadget = WorkGadget || {};
 
 					//content
 					//plain text is stored at payload > body
-					//rich content is stored at payload > parts > body
+					//rich content is stored 
+					//①at payload > parts[] > body
+					//②at payload > parts[] > parts[] > body
 					if (m.payload.body.size > 0){
 						model.content = base64_decode(m.payload.body.data)
 					} else {
 						$.each(m.payload.parts, function(){
 							if (this.mimeType == "text/plain"){
 								model.content = base64_decode(this.body.data);
+								return false;
+							} else if (this.mimeType == "multipart/alternative"){
+								$.each(this.parts, function(){
+									if (this.mimeType == "text/plain"){
+										model.content == base64_decode(this.body.data);
+										return false;
+									}
+								})
 								return false;
 							}
 						});
