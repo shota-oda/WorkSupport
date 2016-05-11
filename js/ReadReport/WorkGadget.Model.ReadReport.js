@@ -15,7 +15,7 @@ var WorkGadget = WorkGadget || {};
 		var to = (new Date(date)).setDate(to.getDate() + 1);
 		var query = "(to:daily_report_business2016@bizreach.co.jp OR to:rookie_2016@bizreach.co.jp) subject:新卒 after:$ad before:$bd"
 			.replace("$ad", WorkGadget.Common.fn.getYYYYMMDD(from))
-			.replace("$ad", WorkGadget.Common.fn.getYYYYMMDD(d.setDate(to)));
+			.replace("$ad", WorkGadget.Common.fn.getYYYYMMDD(to));
 
 		var models = [];
 
