@@ -33,11 +33,9 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		ReadReport: function(){
-			var d = new Date();
-			d = d.getFullYear() + "/" + d.getMonth() + "/" + d.getDate();
 			var reports = new Backbone.Collection();
 			var content = new WorkGadget.View.ReadReport({collection : reports})
-			WorkGadget.Model.ReadReportItems(d, function (report){
+			WorkGadget.Model.ReadReportItems(new Date(), function (report){
 				reports.add(report);
 			});
 			

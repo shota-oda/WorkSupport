@@ -10,13 +10,11 @@ var WorkGadget = WorkGadget || {};
 	// ReadReport Model
 	// ----------
 	WorkGadget.Model.ReadReportItems = function (date,callback) {
-		//2016/05/10
-		var query = "(to:daily_report_business2016@bizreach.co.jp OR to:rookie_2016@bizreach.co.jp) subject:新卒 after:2016-05-10 before:2016-05-11"
-		
-		// var query = "(to:daily_report_business2016@bizreach.co.jp OR to:rookie_2016@bizreach.co.jp) subject:新卒 after:$da before:$db"
-		// query = query
-		// 	.replace("$da", )
-		// 	.replace()
+
+		var d = new Date(date);
+		var query = "(to:daily_report_business2016@bizreach.co.jp OR to:rookie_2016@bizreach.co.jp) subject:新卒 after:$ad before:$bd"
+			.replace("$ad", WorkGadget.Common.fn.getYYYYMMDD(d));
+			.replace("$ad", WorkGadget.Common.fn.getYYYYMMDD(d.setDate(d.getDate() + 1)));
 
 		var models = [];
 
@@ -37,7 +35,7 @@ var WorkGadget = WorkGadget || {};
 							model.author = this.value;
 							return false;
 						}
-					})
+					});
 
 					//content
 					if(!m.payload.parts) return;
@@ -47,6 +45,7 @@ var WorkGadget = WorkGadget || {};
 							return false;
 						}
 					});
+					
 					callback(model);
 				});
 			});
