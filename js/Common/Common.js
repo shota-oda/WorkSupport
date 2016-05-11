@@ -5,7 +5,7 @@ WorkGadget.Common.fn = {
 	DoAsync: function (func){
 		setTimeout(func, 1);
 	},
-	getYYYYMMDD: function(date){
-		return date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
-	},
+	getYYYYMMDD: function (date){
+		return date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
+	}
 }

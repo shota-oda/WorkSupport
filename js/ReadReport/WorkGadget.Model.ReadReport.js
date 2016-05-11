@@ -10,7 +10,7 @@ var WorkGadget = WorkGadget || {};
 	// ReadReport Model
 	// ----------
 	WorkGadget.Model.ReadReportItems = function (date,callback) {
-		//2016/05/10
+
 		var d = new Date(date);
 		var query = "(to:daily_report_business2016@bizreach.co.jp OR to:rookie_2016@bizreach.co.jp) subject:新卒 after:$ad before:$bd"
 			.replace("$ad", WorkGadget.Common.fn.getYYYYMMDD(d));
