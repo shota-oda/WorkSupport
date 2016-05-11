@@ -24,10 +24,12 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		ObserveHash: function(){
-			//WorkGadget.App.View.Header.
+			WorkGadget.App.View.Header.navTo(Backbone.history.getFragment());
 		},
 
 		SendReport: function(){
+			this.ObserveHash();
+
 			var content = new WorkGadget.View.SendReport({
 						model: new WorkGadget.Model.SendReport()
 					})
@@ -36,6 +38,8 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		ReadReport: function(){
+			this.ObserveHash();
+			
 			var reports = new Backbone.Collection();
 			var content = new WorkGadget.View.ReadReport({collection : reports})
 			WorkGadget.Model.ReadReportItems(new Date(), function (report){
