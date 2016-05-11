@@ -28,7 +28,7 @@ var WorkGadget = WorkGadget || {};
 			this.bindUIElements();
 		},
 
-		onShow: function(){
+		onRender: function(){
 			var hash = Backbone.history.getFragment();
 			if (hash == "Send") {
 				this.ui.SendReport.toggleClass("active", true);
