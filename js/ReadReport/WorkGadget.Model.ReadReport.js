@@ -36,6 +36,8 @@ var WorkGadget = WorkGadget || {};
 				};
 				index++;
 				
+				console.log(m.payload.headers);
+
 				//author
 				$.each(m.payload.headers, function(){
 					if (this.name == "From") {
@@ -57,6 +59,6 @@ var WorkGadget = WorkGadget || {};
 			});
 		});
 	},
-	
+
 
 })();
