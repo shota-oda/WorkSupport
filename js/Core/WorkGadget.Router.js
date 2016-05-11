@@ -24,8 +24,8 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		ObserveHash: function(){
-			
-		}
+			//WorkGadget.App.View.Header.
+		},
 
 		SendReport: function(){
 			var content = new WorkGadget.View.SendReport({
