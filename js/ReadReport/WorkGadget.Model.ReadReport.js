@@ -58,7 +58,7 @@ var WorkGadget = WorkGadget || {};
 				callback(model);
 			});
 		});
-	},
+	}
 
 
 })();
