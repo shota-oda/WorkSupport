@@ -80,7 +80,7 @@ var WorkGadget = WorkGadget || {};
 		togglePanel: function(){
 			var expand = "glyphicon-resize-full";
 			var shrink = "glyphicon-resize";
-			var $icon = this.ui.toggleButton.$("span");
+			var $icon = this.ui.toggleButton.find("span");
 
 			if ($icon.hasClass(expand)){
 				//state is shrink, so change to Hide
