@@ -79,17 +79,17 @@ var WorkGadget = WorkGadget || {};
 
 		togglePanel: function(){
 			var expand = "glyphicon-resize-full";
-			var shrink = "glyphicon-resize";
+			var shrink = "glyphicon-resize-small";
 			var $icon = this.ui.toggleButton.find("span");
 
 			if ($icon.hasClass(expand)){
 				//state is shrink, so change to Hide
 				$icon.removeClass(expand).addClass(shrink);
-				$(this.childViewContainer).childlen(".collapse").collapse("hide");
+				$(this.childViewContainer).children(".collapse").collapse("hide");
 			} else {
 				//state is expand, so change to Show
 				$icon.removeClass(shrink).addClass(expand);
-				$(this.childViewContainer).childlen(".collapse").collapse("show");
+				$(this.childViewContainer).children(".collapse").collapse("show");
 			}
 			
 		},
