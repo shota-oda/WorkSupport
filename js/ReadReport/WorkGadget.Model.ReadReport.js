@@ -32,8 +32,9 @@ var WorkGadget = WorkGadget || {};
 					if(!m || m.error){
 						//TODO error
 						console.log("error")
+						if (m.error) console.log(m.error);
 						return;
-					} else if (!m.payload || !m.payload.headers || !m.payload.parts){
+					} else if (!m.payload || !m.payload.headers){
 						//TODO no content
 						console.log("no content\nresponse:\n")
 						console.log(m);
@@ -57,13 +58,18 @@ var WorkGadget = WorkGadget || {};
 					});
 
 					//content
-					$.each(m.payload.parts, function(){
-						if (this.mimeType == "text/plain"){
-							model.content = base64_decode(this.body.data);
-							return false;
-						}
-					});
-					
+					//plain text is stored payload > body
+					//rich content is stored payload > parts > body
+					if (m.payload.body.size > 0){
+						model.content = base64_decode(body.data)
+					} else {
+						$.each(m.payload.parts, function(){
+							if (this.mimeType == "text/plain"){
+								model.content = base64_decode(this.body.data);
+								return false;
+							}
+						});
+					}
 					callback(model);
 				});
 			})
