@@ -83,13 +83,13 @@ var WorkGadget = WorkGadget || {};
 			var $icon = this.ui.toggleButton.$("span");
 
 			if ($icon.hasClass(expand)){
-				//state is shrink
+				//state is shrink, so change to Hide
 				$icon.removeClass(expand).addClass(shrink);
-				
+				$(this.childViewContainer).childlen(".collapse").collapse("hide");
 			} else {
-				//state is expand
+				//state is expand, so change to Show
 				$icon.removeClass(shrink).addClass(expand);
-
+				$(this.childViewContainer).childlen(".collapse").collapse("show");
 			}
 			
 		},
