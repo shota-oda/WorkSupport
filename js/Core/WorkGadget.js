@@ -30,6 +30,7 @@ function main () {
 			});
 
 			Backbone.history.start();
+			
 		});
 
 		WorkGadget.gApi.loadSubClients()

@@ -21,8 +21,11 @@ var WorkGadget = WorkGadget || {};
 
 		initialize: function () {
 			WorkGadget.App.View.Header = new WorkGadget.View.Header();
-			WorkGadget.App.View.Instance = WorkGadget.App.View.Instance || {}
 		},
+
+		ObserveHash: function(){
+			
+		}
 
 		SendReport: function(){
 			var content = new WorkGadget.View.SendReport({

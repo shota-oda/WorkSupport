@@ -26,13 +26,6 @@ var WorkGadget = WorkGadget || {};
 		//so call this.bindUIElements() in your initialize method when need to attach a view to an existing element.
 		initialize: function(){
 			this.bindUIElements();
-
-			var hash = Backbone.history.getFragment();
-			if (hash == "Send") {
-				this.ui.SendReport.toggleClass("active", true);
-			} else if (hash == "Read"){
-				this.ui.ReadReport.toggleClass("active", true);
-			} 
 		},
 		
 		navToSend: function(){
