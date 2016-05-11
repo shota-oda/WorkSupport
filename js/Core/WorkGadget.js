@@ -34,7 +34,6 @@ function main () {
 
 		WorkGadget.gApi.loadSubClients()
 			.done(function () {
-				console.log("start")
 				//google api faced
 				WorkGadget.gApi.mail.init();
 				WorkGadget.gApi.calendar.init();
