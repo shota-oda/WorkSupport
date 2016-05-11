@@ -27,7 +27,7 @@ var WorkGadget = WorkGadget || {};
 			//create serial id for toggle
 			var index = 0;
 			//for trim signature
-			var signForTrim = "-------------------------------------------------------------------";
+			var signForTrim = "--------------------------------------------------";
 			
 			$.each(messageIDs, function(){
 
@@ -76,7 +76,6 @@ var WorkGadget = WorkGadget || {};
 								model.content = base64_decode(this.body.data);
 								return false;
 							} else if (this.mimeType == "multipart/alternative"){
-								console.log(this)
 								$.each(this.parts, function(){
 									if (this.mimeType == "text/plain"){
 										model.content = base64_decode(this.body.data);
@@ -87,8 +86,13 @@ var WorkGadget = WorkGadget || {};
 							}
 						});
 					}
-
-					model.content = model.content.substring(0, model.content.indexOf(signForTrim));
+					// trimming signature
+					// if there's trimSign, do trim
+					var trimIndex = model.content.indexOf(signForTrim)
+					if (trimIndex !== 0){
+						model.content = model.content.substring(0, trimIndex);	
+					}
+					
 					callback(model);
 				});
 			})

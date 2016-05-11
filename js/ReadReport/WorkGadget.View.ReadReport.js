@@ -20,12 +20,14 @@ var WorkGadget = WorkGadget || {};
 		template: '#template-ReadReport',
 
 		ui: {
+			toggleButton: "#ToggleButton",
 			calendar: ".input-group.date",
 			calendarInput: ".input-group.date input",
 		},
 
 		events: {
 			"change @ui.calendarInput": "changeDate",
+			"click @ui.toggleButton": "togglePanel",
 		},
 
 		collectionEvents: {
@@ -73,7 +75,24 @@ var WorkGadget = WorkGadget || {};
 			WorkGadget.Model.ReadReportItems(date, function (report){
 				$this.collection.add(report);
 			});
-		}
+		},
+
+		togglePanel: function(){
+			var expand = "glyphicon-resize-full";
+			var shrink = "glyphicon-resize-small";
+			var $icon = this.ui.toggleButton.find("span");
+
+			if ($icon.hasClass(expand)){
+				//state is shrink, so change to Show
+				$icon.removeClass(expand).addClass(shrink);
+				$(this.childViewContainer + " .collapse").collapse("show");
+			} else {
+				//state is expand, so change to Hide
+				$icon.removeClass(shrink).addClass(expand);
+				$(this.childViewContainer + " .collapse").collapse("hide");
+			}
+			
+		},
 
 	});
 })();
