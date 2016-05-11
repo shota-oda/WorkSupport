@@ -79,7 +79,7 @@ var WorkGadget = WorkGadget || {};
 								console.log(this)
 								$.each(this.parts, function(){
 									if (this.mimeType == "text/plain"){
-										model.content == base64_decode(this.body.data);
+										model.content = base64_decode(this.body.data);
 										return false;
 									}
 								})
