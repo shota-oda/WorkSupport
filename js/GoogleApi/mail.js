@@ -38,14 +38,12 @@ WorkGadget.gApi.mail.init = function () {
 
     var d = new $.Deferred()
 
-    var getPageOfMessages = function(request, result) {
+    var getPageOfMessages = function(request) {
       request.execute(function(resp) {
           
-          if (resp.resultSizeEstimate === 0){
-            d.reject()
-            return;
-          }
-          result = result.concat(resp.messages);
+          if (resp.resultSizeEstimate === 0) return;
+
+          d.resolve(resp.messages);
           var nextPageToken = resp.nextPageToken;
 
           if (nextPageToken) {
@@ -54,10 +52,8 @@ WorkGadget.gApi.mail.init = function () {
                 'pageToken': nextPageToken,
                 'q': query
             });
-            getPageOfMessages(request, result);
-        } else {
-          d.resolve(result);
-        }
+            getPageOfMessages(request);
+          }
       });
     };
 
@@ -66,7 +62,7 @@ WorkGadget.gApi.mail.init = function () {
       'q': query,
     });
 
-    getPageOfMessages(initialRequest, []);
+    getPageOfMessages(initialRequest);
 
     return d;
   }

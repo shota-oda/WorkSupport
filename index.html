@@ -109,11 +109,12 @@
         </div>
       </div>
       <br>
-      <div class="row">
-        <div id="ReportContainer" class="col-md-10 col-md-offset-1"></div>
+      <div class="row" id="ReportContainer">
+        
       </div>
     </script>
     <script type="text/html" id="template-ReadReportItem">
+      <div class="col-md-6 col-xs-12"></div>
       <div class="panel-group" role="tablist" aria-multiselectable="true">
         <div class="panel panel-default">
           <a class="list-group-item" data-toggle="collapse" href="<%- '#' + cid %>" style="background-color: #f5f5f5">
@@ -128,7 +129,7 @@
             </h4>
           </div>
           -->
-          <div id="<%- cid %>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="<%- '#' + lid %>">
+          <div id="<%- cid %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="<%- '#' + lid %>">
             <div class="panel-body">
               <pre><%- content %></pre>
             </div>
