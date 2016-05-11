@@ -45,7 +45,9 @@ var WorkGadget = WorkGadget || {};
 
 		templateHelpers: function(){
 			return {
-				 todayStr: WorkGadget.Common.fn.getYYYYMMDD(new Date())
+				 todayStr: function(){
+				 	return WorkGadget.Common.fn.getYYYYMMDD(new Date())
+				 }
 				,
 			}
 		},
