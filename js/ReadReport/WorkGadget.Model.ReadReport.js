@@ -22,9 +22,8 @@ var WorkGadget = WorkGadget || {};
 
 		WorkGadget.gApi.mail.list(query)
 		.done(function(messageIDs){
-			if(messageIDs.length === 0) return;
+			console.log(messageIDs)
 			$.each(messageIDs, function(){
-
 				WorkGadget.gApi.mail.getMessage(this.id)
 				.done(function(m){
 					if(!m) return;
