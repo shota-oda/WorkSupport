@@ -17,7 +17,7 @@ var WorkGadget = WorkGadget || {};
 		var query = "(to:daily_report_business2016@bizreach.co.jp OR to:rookie_2016@bizreach.co.jp) subject:新卒 after:$ad before:$bd"
 			.replace("$ad", WorkGadget.Common.fn.getYYYYMMDD(from))
 			.replace("$bd", WorkGadget.Common.fn.getYYYYMMDD(to));
-		console.log(query)
+
 		var models = [];
 
 		WorkGadget.gApi.mail.list(query)
@@ -30,7 +30,7 @@ var WorkGadget = WorkGadget || {};
 					if(!m) return;
 					
 					var model = {author:{}, content:{}};
-					
+
 					//author
 					$.each(m.payload.headers, function(){
 						if (this.name == "From") {

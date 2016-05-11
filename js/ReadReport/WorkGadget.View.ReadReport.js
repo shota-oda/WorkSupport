@@ -52,9 +52,7 @@ var WorkGadget = WorkGadget || {};
     	},
 
 		setCalendar: function(){
-			var yesterDay = new Date();
-			yesterDay.setDate(yesterDay.getDate() - 1);
-			
+
 			this.ui.calendar.datepicker({
 			    todayBtn: "linked",
 			    orientation: "bottom auto",
@@ -63,13 +61,12 @@ var WorkGadget = WorkGadget || {};
 			    autoclose: true,
 			    todayHighlight: true,
 			    format: "yyyy/mm/dd",
-			    maxDate: yesterDay,
+			    endDate: "today",
 			});
 		},
 
 		changeDate: function(){
 			var $this = this;
-			console.log(this.collection)
 			this.collection.reset()
 			var date = this.ui.calendarInput.val()
 
