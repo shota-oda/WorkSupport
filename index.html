@@ -117,15 +117,17 @@
       <div class="panel-group" role="tablist" aria-multiselectable="true">
         <div class="panel panel-default">
           <a class="list-group-item" data-toggle="collapse" href="<%- '#' + cid %>">
-              Sample
-          </a><!-- 
+              <%- author %>
+          </a>
+          <!-- 
           <div class="panel-heading" role="tab" id="<%- lid %>">
             <h4 class="panel-title">
               <a role="button" data-toggle="collapse" href="<%- '#' + cid %>" aria-expanded="true" aria-controls="<%- cid %>">
                 <%- author %>
               </a>
             </h4>
-          </div> -->
+          </div>
+          -->
           <div id="<%- cid %>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="<%- '#' + lid %>">
             <div class="panel-body">
               <pre><%- content %></pre>
