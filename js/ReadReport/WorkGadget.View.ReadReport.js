@@ -43,6 +43,13 @@ var WorkGadget = WorkGadget || {};
 			
 		},
 
+		templateHelpers: function(){
+			return {
+				 todayStr: WorkGadget.Common.fn.getYYYYMMDD(new Date())
+				,
+			}
+		},
+
 		onShow: function () {
 	        // Invoke the datetimepicker plugin
       	 	this.setCalendar();
