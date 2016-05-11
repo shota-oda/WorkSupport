@@ -5,7 +5,6 @@ WorkGadget.gApi = WorkGadget.gApi || {};
 
 function main () {
 	'use strict';
-	console.log("aaaaa");
 	var $load = $("#LoadFrame");
 	var $filter = $("#Filter");
 	var $authButton = $("#AuthButton")
@@ -35,7 +34,7 @@ function main () {
 
 		WorkGadget.gApi.loadSubClients()
 			.done(function () {
-				
+				console.log("start")
 				//google api faced
 				WorkGadget.gApi.mail.init();
 				WorkGadget.gApi.calendar.init();
