@@ -86,8 +86,11 @@ var WorkGadget = WorkGadget || {};
 							}
 						});
 					}
-
+					var tmp = model.content;
 					model.content = model.content.substring(0, model.content.indexOf(signForTrim));
+					if(model.content.length == 0){
+						console.log(tmp)
+					}
 					callback(model);
 				});
 			})
