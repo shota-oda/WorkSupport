@@ -21,44 +21,49 @@ var WorkGadget = WorkGadget || {};
 		var models = [];
 
 		WorkGadget.gApi.mail.list(query)
-		.done(function(messageID){
+		.done(function(messageIDs){
 			var index = 0;
-			console.log(messageID)
-			WorkGadget.gApi.mail.getMessage(messageID.id)
-			.done(function(m){
-				
-				if(!m || m.error){
-					console.log("Error occured")
-					return;
-				}
-				
-				var model = {
-					author:{}, 
-					content:{}, 
-					cid: "c-" + index, 
-					lid: "l-" + index
-				};
-				index++;
 
-				//author
-				$.each(m.payload.headers, function(){
-					if (this.name == "From") {
-						model.author = this.value;
-						return false;
-					}
-				});
+			$.each(messageIDs, function(){
 
-				//content
-				if(!m.payload.parts) return;
-				$.each(m.payload.parts, function(){
-					if (this.mimeType == "text/plain"){
-						model.content = base64_decode(this.body.data);
-						return false;
+				WorkGadget.gApi.mail.getMessage(this.id)
+				.done(function(m){
+					
+					if(!m || m.error){
+						//TODO error
+						return;
+					} else if (!m.payload || !m.payload.headers || !m.payload.parts){
+						//TODO no content
+						return;
 					}
+					
+					var model = {
+						author:{}, 
+						content:{}, 
+						cid: "c-" + index, 
+						lid: "l-" + index
+					};
+					index++;
+
+					//author
+					$.each(m.payload.headers, function(){
+						if (this.name == "From") {
+							model.author = this.value;
+							return false;
+						}
+					});
+
+					//content
+					$.each(m.payload.parts, function(){
+						if (this.mimeType == "text/plain"){
+							model.content = base64_decode(this.body.data);
+							return false;
+						}
+					});
+					
+					callback(model);
 				});
-				
-				callback(model);
-			});
+			})
 		});
 	}
 
