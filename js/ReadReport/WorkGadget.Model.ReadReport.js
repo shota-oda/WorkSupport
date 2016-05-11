@@ -86,11 +86,13 @@ var WorkGadget = WorkGadget || {};
 							}
 						});
 					}
-					var tmp = model.content;
-					model.content = model.content.substring(0, model.content.indexOf(signForTrim));
-					if(model.content.length == 0){
-						console.log(tmp)
+					// trimming signature
+					// if there's trimSign, do trim
+					var trimIndex = model.content.indexOf(signForTrim)
+					if (trimIndex !== 0){
+						model.content = model.content.substring(0, trimIndex);	
 					}
+					
 					callback(model);
 				});
 			})
