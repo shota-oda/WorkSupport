@@ -5,7 +5,6 @@ WorkGadget.gApi = WorkGadget.gApi || {};
 
 function main () {
 	'use strict';
-
 	var $load = $("#LoadFrame");
 	var $filter = $("#Filter");
 	var $authButton = $("#AuthButton")
@@ -31,11 +30,11 @@ function main () {
 			});
 
 			Backbone.history.start();
+			
 		});
 
 		WorkGadget.gApi.loadSubClients()
 			.done(function () {
-				
 				//google api faced
 				WorkGadget.gApi.mail.init();
 				WorkGadget.gApi.calendar.init();

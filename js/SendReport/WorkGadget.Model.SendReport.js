@@ -30,6 +30,10 @@ var WorkGadget = WorkGadget || {};
 			this.set('cc', 'rookie_2016@bizreach.co.jp');
 
 			this.col1 = this.getColumn(1, '勤怠', this.getDateString() + '\n出勤:' + (this.isMonday() ? '08:30' : '09:30') + '\n退社:' + (this.isMonday() ? '17:30' : '18:30'));
+			this.col2 = this.getColumnHeader(2, '本日の業務');
+			this.col3 = this.getColumnHeader(3, '明日の業務と直近の主な完了予定');
+			this.col4 = this.getColumnHeader(4, '本日の気づきと学び');
+			this.col5 = this.getColumnHeader(5, '振り返り・明日への宣言');
 			
 			//for use this in done callback
 			var thisModel = this;
@@ -59,9 +63,6 @@ var WorkGadget = WorkGadget || {};
 					thisModel.trigger("change");
 				});
 
-			this.col4 = this.getColumnHeader(4, '本日の気づきと学び');
-
-			this.col5 = this.getColumnHeader(5, '振り返り・明日への宣言');
 		},
 
 		updateTodayInsight: function (text) {

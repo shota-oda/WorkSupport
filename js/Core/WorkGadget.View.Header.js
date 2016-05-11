@@ -14,6 +14,7 @@ var WorkGadget = WorkGadget || {};
 		ui: {
 			 SendReport: "#SendReport"
 			,ReadReport: "#ReadReport"
+			,CollapseMenu: "#MenuCollapse"
 		},
 
 		events: {
@@ -27,18 +28,23 @@ var WorkGadget = WorkGadget || {};
 		initialize: function(){
 			this.bindUIElements();
 		},
+
+		navTo: function(hash){
+			this.$("li.active").toggleClass("active", false);
+			if (hash == "Send"){
+				this.ui.SendReport.toggleClass("active", true);
+			} else if (hash == "Read"){
+				this.ui.ReadReport.toggleClass("active", true);
+			}
+		},
 		
 		navToSend: function(){
-			this.$("li.active").toggleClass("active", false);
-			this.ui.SendReport.toggleClass("active", true);
-
+			this.ui.CollapseMenu.collapse("hide")
 			Backbone.history.navigate('Send', true);
 		},
 
 		navToRead: function(){
-			this.$("li.active").toggleClass("active", false);
-			this.ui.ReadReport.toggleClass("active", true);
-
+			this.ui.CollapseMenu.collapse("hide")
 			Backbone.history.navigate('Read', true);
 		},
 

@@ -40,6 +40,11 @@ WorkGadget.gApi.mail.init = function () {
 
     var getPageOfMessages = function(request, result) {
       request.execute(function(resp) {
+          
+          if (resp.resultSizeEstimate === 0){
+            d.reject()
+            return;
+          }
           result = result.concat(resp.messages);
           var nextPageToken = resp.nextPageToken;
 

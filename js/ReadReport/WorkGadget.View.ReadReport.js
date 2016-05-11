@@ -52,6 +52,7 @@ var WorkGadget = WorkGadget || {};
     	},
 
 		setCalendar: function(){
+
 			this.ui.calendar.datepicker({
 			    todayBtn: "linked",
 			    orientation: "bottom auto",
@@ -60,12 +61,12 @@ var WorkGadget = WorkGadget || {};
 			    autoclose: true,
 			    todayHighlight: true,
 			    format: "yyyy/mm/dd",
+			    endDate: "today",
 			});
 		},
 
 		changeDate: function(){
 			var $this = this;
-			console.log(this.collection)
 			this.collection.reset()
 			var date = this.ui.calendarInput.val()
 
