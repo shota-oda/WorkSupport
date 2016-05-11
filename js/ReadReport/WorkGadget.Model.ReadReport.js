@@ -35,7 +35,8 @@ var WorkGadget = WorkGadget || {};
 						return;
 					} else if (!m.payload || !m.payload.headers || !m.payload.parts){
 						//TODO no content
-						console.log("no content\nresponse:\n" + m)
+						console.log("no content\nresponse:\n")
+						console.log(m);
 						return;
 					}
 					
