@@ -61,7 +61,7 @@ var WorkGadget = WorkGadget || {};
 					//plain text is stored payload > body
 					//rich content is stored payload > parts > body
 					if (m.payload.body.size > 0){
-						model.content = base64_decode(body.data)
+						model.content = base64_decode(m.payload.body.data)
 					} else {
 						$.each(m.payload.parts, function(){
 							if (this.mimeType == "text/plain"){
