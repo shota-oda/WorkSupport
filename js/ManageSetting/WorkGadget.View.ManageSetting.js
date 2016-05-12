@@ -11,7 +11,7 @@ var WorkGadget = WorkGadget || {};
 	// ------------------
 	WorkGadget.View.SettingItem = Backbone.Marionette.ItemView.extend({
 
-		template: '#template-ManageSettingItem'
+		template: '#template-ManageSettingItem',
 
 		ui: {
 			updateButton: ".update",
