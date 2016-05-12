@@ -42,13 +42,13 @@ var WorkGadget = WorkGadget || {};
 			}
 		},
 
-		getBody: function (input) {
-			return this.model.col1 + this.model.col2 + this.model.col3 + this.model.col4 + (input? input : '') + '\n\n' + '\n\n'
+		getBody: function () {
+			return this.model.col1 + this.model.col2 + this.model.col3 + this.model.col4 + this.model.input + '\n\n';
 		},
 
 		onInputKeyUp: function (e) {
-			var input = this.ui.input.val()
-			this.ui.preview.text(this.getBody(input));
+			this.model.input = this.ui.input.val()
+			this.ui.preview.text(this.getBody());
 		},
 
 		onSendClick: function() {
@@ -61,7 +61,7 @@ var WorkGadget = WorkGadget || {};
 
 		onPreviewClick: function(this){
 			console.log(this);
-			
+
 			$('dd').click(function(){
 	       		//classでonを持っているかチェック
 				if(!$(this).hasClass('on')){

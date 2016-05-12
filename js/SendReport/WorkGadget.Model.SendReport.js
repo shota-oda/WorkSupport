@@ -18,8 +18,8 @@ var WorkGadget = WorkGadget || {};
 			,col2: ''
 			,col3: ''
 			,col4: ''
+			,input: ''
 			,cal: {}//For Consistency, set Date to member
-			,inputTemplate: ""
 		},
 
 		initialize: function () {
@@ -28,12 +28,13 @@ var WorkGadget = WorkGadget || {};
 			this.set('subject', this.getSubject())
 			this.set('to', 'daily_report_rookie2016@bizreach.co.jp');
 			this.set('cc', 'rookie_2016@bizreach.co.jp');
-			this.inputTemplate = WorkGadget.Model.UserSettingList().get(0).get("value");
+			
 			this.col1 = this.getColumn(1, '勤怠', this.getDateString() + '\n出勤:' + (this.isMonday() ? '08:30' : '09:30') + '\n退社:' + (this.isMonday() ? '17:30' : '18:30'));
 			this.col2 = this.getColumnHeader(2, '本日の業務');
 			this.col3 = this.getColumnHeader(3, '明日の業務と直近の主な完了予定');
-			this.col4 = this.getColumn(4, '本日の気づきと学び・明日への宣言', this.inputTemplate);
-			
+			this.col4 = this.getColumnHeader(4, '本日の気づきと学び・明日への宣言');
+			this.input = WorkGadget.Model.UserSettingList().get(0).get("value");
+
 			//for use this in done callback
 			var thisModel = this;
 
@@ -65,9 +66,6 @@ var WorkGadget = WorkGadget || {};
 					thisModel.trigger("change");
 				});
 			}
-
-			
-
 		},
 
 		updateTodayInsight: function (text) {
