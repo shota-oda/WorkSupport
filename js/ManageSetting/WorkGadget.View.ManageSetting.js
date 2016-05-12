@@ -36,16 +36,6 @@ var WorkGadget = WorkGadget || {};
 			
 		},
 
-		templateHelpers: function () {
-			return {
-				body: this.getBody()
-			}
-		},
-
-		getBody: function (input) {
-			return this.model.col1 + this.model.col2 + this.model.col3 + this.model.col4 + (input? input : '') + '\n\n' + '\n\n'
-		},
-
 		onInputKeyUp: function (e) {
 			var input = this.ui.input.val()
 			this.ui.preview.text(this.getBody(input));
