@@ -35,10 +35,10 @@ var WorkGadget = WorkGadget || {};
 			})
 			.save()
 			.done(function(result){
-				
+				console.log("success")
 			})
 			.fail(function(){
-				
+				console.log("fail")
 			})
 		},
 
@@ -59,5 +59,5 @@ var WorkGadget = WorkGadget || {};
 		childViewContainer: '#SettingContainer',
 
 	});
-	
+
 })();
