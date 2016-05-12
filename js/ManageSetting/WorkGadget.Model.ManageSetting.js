@@ -25,7 +25,7 @@ var WorkGadget = WorkGadget || {};
 			 ,
 		},
 
-		initialize: function () {
+		initialize: function(){
 
 		},
 	});
@@ -56,6 +56,15 @@ var WorkGadget = WorkGadget || {};
 				value: "",
 				id: 1
 			});
+			var mailSet = new setting({
+				key: "MailHeader",
+				value: {
+					 to:""
+					,cc:""
+					,bcc:""
+				},
+				id: 2
+			})
 			this.add(templateSet);
 			this.add(calendarSet);
 			templateSet.save()

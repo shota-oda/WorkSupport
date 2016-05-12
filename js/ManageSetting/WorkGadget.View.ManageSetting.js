@@ -24,7 +24,11 @@ var WorkGadget = WorkGadget || {};
 			"click @ui.resetButton": "reset",
 		},
 
-
+		templateHelpers: function(){
+			return {
+				
+			}
+		},
 
 		update: function(){
 

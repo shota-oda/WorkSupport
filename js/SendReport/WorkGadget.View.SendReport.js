@@ -35,7 +35,7 @@ var WorkGadget = WorkGadget || {};
 			
 		},
 
-		templateHelpers: function () {
+		templateHelpers: function(){
 			return {
 				 inputTemplate: this.model.input
 				,body: this.getBody()
@@ -63,7 +63,7 @@ var WorkGadget = WorkGadget || {};
 			
 			var $e = $(e.target)
 			console.log($e.prop("tagName"))
-			
+
 			if(!($e.prop("tagName") == "TEXTAREA") && !$e.hasClass('on')){
 			   //to edit mode
 			    $e
