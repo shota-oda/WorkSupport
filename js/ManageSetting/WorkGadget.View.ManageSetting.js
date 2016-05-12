@@ -30,11 +30,11 @@ var WorkGadget = WorkGadget || {};
 
 			this.model
 			.set({
-				 value: this.ui.input..val()
+				 value: this.ui.input.val()
 				,
 			})
 			.save() // here is sync
-			
+
 		},
 
 		reset: function(){
