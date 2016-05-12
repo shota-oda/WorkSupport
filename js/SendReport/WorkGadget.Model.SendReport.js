@@ -54,17 +54,6 @@ var WorkGadget = WorkGadget || {};
 					thisModel.trigger("change");
 				});
 			}
-
-			WorkGadget.gApi.calendar.getTommorrowEvents()
-				.done(function (data){
-					var taskListStr = data.reduce(function(p, c){
-						return p + '\n' + c;
-					});
-
-					thisModel.col3 = thisModel.getColumn(3, "明日の業務と直近の主な完了予定", taskListStr);
-					thisModel.trigger("change");
-				});
-
 		},
 
 		updateTodayInsight: function (text) {
