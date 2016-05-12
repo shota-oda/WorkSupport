@@ -28,13 +28,17 @@ var WorkGadget = WorkGadget || {};
 
 		update: function(){
 			console.log("check called")
-			this.model.save()
-			.done(function(r){
-				console.log("done")
-				console.log(r)
+			this.model
+			.set({
+				 value: this.ui.input.text()
+				,
+			})
+			.save()
+			.done(function(result){
+				
 			})
 			.fail(function(){
-				console.log("fail")
+				
 			})
 		},
 
