@@ -7,46 +7,46 @@ var WorkGadget = WorkGadget || {};
 
 	WorkGadget.View = WorkGadget.View || {};
 
-	//Send Repoert View
+	//Manage Setting Collection and Template View
 	// ------------------
-	WorkGadget.View.SendReport = Backbone.Marionette.ItemView.extend({
+	WorkGadget.View.SettingItem = Backbone.Marionette.ItemView.extend({
 
-		template: '#template-SendReport',
+		template: '#template-ManageSettingItem',
 
-		// UI bindings create cached attributes that
-		// point to jQuery selected objects
 		ui: {
-			input: '#Report-Content',
-			send: '#Report-Send',
-			reset:'#Report-Reset',
-			preview: '#Report-Preview',
+			updateButton: ".update",
+			resetButton: ".reset",
+			input: ".input"
 		},
 
 		events: {
-			'keyup @ui.input': 'onInputKeyUp',
-			'click @ui.send': 'onSendClick',
-			'click @ui.reset': 'onResetClick',
+			"click @ui.updateButton": "update",
+			"click @ui.resetButton": "reset",
 		},
 
-		modelEvents: {
-			'change': 'render',
+
+
+		update: function(){
+			this.model.save()
 		},
 
-		initialize: function () {
-			
+		reset: function(){
+			this.ui.input.text(this.model.value);
 		},
 
-		onInputKeyUp: function (e) {
-			var input = this.ui.input.val()
-			this.ui.preview.text(this.getBody(input));
-		},
+	});
 
-		onSendClick: function() {
-			console.log("click")
-		},
 
-		onResetClick: function () {
-			console.log("click2")
-		}
+
+	//Manage Setting Collection and Template View
+	// ------------------
+	WorkGadget.View.ManageSettings = Backbone.Marionette.CompositeView.extend({
+
+		template: '#template-ManageSetting',
+
+		childView: WorkGadget.View.SettingItem,
+		childViewContainer: '#SettingContainer',
+
+
 	});
 })();

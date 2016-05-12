@@ -14,12 +14,14 @@ var WorkGadget = WorkGadget || {};
 		ui: {
 			 SendReport: "#SendReport"
 			,ReadReport: "#ReadReport"
+			,ManageSetting: "#ManageSetting"
 			,CollapseMenu: "#MenuCollapse"
 		},
 
 		events: {
 			  "click @ui.SendReport": "navToSend"
 			 ,"click @ui.ReadReport": "navToRead"
+			 ,"click @ui.ManageSetting": "navToSetting"
 		},
 
 		//Attaching a view to an existing element is the exception. 
@@ -35,6 +37,8 @@ var WorkGadget = WorkGadget || {};
 				this.ui.SendReport.toggleClass("active", true);
 			} else if (hash == "Read"){
 				this.ui.ReadReport.toggleClass("active", true);
+			} else if (hash == "Setting"){
+				this.ui.ManageSetting.toggleClass("active", true);
 			}
 		},
 		
@@ -46,6 +50,11 @@ var WorkGadget = WorkGadget || {};
 		navToRead: function(){
 			this.ui.CollapseMenu.collapse("hide")
 			Backbone.history.navigate('Read', true);
+		},
+
+		navToSetting: function(){
+			this.ui.CollapseMenu.collapse("hide")
+			Backbone.history.navigate('Setting', true);
 		},
 
 		render: function () {

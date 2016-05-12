@@ -52,11 +52,12 @@ var WorkGadget = WorkGadget || {};
 
 		ManageSetting: function(){
 			this.ObserveHash();
+			
+			var content = new WorkGadget.View.ManageSettings({
+				collection: new WorkGadget.Model.ManageSettings()
+			});
 
-			var settings = new WorkGadget.Model.SettingList()
-			if (settings.length === 0){
-				
-			}
+			WorkGadget.App.View.Root.showChildView('main', content);
 		},
 
  	});

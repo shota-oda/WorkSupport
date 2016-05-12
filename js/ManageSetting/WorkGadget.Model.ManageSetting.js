@@ -7,10 +7,9 @@ var WorkGadget = WorkGadget || {};
 
 	WorkGadget.Model = WorkGadget.Model || {};
 	
-	// SendReport Model
+	// Setting Model
 	// ----------
-
-	WorkGadget.Model.Setting = Backbone.Model.extend({
+	WorkGadget.Model.ManageSettingItem = Backbone.Model.extend({
 		defaults: {
 			  key:""
 			 ,value:{}
@@ -25,9 +24,11 @@ var WorkGadget = WorkGadget || {};
 		
 	});
 
-	WorkGadget.Model.SettingList = Backbone.Collection.extend({
+	// Setting Collection
+	// ----------
+	WorkGadget.Model.ManageSettings = Backbone.Collection.extend({
 
-		model: WorkGadget.Model.Setting,
+		model: WorkGadget.Model.ManageSettingItem,
 
 		localStorage: new Backbone.LocalStorage('Model.SettingList'),
 
@@ -39,23 +40,22 @@ var WorkGadget = WorkGadget || {};
 			thisCollection.fetch()
 			.done(function(){
 				if (thisCollection.length){
-					thisCollection.add(thisCollection.getDefaultData())
+					thisCollection.setDefaultData();
 				}
 			})
 		},
 
-		getDefaultData: function(){
-			var setting = WorkGadget.Model.Setting
-			var settings = [];
+		setDefaultData: function(){
+			var setting = WorkGadget.Model.ManageSettingItem
 
-			settings.add(new setting({
+			this.add(new setting({
 				key: "ReportTemplateContent",
 				value: "",
 				id: 0
 			}));
-			settings.add(new setting({
+			this.add(new setting({
 				key: "CalendarIDs",
-				value: [],
+				value: "",
 				id: 1
 			}))
 		},
