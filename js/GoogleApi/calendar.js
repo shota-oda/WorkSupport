@@ -43,7 +43,7 @@ WorkGadget.gApi.calendar.init = function () {
     return d;
   }
 
-  WorkGadget.gApi.calendar.getTodayEvents = function () {
+  WorkGadget.gApi.calendar.getTodayEvents = function (calIDs) {
     
     var d = new $.Deferred();
     var date = new Date();
