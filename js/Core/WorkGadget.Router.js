@@ -5,6 +5,7 @@ var WorkGadget = WorkGadget || {};
 (function () {
 	'use strict';
 
+	// IMPL
 	// Handles a single dynamic route to show
 	// the active vs complete todo items
 	WorkGadget.Router = Backbone.Marionette.AppRouter.extend({
@@ -16,6 +17,7 @@ var WorkGadget = WorkGadget || {};
 		}
 	});
 	
+	// IMPL
 	// Controller is just Object
 	// For store routing inner logic
 	WorkGadget.Controller = Backbone.Marionette.Object.extend({
