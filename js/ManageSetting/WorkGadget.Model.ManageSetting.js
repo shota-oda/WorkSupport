@@ -39,6 +39,7 @@ var WorkGadget = WorkGadget || {};
 			
 			thisCollection.fetch()
 			.done(function(){
+				console.log(thisCollection)
 				if (thisCollection.length){
 					thisCollection.setDefaultData();
 				}
