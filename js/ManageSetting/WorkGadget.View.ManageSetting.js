@@ -27,7 +27,8 @@ var WorkGadget = WorkGadget || {};
 
 
 		update: function(){
-			console.log("check called")
+			console.log(this.ui.input.text())
+			console.log(this.ui.input.val())
 			this.model
 			.set({
 				 value: this.ui.input.text()
