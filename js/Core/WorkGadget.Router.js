@@ -55,7 +55,8 @@ var WorkGadget = WorkGadget || {};
 
 			var settings = new WorkGadget.Model.ManageSettings();
 			settings.fetch()
-			if (settings.length){
+
+			if (settings.length === 0){
 				settings.setDefaultData();
 			}
 
