@@ -13,8 +13,6 @@ var WorkGadget = WorkGadget || {};
 
 		template: '#template-SendReport',
 
-		// UI bindings create cached attributes that
-		// point to jQuery selected objects
 		ui: {
 			input: '#Report-Content',
 			send: '#Report-Send',
@@ -26,6 +24,7 @@ var WorkGadget = WorkGadget || {};
 			'keyup @ui.input': 'onInputKeyUp',
 			'click @ui.send': 'onSendClick',
 			'click @ui.reset': 'onResetClick',
+			'click @ui.preview': 'onPreviewClick',
 		},
 
 		modelEvents: {
@@ -36,31 +35,53 @@ var WorkGadget = WorkGadget || {};
 			
 		},
 
-		onShow: function(){
-			this.ui.input.text(this.model.inputTemplate);
-		},
-
 		templateHelpers: function () {
 			return {
-				body: this.getBody()
+				 inputTemplate: this.model.input
+				,body: this.getBody()
 			}
 		},
 
-		getBody: function (input) {
-			return this.model.col1 + this.model.col2 + this.model.col3 + this.model.col4 + (input? input : '') + '\n\n' + '\n\n'
+		getBody: function () {
+			return this.model.col1 + this.model.col2 + this.model.col3 + this.model.col4 + this.model.input + '\n\n';
 		},
 
-		onInputKeyUp: function (e) {
-			var input = this.ui.input.val()
-			this.ui.preview.text(this.getBody(input));
+		onInputKeyUp: function () {
+			this.model.input = this.ui.input.val()
+			this.ui.preview.text(this.getBody());
 		},
 
 		onSendClick: function() {
 			console.log("click")
 		},
 
-		onResetClick: function () {
+		onResetClick: function() {
 			console.log("click2")
-		}
+		},
+
+		onPreviewClick: function(e){
+			
+			var $e = $(e.target)
+			
+			if(!$e.prop("tagName") == "TEXTAREA" && !$e.hasClass('on')){
+			   //to edit mode
+			    $e
+			    .addClass('on')
+			    .html('<textarea class="form-control" rows="10">'+$e.text()+'</textarea>');
+			    //focus on
+			    $e
+			    .find("textarea")
+			    .focus()
+			    .blur(function(){
+			        var inputVal = $(this).val();
+			        //replace default value
+			        if(inputVal===''){
+			            inputVal = this.defaultValue;
+			        };
+			        //when edit is done
+			        $(this).parent().removeClass('on').text(inputVal);
+			    });
+			};
+		},
 	});
 })();

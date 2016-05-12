@@ -18,8 +18,8 @@ var WorkGadget = WorkGadget || {};
 			,col2: ''
 			,col3: ''
 			,col4: ''
+			,input: ''
 			,cal: {}//For Consistency, set Date to member
-			,inputTemplate: WorkGadget.Model.UserSettingList().get(0).get("value")
 		},
 
 		initialize: function () {
@@ -28,12 +28,13 @@ var WorkGadget = WorkGadget || {};
 			this.set('subject', this.getSubject())
 			this.set('to', 'daily_report_rookie2016@bizreach.co.jp');
 			this.set('cc', 'rookie_2016@bizreach.co.jp');
-
+			
 			this.col1 = this.getColumn(1, '勤怠', this.getDateString() + '\n出勤:' + (this.isMonday() ? '08:30' : '09:30') + '\n退社:' + (this.isMonday() ? '17:30' : '18:30'));
 			this.col2 = this.getColumnHeader(2, '本日の業務');
 			this.col3 = this.getColumnHeader(3, '明日の業務と直近の主な完了予定');
-			this.col4 = this.getColumn(4, '本日の気づきと学び・明日への宣言', this.inputTemplate);
-			
+			this.col4 = this.getColumnHeader(4, '本日の気づきと学び・明日への宣言');
+			this.input = WorkGadget.Model.UserSettingList().get(0).get("value");
+
 			//for use this in done callback
 			var thisModel = this;
 
@@ -42,7 +43,10 @@ var WorkGadget = WorkGadget || {};
 					thisModel.set("subject", thisModel.getSubject() + name);
 				});
 
-			WorkGadget.gApi.calendar.getTodayEvents()
+			var calIDs = WorkGadget.Model.UserSettingList().get(1).get("value");
+			if(calIDs){
+				var calIDs = calIDs.split(/\r\n|\r|\n/);
+				WorkGadget.gApi.calendar.getTodayEvents(calIDs)
 				.done(function (data){
 					var taskListStr = data.reduce(function(p, c){
 						return p + '\n' + c;
@@ -52,7 +56,7 @@ var WorkGadget = WorkGadget || {};
 					thisModel.trigger("change");
 				});
 
-			WorkGadget.gApi.calendar.getTommorrowEvents()
+				WorkGadget.gApi.calendar.getTommorrowEvents(calIDs)
 				.done(function (data){
 					var taskListStr = data.reduce(function(p, c){
 						return p + '\n' + c;
@@ -61,7 +65,7 @@ var WorkGadget = WorkGadget || {};
 					thisModel.col3 = thisModel.getColumn(3, "明日の業務と直近の主な完了予定", taskListStr);
 					thisModel.trigger("change");
 				});
-
+			}
 		},
 
 		updateTodayInsight: function (text) {

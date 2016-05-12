@@ -72,7 +72,7 @@
               <h3 class="panel-title">Daily Report Draft</h3>
             </div>
             <div class="panel-body">
-              <textarea id="Report-Content" class="form-control" rows="10"></textarea>
+              <textarea id="Report-Content" class="form-control" rows="10"><%- inputTemplate %></textarea>
               <div class="btn-group" role="group" aria-label="...">
                 <button type="button" id="Report-Send" class="btn btn-default">Send</button>
                 <button type="button" id="Report-Reset" class="btn btn-default">Reset</button>
@@ -112,8 +112,7 @@
         </div>
       </div>
       <br>
-      <div class="row" id="ReportContainer">
-        
+      <div class="row" id="ReportContainer">   
       </div>
     </script>
     <script type="text/html" id="template-ReadReportItem">
@@ -152,6 +151,7 @@
         </div>
       </div>
     </script>
+
     <!-- Load Scripts -->
     <!-- vendor libraries -->
     <script src="modules/jquery/dist/jquery.js"></script>
