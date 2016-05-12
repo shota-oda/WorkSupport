@@ -64,7 +64,7 @@ var WorkGadget = WorkGadget || {};
 			var $e = $(e.target)
 			console.log(!$e.hasClass('on'))
 			if(!$e.hasClass('on')){
-				
+				console.log("call")
 			    //to edit mode
 			    $e
 			    .addClass('on')
