@@ -62,10 +62,9 @@ var WorkGadget = WorkGadget || {};
 		onPreviewClick: function(e){
 			
 			var $e = $(e.target)
-			console.log(!$e.hasClass('on'))
-			if(!$e.hasClass('on')){
-				console.log("call")
-			    //to edit mode
+			
+			if(!$e.prop("tagName") == "TEXTAREA" && !$e.hasClass('on')){
+			   //to edit mode
 			    $e
 			    .addClass('on')
 			    .html('<textarea class="form-control" rows="10">'+$e.text()+'</textarea>');
