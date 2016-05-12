@@ -44,6 +44,7 @@ var WorkGadget = WorkGadget || {};
 
 		reset: function(){
 			this.ui.input.text(this.model.value);
+			this.render();
 		},
 
 	});
@@ -58,7 +59,6 @@ var WorkGadget = WorkGadget || {};
 
 		childView: WorkGadget.View.SettingItem,
 		childViewContainer: '#SettingContainer',
-
 
 	});
 })();
