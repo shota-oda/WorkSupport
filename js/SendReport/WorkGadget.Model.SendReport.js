@@ -44,7 +44,8 @@ var WorkGadget = WorkGadget || {};
 
 			var calIDs = WorkGadget.Model.UserSettingList().get(1).get("value");
 			if(calIDs){
-				WorkGadget.gApi.calendar.getTodayEvents(calIDs.split(/\r\n|\r|\n/))
+				var calIDs = calIDs.split(/\r\n|\r|\n/);
+				WorkGadget.gApi.calendar.getTodayEvents(calIDs)
 				.done(function (data){
 					var taskListStr = data.reduce(function(p, c){
 						return p + '\n' + c;
@@ -53,7 +54,20 @@ var WorkGadget = WorkGadget || {};
 					thisModel.col2 = thisModel.getColumn(2, "本日の業務", taskListStr);
 					thisModel.trigger("change");
 				});
+
+				WorkGadget.gApi.calendar.getTommorrowEvents(calIDs)
+				.done(function (data){
+					var taskListStr = data.reduce(function(p, c){
+						return p + '\n' + c;
+					});
+
+					thisModel.col3 = thisModel.getColumn(3, "明日の業務と直近の主な完了予定", taskListStr);
+					thisModel.trigger("change");
+				});
 			}
+
+			
+
 		},
 
 		updateTodayInsight: function (text) {

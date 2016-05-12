@@ -38,7 +38,7 @@ WorkGadget.gApi.calendar.init = function () {
 
         d.resolve(summaries);
       });
-    })
+    });
 
     return d;
   }
@@ -52,29 +52,33 @@ WorkGadget.gApi.calendar.init = function () {
     if(!gapi.client.calendar.events){
       console.log("error, gapi.client.calendar.events.list is undefined");
     }
-    var request = gapi.client.calendar.events.list({
-      'calendarId': "bizreach.co.jp_s8d05g2boqil5gvdj7a091972c@group.calendar.google.com",
-      'timeMin': today.toISOString(),
-      'timeMax': tommorrow.toISOString(),
-      'showDeleted': false,
-      'singleEvents': true,
-      'maxResults': 10,
-      'orderBy': 'startTime'
-    });
 
-    request.execute(function (resp){
-      var events = resp.items;
-      if (events.length <= 0) return;
-      
-      var summaries = [];
-      for (i = 0; i < events.length; i++) {
-        var event = events[i];
-        if(event.start.dateTime){
-          summaries.push(event.summary)
+     $.each(calIDs, function(){
+      var id = this
+      var request = gapi.client.calendar.events.list({
+        'calendarId': "bizreach.co.jp_s8d05g2boqil5gvdj7a091972c@group.calendar.google.com",
+        'timeMin': today.toISOString(),
+        'timeMax': tommorrow.toISOString(),
+        'showDeleted': false,
+        'singleEvents': true,
+        'maxResults': 10,
+        'orderBy': 'startTime'
+      });
+
+      request.execute(function (resp){
+        var events = resp.items;
+        if (events.length <= 0) return;
+        
+        var summaries = [];
+        for (i = 0; i < events.length; i++) {
+          var event = events[i];
+          if(event.start.dateTime){
+            summaries.push(event.summary)
+          }
         }
-      }
 
-      d.resolve(summaries);
+        d.resolve(summaries);
+      });
     });
 
     return d;
