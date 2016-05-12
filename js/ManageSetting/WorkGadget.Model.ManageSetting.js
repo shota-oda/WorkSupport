@@ -35,18 +35,7 @@ var WorkGadget = WorkGadget || {};
 		comparator: "id",
 
 		initialize: function () {
-			var thisCollection = this;
 			
-			thisCollection.fetch()
-			.done(function(){
-				console.log(thisCollection)
-				if (thisCollection.length){
-					thisCollection.setDefaultData();
-				}
-			})
-			thisCollection.forEach(function(model){
-				console.log("Model in collection: " + model.get("content"));
-			})
 		},
 
 		setDefaultData: function(){

@@ -52,7 +52,15 @@ var WorkGadget = WorkGadget || {};
 
 		ManageSetting: function(){
 			this.ObserveHash();
-			
+
+			var settings = new WorkGadget.Model.ManageSettings();
+			settings.fetch()
+			if (settings.length){
+				settings.setDefaultData();
+			}
+
+			console.log(settings);
+
 			var content = new WorkGadget.View.ManageSettings({
 				collection: new WorkGadget.Model.ManageSettings()
 			});
@@ -61,5 +69,5 @@ var WorkGadget = WorkGadget || {};
 		},
 
  	});
- 	
+
 })();
