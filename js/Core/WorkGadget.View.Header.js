@@ -52,7 +52,7 @@ var WorkGadget = WorkGadget || {};
 			Backbone.history.navigate('Read', true);
 		},
 
-		navToRead: function(){
+		navToSetting: function(){
 			this.ui.CollapseMenu.collapse("hide")
 			Backbone.history.navigate('Setting', true);
 		},
