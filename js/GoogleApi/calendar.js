@@ -26,7 +26,7 @@ WorkGadget.gApi.calendar.init = function () {
 
       request.execute(function (resp){
         var events = resp.items;
-        if (events.length <= 0) return;
+        if (!events || events.length <= 0) return;
         
         var summaries = [];
         for (i = 0; i < events.length; i++) {
@@ -47,11 +47,8 @@ WorkGadget.gApi.calendar.init = function () {
     
     var d = new $.Deferred();
     var date = new Date();
-    var tommorrow = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1)
-    var today = new Date(date.getFullYear(), date.getMonth(), date.getDate())
-    if(!gapi.client.calendar.events){
-      console.log("error, gapi.client.calendar.events.list is undefined");
-    }
+    var tommorrow = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1);
+    var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
 
      $.each(calIDs, function(){
       var id = this
@@ -67,7 +64,7 @@ WorkGadget.gApi.calendar.init = function () {
 
       request.execute(function (resp){
         var events = resp.items;
-        if (events.length <= 0) return;
+        if (!events || events.length <= 0) return;
         
         var summaries = [];
         for (i = 0; i < events.length; i++) {
