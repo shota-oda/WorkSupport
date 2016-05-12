@@ -68,16 +68,17 @@ var WorkGadget = WorkGadget || {};
 			    $e
 			    .addClass('on')
 			    .html('<textarea class="form-control" rows="10">'+$e.text()+'</textarea>');
-			    //同時にinputにフォーカスをする
-			    $e.find("textarea")
+			    //focus on
+			    $e
+			    .find("textarea")
 			    .focus()
 			    .blur(function(){
 			        var inputVal = $(this).val();
-			        //もし空欄だったら空欄にする前の内容に戻す
+			        //replace default value
 			        if(inputVal===''){
 			            inputVal = this.defaultValue;
 			        };
-			        //編集が終わったらtextで置き換える
+			        //when edit is done
 			        $(this).parent().removeClass('on').text(inputVal);
 			    });
 			};
