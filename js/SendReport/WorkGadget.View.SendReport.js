@@ -60,9 +60,8 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		onPreviewClick: function(e){
-			WorkGadget.Static = e;
 			
-			var $e = e.currentTarget
+			var $e = $(e.target)
 			
 			if(!$e.hasClass('on')){
 			    //to edit mode
