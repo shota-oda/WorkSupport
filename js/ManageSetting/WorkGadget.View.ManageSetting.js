@@ -49,8 +49,6 @@ var WorkGadget = WorkGadget || {};
 
 	});
 
-
-
 	//Manage Setting Collection and Template View
 	// ------------------
 	WorkGadget.View.ManageSettings = Backbone.Marionette.CompositeView.extend({
@@ -61,4 +59,5 @@ var WorkGadget = WorkGadget || {};
 		childViewContainer: '#SettingContainer',
 
 	});
+	
 })();
