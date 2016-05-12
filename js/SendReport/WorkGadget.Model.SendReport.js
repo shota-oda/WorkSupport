@@ -42,7 +42,9 @@ var WorkGadget = WorkGadget || {};
 					thisModel.set("subject", thisModel.getSubject() + name);
 				});
 
-			WorkGadget.gApi.calendar.getTodayEvents()
+			var calIDs = WorkGadget.Model.UserSettingList().get(1).get("value");
+			if(calIDs){
+				WorkGadget.gApi.calendar.getTodayEvents(calIDs.split(/\r\n|\r|\n/))
 				.done(function (data){
 					var taskListStr = data.reduce(function(p, c){
 						return p + '\n' + c;
@@ -51,6 +53,7 @@ var WorkGadget = WorkGadget || {};
 					thisModel.col2 = thisModel.getColumn(2, "本日の業務", taskListStr);
 					thisModel.trigger("change");
 				});
+			}
 
 			WorkGadget.gApi.calendar.getTommorrowEvents()
 				.done(function (data){
