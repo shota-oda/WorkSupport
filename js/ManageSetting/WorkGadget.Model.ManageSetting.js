@@ -40,25 +40,26 @@ var WorkGadget = WorkGadget || {};
 			thisCollection.fetch()
 			.done(function(){
 				if (thisCollection.length){
-					thisCollection.add(thisCollection.getDefaultData())
+					thisCollection.setDefaultData();
 				}
 			})
 		},
 
-		getDefaultData: function(){
-			var setting = WorkGadget.Model.Setting
-			var settings = [];
+		setDefaultData: function(){
+			var setting = WorkGadget.Model.ManageSettingItem
 
-			settings.add(new setting({
+			this.add(new setting({
 				key: "ReportTemplateContent",
 				value: "",
 				id: 0
 			}));
-			settings.add(new setting({
+			this.add(new setting({
 				key: "CalendarIDs",
 				value: "",
 				id: 1
 			}))
+
+
 		},
 
 		
