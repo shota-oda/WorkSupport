@@ -45,7 +45,7 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		setDefaultData: function(){
-			var setting = WorkGadget.Model.ManageSettingItem
+			var setting = WorkGadget.Model.UserSettingItem
 			var templateSet = new setting({
 				key: "ReportTemplateContent",
 				value: "",
