@@ -62,8 +62,9 @@ var WorkGadget = WorkGadget || {};
 		onPreviewClick: function(e){
 			
 			var $e = $(e.target)
+			console.log($e.prop("tagName"))
 			
-			if(!$e.prop("tagName") == "TEXTAREA" && !$e.hasClass('on')){
+			if(!($e.prop("tagName") == "TEXTAREA") && !$e.hasClass('on')){
 			   //to edit mode
 			    $e
 			    .addClass('on')
