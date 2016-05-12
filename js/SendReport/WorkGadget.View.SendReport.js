@@ -46,7 +46,7 @@ var WorkGadget = WorkGadget || {};
 			return this.model.col1 + this.model.col2 + this.model.col3 + this.model.col4 + this.model.input + '\n\n';
 		},
 
-		onInputKeyUp: function (e) {
+		onInputKeyUp: function () {
 			this.model.input = this.ui.input.val()
 			this.ui.preview.text(this.getBody());
 		},
@@ -60,9 +60,7 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		onPreviewClick: function(e){
-			console.log(e.toElement.hasClass('on'));
-			console.log(e.toElement.show());
-			console.log(e.currentTarget.hasClass('on'));
+			WorkGadget.Static = e;
 			
 			var $e = e.currentTarget
 			
