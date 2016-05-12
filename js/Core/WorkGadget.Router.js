@@ -54,16 +54,16 @@ var WorkGadget = WorkGadget || {};
 			this.ObserveHash();
 
 			var settings = new WorkGadget.Model.ManageSettings();
+			//warn: fetch/save/get is async
+			// 		now is sync because use localstorage 
 			settings.fetch()
 
 			if (settings.length === 0){
 				settings.setDefaultData();
 			}
 
-			console.log(settings);
-
 			var content = new WorkGadget.View.ManageSettings({
-				collection: new WorkGadget.Model.ManageSettings()
+				collection: settings
 			});
 
 			WorkGadget.App.View.Root.showChildView('main', content);
