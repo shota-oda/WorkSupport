@@ -11,7 +11,8 @@ var WorkGadget = WorkGadget || {};
 		appRoutes: {
 			 '': 'SendReport',
 			 'Send': 'SendReport',
-			 'Read': 'ReadReport'
+			 'Read': 'ReadReport',
+			 'Setting' : 'ManageSetting',
 		}
 	});
 	
@@ -47,6 +48,15 @@ var WorkGadget = WorkGadget || {};
 			});
 			
 			WorkGadget.App.View.Root.showChildView('main', content);
+		},
+
+		ManageSetting: function(){
+			this.ObserveHash();
+
+			var settings = new WorkGadget.Model.SettingList()
+			if (settings.length === 0){
+				
+			}
 		},
 
  	});

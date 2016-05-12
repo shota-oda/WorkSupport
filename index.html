@@ -4,6 +4,7 @@
     <base target="_top">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">  
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <!-- bootstrap -->
@@ -122,15 +123,6 @@
             <a class="list-group-item" data-toggle="collapse" href="<%- '#' + cid %>" style="background-color: #f5f5f5">
                 <%- author %>
             </a>
-            <!-- 
-            <div class="panel-heading" role="tab" id="<%- lid %>">
-              <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" href="<%- '#' + cid %>" aria-expanded="true" aria-controls="<%- cid %>">
-                  <%- author %>
-                </a>
-              </h4>
-            </div>
-            -->
             <div id="<%- cid %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="<%- '#' + lid %>">
               <div class="panel-body">
                 <pre><%- content %></pre>
@@ -140,7 +132,38 @@
         </div>
       </div>
     </script>
-    
+    <script type="text/html" id="template-Setting">
+      <div class="row">
+        <div class="col-md-6 col-xs-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Report Template</h3>
+            </div>
+            <div class="panel-body">
+              <textarea id="Report-Content" class="form-control" rows="10"></textarea>
+              <div class="btn-group" role="group" aria-label="...">
+                <button type="button" id="Report-Send" class="btn btn-default">Update</button>
+                <button type="button" id="Report-Reset" class="btn btn-default">Reset</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-xs-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Calendar Info ID</h3>
+            </div>
+            <div class="panel-body">
+              <textarea id="Report-Content" class="form-control" rows="10"></textarea>
+              <div class="btn-group" role="group" aria-label="...">
+                <button type="button" id="Report-Send" class="btn btn-default">Update</button>
+                <button type="button" id="Report-Reset" class="btn btn-default">Reset</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </script>
     <!-- Load Scripts -->
     <!-- vendor libraries -->
     <script src="modules/jquery/dist/jquery.js"></script>
@@ -167,10 +190,13 @@
     <!-- Read Report-->
     <script src="js/ReadReport/WorkGadget.Model.ReadReport.js"></script>
     <script src="js/ReadReport/WorkGadget.View.ReadReport.js"></script>
+
+    <!-- Manage Setting -->
+    <script src="js/ManageSetting/WorkGadget.Model.ManageSetting.js"></script>
+    <script src="js/ManageSetting/WorkGadget.View.ManageSetting.js"></script>
     
     <script src="js/Core/WorkGadget.Router.js"></script>
     <script src="js/Core/WorkGadget.js"></script>
-
 
     <!-- Google Api Faced -->
     <script src="js/GoogleApi/setting.js"></script>
