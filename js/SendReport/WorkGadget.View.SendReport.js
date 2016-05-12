@@ -43,7 +43,7 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		getBody: function (input) {
-			return this.model.col1 + this.model.col2 + this.model.col3 + this.model.col4 + (input? input : '') + '\n\n' + this.model.col5 + '\n\n'
+			return this.model.col1 + this.model.col2 + this.model.col3 + this.model.col4 + (input? input : '') + '\n\n' + '\n\n'
 		},
 
 		onInputKeyUp: function (e) {
