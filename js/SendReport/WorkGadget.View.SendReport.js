@@ -60,29 +60,31 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		onPreviewClick: function(e){
-			console.log(e);
-			console.log(e.currentTarget);
+			console.log(e.toElement.hasClass('on'));
+			console.log(e.toElement.show());
+			console.log(e.currentTarget.hasClass('on'));
 			
-			// $('dd').click(function(){
-	  //      		//classでonを持っているかチェック
-			// 	if(!$(this).hasClass('on')){
-			// 	    //編集可能時はclassでonをつける
-			// 	    $(this).addClass('on');
-			// 	    var txt = $(this).text();
-			// 	    //テキストをinputのvalueに入れてで置き換え
-			// 	    $(this).html('<input type="text" value="'+txt+'" />');
-			// 	    //同時にinputにフォーカスをする
-			// 	    $('dd > input').focus().blur(function(){
-			// 	        var inputVal = $(this).val();
-			// 	        //もし空欄だったら空欄にする前の内容に戻す
-			// 	        if(inputVal===''){
-			// 	            inputVal = this.defaultValue;
-			// 	        };
-			// 	        //編集が終わったらtextで置き換える
-			// 	        $(this).parent().removeClass('on').text(inputVal);
-			// 	    });
-			// 	};
-			// });
+			var $e = e.currentTarget
+			
+			if(!$e.hasClass('on')){
+			    //to edit mode
+			    $e
+			    .addClass('on');
+			    .html('<textarea class="form-control" rows="10">'+$e.text()+'</textarea>');
+			    //同時にinputにフォーカスをする
+			    $e.find("textarea")
+			    .focus()
+			    .blur(function(){
+			        var inputVal = $(this).val();
+			        //もし空欄だったら空欄にする前の内容に戻す
+			        if(inputVal===''){
+			            inputVal = this.defaultValue;
+			        };
+			        //編集が終わったらtextで置き換える
+			        $(this).parent().removeClass('on').text(inputVal);
+			    });
+			};
+			
 		},
 	});
 })();
