@@ -7,10 +7,9 @@ var WorkGadget = WorkGadget || {};
 
 	WorkGadget.Model = WorkGadget.Model || {};
 	
-	// SendReport Model
+	// Setting Model
 	// ----------
-
-	WorkGadget.Model.Setting = Backbone.Model.extend({
+	WorkGadget.Model.ManageSettingItem = Backbone.Model.extend({
 		defaults: {
 			  key:""
 			 ,value:{}
@@ -25,9 +24,11 @@ var WorkGadget = WorkGadget || {};
 		
 	});
 
-	WorkGadget.Model.SettingList = Backbone.Collection.extend({
+	// Setting Collection
+	// ----------
+	WorkGadget.Model.ManageSettings = Backbone.Collection.extend({
 
-		model: WorkGadget.Model.Setting,
+		model: WorkGadget.Model.ManageSettingItem,
 
 		localStorage: new Backbone.LocalStorage('Model.SettingList'),
 
@@ -55,7 +56,7 @@ var WorkGadget = WorkGadget || {};
 			}));
 			settings.add(new setting({
 				key: "CalendarIDs",
-				value: [],
+				value: "",
 				id: 1
 			}))
 		},

@@ -132,37 +132,27 @@
         </div>
       </div>
     </script>
-    <script type="text/html" id="template-Setting">
-      <div class="row">
-        <div class="col-md-6 col-xs-12">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">Report Template</h3>
-            </div>
-            <div class="panel-body">
-              <textarea id="Report-Content" class="form-control" rows="10"></textarea>
-              <div class="btn-group" role="group" aria-label="...">
-                <button type="button" id="Report-Send" class="btn btn-default">Update</button>
-                <button type="button" id="Report-Reset" class="btn btn-default">Reset</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-xs-12">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">Calendar Info ID</h3>
-            </div>
-            <div class="panel-body">
-              <textarea id="Report-Content" class="form-control" rows="10"></textarea>
-              <div class="btn-group" role="group" aria-label="...">
-                <button type="button" id="Report-Send" class="btn btn-default">Update</button>
-                <button type="button" id="Report-Reset" class="btn btn-default">Reset</button>
-              </div>
-            </div>
-          </div>
-        </div>
+    <script type="text/html" id="template-ManageSetting">
+      <div class="row" id="SettingContainer">
       </div>
+    </script>
+    <script type="text/html" id="template-ManageSettingItem">
+      <div class="col-md-6 col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%- key %></h3>
+          </div>
+          <div class="panel-body">
+            <textarea class="form-control input" rows="10">
+              <%- value %>
+            </textarea>
+            <div class="btn-group" role="group" aria-label="...">
+              <button type="button" class="btn btn-default update">Update</button>
+              <button type="button" class="btn btn-default reset">Reset</button>
+            </div>
+          </div>
+        </div>
+        </div>
     </script>
     <!-- Load Scripts -->
     <!-- vendor libraries -->
