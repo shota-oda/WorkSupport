@@ -53,7 +53,7 @@ WorkGadget.gApi.calendar.init = function () {
      $.each(calIDs, function(){
       var id = this
       var request = gapi.client.calendar.events.list({
-        'calendarId': "bizreach.co.jp_s8d05g2boqil5gvdj7a091972c@group.calendar.google.com",
+        'calendarId': id,
         'timeMin': today.toISOString(),
         'timeMax': tommorrow.toISOString(),
         'showDeleted': false,
