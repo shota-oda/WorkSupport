@@ -37,7 +37,7 @@ var WorkGadget = WorkGadget || {};
 
 		templateHelpers: function () {
 			return {
-				 inputTemplate: this.model.inputTemplate
+				 inputTemplate: this.model.input
 				,body: this.getBody()
 			}
 		},
@@ -61,7 +61,8 @@ var WorkGadget = WorkGadget || {};
 
 		onPreviewClick: function(e){
 			console.log(e);
-
+			console.log(e.currentTarget);
+			
 			// $('dd').click(function(){
 	  //      		//classでonを持っているかチェック
 			// 	if(!$(this).hasClass('on')){
