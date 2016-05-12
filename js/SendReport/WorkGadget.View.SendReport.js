@@ -13,8 +13,6 @@ var WorkGadget = WorkGadget || {};
 
 		template: '#template-SendReport',
 
-		// UI bindings create cached attributes that
-		// point to jQuery selected objects
 		ui: {
 			input: '#Report-Content',
 			send: '#Report-Send',
@@ -37,7 +35,7 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		onShow: function(){
-			this.ui.input.text(this.model.inputTemplate);
+			
 		},
 
 		templateHelpers: function () {
