@@ -2,14 +2,22 @@
 
 var WorkGadget = WorkGadget || {};
 
+/* 
+ * setting IDs are below for easy access 
+ * 1 ReportTemplate
+ * 2 CaledarID
+ * 
+ *
+ */
+
 (function () {
 	'use strict';
 
 	WorkGadget.Model = WorkGadget.Model || {};
 	
-	// Setting Model
+	// IMPL Setting Model
 	// ----------
-	WorkGadget.Model.ManageSettingItem = Backbone.Model.extend({
+	WorkGadget.Model.UserSettingItem = Backbone.Model.extend({
 		defaults: {
 			  key:""
 			 ,value:{}
@@ -20,22 +28,20 @@ var WorkGadget = WorkGadget || {};
 		initialize: function () {
 
 		},
-
-		
 	});
 
-	// Setting Collection
+	// IMPL Setting Collection
 	// ----------
-	WorkGadget.Model.ManageSettings = Backbone.Collection.extend({
+	WorkGadget.Model.UserSettingCollection = Backbone.Collection.extend({
 
-		model: WorkGadget.Model.ManageSettingItem,
+		model: WorkGadget.Model.UserSettingItem,
 
 		localStorage: new Backbone.LocalStorage("Model.ManageSettings"),
 
 		comparator: "id",
 
 		initialize: function () {
-			
+
 		},
 
 		setDefaultData: function(){
@@ -55,8 +61,22 @@ var WorkGadget = WorkGadget || {};
 			templateSet.save()
 			calendarSet.save()
 		},
-
-		
 	});
+
+	// FUNC Setting Collection
+	// ----------
+	WorkGadget.Model.UserSettingList = function(){
+		var settings = new WorkGadget.Model.UserSettingCollection();
+		
+		//warn: fetch/save/get is async
+		// 		now is sync because use localstorage 
+		settings.fetch();
+
+		if (settings.length === 0){
+			settings.setDefaultData();
+		}
+
+		return settings;
+	}
 
 })();
