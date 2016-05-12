@@ -69,7 +69,7 @@ var WorkGadget = WorkGadget || {};
 			if(!$e.hasClass('on')){
 			    //to edit mode
 			    $e
-			    .addClass('on');
+			    .addClass('on')
 			    .html('<textarea class="form-control" rows="10">'+$e.text()+'</textarea>');
 			    //同時にinputにフォーカスをする
 			    $e.find("textarea")
