@@ -27,7 +27,15 @@ var WorkGadget = WorkGadget || {};
 
 
 		update: function(){
+			console.log("check called")
 			this.model.save()
+			.done(function(r){
+				console.log("done")
+				console.log(r)
+			})
+			.fail(function(){
+				console.log("fail")
+			})
 		},
 
 		reset: function(){
