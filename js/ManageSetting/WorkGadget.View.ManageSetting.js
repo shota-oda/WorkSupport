@@ -27,11 +27,11 @@ var WorkGadget = WorkGadget || {};
 
 
 		update: function(){
-
+			this.model.save()
 		},
 
 		reset: function(){
-
+			this.ui.input.text(this.model.value);
 		},
 
 	});
