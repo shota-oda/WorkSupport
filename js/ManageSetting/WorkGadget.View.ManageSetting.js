@@ -33,13 +33,8 @@ var WorkGadget = WorkGadget || {};
 				 value: this.ui.input.text()
 				,
 			})
-			.save()
-			.done(function(result){
-				console.log("success")
-			})
-			.fail(function(){
-				console.log("fail")
-			})
+			.save() // here is sync
+			console.log(this.model);
 		},
 
 		reset: function(){
