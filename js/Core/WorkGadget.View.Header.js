@@ -37,6 +37,8 @@ var WorkGadget = WorkGadget || {};
 				this.ui.SendReport.toggleClass("active", true);
 			} else if (hash == "Read"){
 				this.ui.ReadReport.toggleClass("active", true);
+			} else if (hash == "Setting"){
+				this.ui.ManageSetting.toggleClass("active", true);
 			}
 		},
 		
