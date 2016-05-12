@@ -19,7 +19,7 @@ var WorkGadget = WorkGadget || {};
 			,col3: ''
 			,col4: ''
 			,cal: {}//For Consistency, set Date to member
-			,inputTemplate: '本日の気づきと学び・明日への宣言', WorkGadget.Model.UserSettingList().get(0).get("value")
+			,inputTemplate: WorkGadget.Model.UserSettingList().get(0).get("value")
 		},
 
 		initialize: function () {
