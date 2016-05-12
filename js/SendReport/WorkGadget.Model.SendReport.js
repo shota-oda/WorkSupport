@@ -7,18 +7,19 @@ var WorkGadget = WorkGadget || {};
 
 	WorkGadget.Model = WorkGadget.Model || {};
 	
-	// SendReport Model
+	// IMPL SendReport Model
 	// ----------
 	WorkGadget.Model.SendReport = Backbone.Model.extend({
 		defaults: {
-			to:'',
-			cc: '',
-			subject: '',
-			col1: '',
-			col2: '',
-			col3: '',
-			col4: '',
-			cal: {},//For Consistency, set Date() to member
+			 to:''
+			,cc: ''
+			,subject: ''
+			,col1: ''
+			,col2: ''
+			,col3: ''
+			,col4: ''
+			,cal: {}//For Consistency, set Date to member
+			,inputTemplate: WorkGadget.Model.UserSettingList().get(0).get("value")
 		},
 
 		initialize: function () {
@@ -31,7 +32,7 @@ var WorkGadget = WorkGadget || {};
 			this.col1 = this.getColumn(1, '勤怠', this.getDateString() + '\n出勤:' + (this.isMonday() ? '08:30' : '09:30') + '\n退社:' + (this.isMonday() ? '17:30' : '18:30'));
 			this.col2 = this.getColumnHeader(2, '本日の業務');
 			this.col3 = this.getColumnHeader(3, '明日の業務と直近の主な完了予定');
-			this.col4 = this.getColumnHeader(4, '本日の気づきと学び・明日への宣言');
+			this.col4 = this.getColumn(4, '本日の気づきと学び・明日への宣言', this.inputTemplate);
 			
 			//for use this in done callback
 			var thisModel = this;

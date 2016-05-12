@@ -27,16 +27,22 @@ var WorkGadget = WorkGadget || {};
 
 
 		update: function(){
-			this.model.save()
+
+			this.model
+			.set({
+				 value: this.ui.input.val()
+				,
+			})
+			.save() // here is sync
+
 		},
 
 		reset: function(){
 			this.ui.input.text(this.model.value);
+			this.render();
 		},
 
 	});
-
-
 
 	//Manage Setting Collection and Template View
 	// ------------------
@@ -47,6 +53,6 @@ var WorkGadget = WorkGadget || {};
 		childView: WorkGadget.View.SettingItem,
 		childViewContainer: '#SettingContainer',
 
-
 	});
+
 })();
