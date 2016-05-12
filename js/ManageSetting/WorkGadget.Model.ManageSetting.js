@@ -13,7 +13,7 @@ var WorkGadget = WorkGadget || {};
 		defaults: {
 			  key:""
 			 ,value:{}
-			 ,id: 0
+			 ,id: {}
 			 ,
 		},
 
@@ -30,34 +30,40 @@ var WorkGadget = WorkGadget || {};
 
 		model: WorkGadget.Model.ManageSettingItem,
 
-		localStorage: new Backbone.LocalStorage('Model.SettingList'),
+		localStorage: new Backbone.LocalStorage("Model.ManageSettings"),
 
 		comparator: "id",
 
 		initialize: function () {
 			var thisCollection = this;
-
+			
 			thisCollection.fetch()
 			.done(function(){
 				if (thisCollection.length){
 					thisCollection.setDefaultData();
 				}
 			})
+			thisCollection.forEach(function(model){
+				console.log("Model in collection: " + model.get("content"));
+			})
 		},
 
 		setDefaultData: function(){
 			var setting = WorkGadget.Model.ManageSettingItem
-
-			this.add(new setting({
+			var templateSet = new setting({
 				key: "ReportTemplateContent",
 				value: "",
 				id: 0
-			}));
-			this.add(new setting({
+			});
+			var calendarSet = new setting({
 				key: "CalendarIDs",
 				value: "",
 				id: 1
-			}))
+			});
+			this.add(templateSet);
+			this.add(calendarSet);
+			templateSet.save()
+			calendarSet.save()
 		},
 
 		
