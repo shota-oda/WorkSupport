@@ -62,8 +62,9 @@ var WorkGadget = WorkGadget || {};
 		onPreviewClick: function(e){
 			
 			var $e = $(e.target)
-			
+			console.log(!$e.hasClass('on'))
 			if(!$e.hasClass('on')){
+				
 			    //to edit mode
 			    $e
 			    .addClass('on')
@@ -82,7 +83,6 @@ var WorkGadget = WorkGadget || {};
 			        $(this).parent().removeClass('on').text(inputVal);
 			    });
 			};
-			
 		},
 	});
 })();
