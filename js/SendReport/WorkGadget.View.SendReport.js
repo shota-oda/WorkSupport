@@ -34,13 +34,10 @@ var WorkGadget = WorkGadget || {};
 			
 		},
 
-		onShow: function(){
-			this.ui.input.text(this.model.inputTemplate)
-		},
-
 		templateHelpers: function () {
 			return {
-				body: this.getBody()
+				 inputTemplate: this.model.inputTemplate
+				,body: this.getBody()
 			}
 		},
 
