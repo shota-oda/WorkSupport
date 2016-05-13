@@ -58,13 +58,13 @@ var WorkGadget = WorkGadget || {};
 				,Cc: this.model.get("cc")
 				,Bcc: this.model.get("bcc")
 			}
-			console.log(this.ui.preview.text())
+
+			console.log(this.model.get("subject"))
 			if (WorkGadget.TestMode){
 				WorkGadget.gApi.mail.send(
 				 header
-				,this.model.subject
+				,this.model.get("subject")
 				,this.ui.preview.text())
-
 			}
 		},
 
