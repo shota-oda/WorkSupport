@@ -43,21 +43,7 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		getBody: function () {
-			console.log(
-				this.model.get("col1")
-				+ this.model.get("col2")
-				+ this.model.get("col3")
-				+ this.model.get("col4")
-				+ this.model.get("input")
-				+ '\n\n'
-				)
-			return 
-				this.model.get("col1")
-				+ this.model.get("col2")
-				+ this.model.get("col3")
-				+ this.model.get("col4")
-				+ this.model.get("input")
-				+ '\n\n';
+			return this.model.get("col1") + this.model.get("col2") + this.model.get("col3") + this.model.get("col4") + this.model.get("input") + '\n\n';
 		},
 
 		onInputKeyUp: function () {
