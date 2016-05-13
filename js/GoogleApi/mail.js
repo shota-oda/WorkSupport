@@ -17,10 +17,11 @@ WorkGadget.gApi.mail.init = function () {
         "$body"
       ].join("\n").trim();
 
+
     mail = mail
-      .replace("$to", tos.To.join(","))
-      .replace("$cc", tos.Cc.join(",") || "")
-      .replace("$bcc", tos.Bcc.join(",") || "")
+      .replace("$to", Array.isArray(tos.To) ? tos.To.join(",") : tos.To)
+      .replace("$cc", Array.isArray(tos.Cc) ? tos.Cc.join(",") : tos.Cc || "")
+      .replace("$bcc", Array.isArray(tos.Bcc) ? tos.Bcc.join(",") : tos.Bcc  || "")
       .replace("$subject", window.btoa(unescape(encodeURIComponent(subject))))
       .replace("$body", body);
 
@@ -84,6 +85,5 @@ WorkGadget.gApi.mail.init = function () {
     });
 
     return d;
-}
-
+  }
 }
