@@ -52,7 +52,16 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		onSendClick: function() {
-			console.log("click")
+			var header = {
+				 To: this.model.to
+				,Cc: this.model.cc
+				,Bcc: this.model.bcc
+			}
+			console.log(this.ui.preview.text())
+			// WorkGadget.gApi.mail.send(
+			// 	 header
+			// 	,this.model.subject
+			// 	,this.ui.preview.val())	
 		},
 
 		onResetClick: function() {
