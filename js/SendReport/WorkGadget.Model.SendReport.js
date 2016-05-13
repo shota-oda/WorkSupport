@@ -13,6 +13,7 @@ var WorkGadget = WorkGadget || {};
 		defaults: {
 			 to:''
 			,cc: ''
+			,bcc: ''
 			,subject: ''
 			,col1: ''
 			,col2: ''
@@ -24,11 +25,14 @@ var WorkGadget = WorkGadget || {};
 
 		initialize: function () {
 			this.cal = new Date();
+
+			var settings = WorkGadget.Model.UserSettingList();
 			
 			this.set('subject', this.getSubject())
-			this.set('to', 'daily_report_rookie2016@bizreach.co.jp');
-			this.set('cc', 'rookie_2016@bizreach.co.jp');
-			
+			this.set('to', settings.get(3));
+			this.set('cc', settings.get(4));
+			this.set('bcc', settings.get(5))
+
 			this.col1 = this.getColumn(1, '勤怠', this.getDateString() + '\n出勤:' + (this.isMonday() ? '08:30' : '09:30') + '\n退社:' + (this.isMonday() ? '17:30' : '18:30'));
 			this.col2 = this.getColumnHeader(2, '本日の業務');
 			this.col3 = this.getColumnHeader(3, '明日の業務と直近の主な完了予定');

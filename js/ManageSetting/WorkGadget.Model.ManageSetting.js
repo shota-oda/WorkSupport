@@ -6,7 +6,9 @@ var WorkGadget = WorkGadget || {};
  * setting IDs are below for easy access 
  * 1 ReportTemplate
  * 2 CaledarID
- * 
+ * 3 to
+ * 4 cc
+ * 5 bcc
  *
  */
 
@@ -78,8 +80,8 @@ var WorkGadget = WorkGadget || {};
 			this.add(calendarSet);
 			this.add(mailToSet);
 			this.add(mailCcSet);
-			
 			this.add(mailBccSet);
+			
 			templateSet.save()
 			calendarSet.save()
 			mailToSet.save()
@@ -101,7 +103,14 @@ var WorkGadget = WorkGadget || {};
 			settings.setDefaultData();
 		}
 
-		return settings;
+		return s
 	}
 
+	WorkGadeget.Model.UserSettingKeys = {
+		 ReportTemplate : 1
+		,CaledarID : 2
+		,to : 3
+		,cc : 4
+		,bcc : 5 
+	}
 })();
