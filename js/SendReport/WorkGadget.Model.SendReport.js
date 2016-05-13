@@ -28,7 +28,7 @@ var WorkGadget = WorkGadget || {};
 
 			var settings = WorkGadget.Model.UserSettingList();
 			
-			this.set('subject', this.getSubject())
+			this.set('subject', this.getSubject() + WorkGadget.gApi.user.name)
 			this.set('to', settings.get(2).get("value"));
 			this.set('cc', settings.get(3).get("value"));
 			this.set('bcc', settings.get(4).get("value"))
@@ -41,11 +41,6 @@ var WorkGadget = WorkGadget || {};
 
 			//for use this in done callback
 			var thisModel = this;
-
-			WorkGadget.gApi.user.getName()
-				.done(function (name) {
-					thisModel.set("subject", thisModel.getSubject() + name);
-				});
 
 			var calIDs = settings.get(1).get("value");
 			if(calIDs){

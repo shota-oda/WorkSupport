@@ -18,10 +18,10 @@ WorkGadget.gApi.mail.init = function () {
         "$body"
       ].join("\n").trim();
 
-
+    var user = WorkGadget.gApi.user
     mail = mail
-      .replace("$name", "")
-      .replace("$address", "")
+      .replace("$name", user.dispName)
+      .replace("$address", user.address)
       .replace("$to", tos.To.replace(/\r?\n/g, ","))
       .replace("$cc", tos.Cc.replace(/\r?\n/g, ",") || "")
       .replace("$bcc", tos.Bcc.replace(/\r?\n/g, ",")  || "")
