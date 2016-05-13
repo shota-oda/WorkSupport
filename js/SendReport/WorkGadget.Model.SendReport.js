@@ -39,6 +39,9 @@ var WorkGadget = WorkGadget || {};
 			this.set("col4", this.getColumnHeader(4, '本日の気づきと学び・明日への宣言'));
 			this.set("input", settings.get(0).get("value"));
 
+			console.log(this.col1);
+			console.log(this.col2);
+
 			//for use this in done callback
 			var thisModel = this;
 
