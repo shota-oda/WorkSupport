@@ -37,31 +37,37 @@ var WorkGadget = WorkGadget || {};
 
 		templateHelpers: function(){
 			return {
-				 inputTemplate: this.model.input
+				 inputTemplate: this.model.get("input")
 				,body: this.getBody()
 			}
 		},
 
 		getBody: function () {
-			return this.model.col1 + this.model.col2 + this.model.col3 + this.model.col4 + this.model.input + '\n\n';
+			return 
+				this.model.get("col1")
+				+ this.model.get("col2")
+				+ this.model.get("col3")
+				+ this.model.get("col4")
+				+ this.model.get("input")
+				+ '\n\n';
 		},
 
 		onInputKeyUp: function () {
-			this.model.input = this.ui.input.val()
+			this.model.set("input",this.ui.input.val());
 			this.ui.preview.text(this.getBody());
 		},
 
 		onSendClick: function() {
 			var header = {
-				 To: this.model.to
-				,Cc: this.model.cc
-				,Bcc: this.model.bcc
+				 To: this.model.get("to")
+				,Cc: this.model.get("cc")
+				,Bcc: this.model.get("bcc")
 			}
 			console.log(this.ui.preview.text())
 			// WorkGadget.gApi.mail.send(
 			// 	 header
 			// 	,this.model.subject
-			// 	,this.ui.preview.val())	
+			// 	,this.ui.preview.val())
 		},
 
 		onResetClick: function() {

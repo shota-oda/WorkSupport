@@ -33,11 +33,11 @@ var WorkGadget = WorkGadget || {};
 			this.set('cc', settings.get(3).get("value"));
 			this.set('bcc', settings.get(4).get("value"))
 
-			this.set("col1",this.getColumn(1, '勤怠', this.getDateString() + '\n出勤:' + (this.isMonday() ? '08:30' : '09:30') + '\n退社:' + (this.isMonday() ? '17:30' : '18:30')));
-			this.col2 = this.getColumnHeader(2, '本日の業務');
-			this.col3 = this.getColumnHeader(3, '明日の業務と直近の主な完了予定');
-			this.col4 = this.getColumnHeader(4, '本日の気づきと学び・明日への宣言');
-			this.input = settings.get(0).get("value");
+			this.set("col1", this.getColumn(1, '勤怠', this.getDateString() + '\n出勤:' + (this.isMonday() ? '08:30' : '09:30') + '\n退社:' + (this.isMonday() ? '17:30' : '18:30')));
+			this.set("col2", this.getColumnHeader(2, '本日の業務'));
+			this.set("col3", this.getColumnHeader(3, '明日の業務と直近の主な完了予定'));
+			this.set("col4", this.getColumnHeader(4, '本日の気づきと学び・明日への宣言'));
+			this.set("input", settings.get(0).get("value"));
 
 			//for use this in done callback
 			var thisModel = this;
@@ -56,8 +56,7 @@ var WorkGadget = WorkGadget || {};
 						return p + '\n' + c;
 					});
 
-					thisModel.col2 = thisModel.getColumn(2, "本日の業務", taskListStr);
-					thisModel.trigger("change");
+					thisModel.set("col2", thisModel.getColumn(2, "本日の業務", taskListStr));
 				});
 
 				var doneFunc = function (data){
@@ -65,8 +64,7 @@ var WorkGadget = WorkGadget || {};
 						return p + '\n' + c;
 					});
 
-					thisModel.col3 = thisModel.getColumn(3, "明日の業務と直近の主な完了予定", taskListStr);
-					thisModel.trigger("change");
+					thisModel.set("col3", thisModel.getColumn(3, "明日の業務と直近の主な完了予定", taskListStr));
 				};
 
 				if (this.isFriday()){
