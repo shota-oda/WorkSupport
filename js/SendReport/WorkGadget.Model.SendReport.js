@@ -37,7 +37,7 @@ var WorkGadget = WorkGadget || {};
 			this.col2 = this.getColumnHeader(2, '本日の業務');
 			this.col3 = this.getColumnHeader(3, '明日の業務と直近の主な完了予定');
 			this.col4 = this.getColumnHeader(4, '本日の気づきと学び・明日への宣言');
-			this.input = WorkGadget.Model.UserSettingList().get(0).get("value");
+			this.input = settings.get(0).get("value");
 
 			//for use this in done callback
 			var thisModel = this;
