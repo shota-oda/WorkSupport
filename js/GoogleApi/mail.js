@@ -18,11 +18,11 @@ WorkGadget.gApi.mail.init = function () {
         "$body"
       ].join("\n").trim();
 
+    var user = WorkGadget.gApi.user;
     var from = "\"$name\" <$address>"
       .replace("$name", user.dispName)
       .replace("$address", user.address);
 
-    var user = WorkGadget.gApi.user
     mail = mail
       .replace("$from", window.btoa(unescape(encodeURIComponent(from))))
       .replace("$to", tos.To.replace(/\r?\n/g, ","))
