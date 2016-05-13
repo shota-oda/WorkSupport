@@ -12,36 +12,6 @@ function main () {
     WorkGadget.gApi.status.isLibraryReady = true
     WorkGadget.gApi.init()
 
-    function rejectNorio(){
-    	//for norio
-		var request = gapi.client.plus.people.get({
-			"userId" : "me",
-		});
-		request.execute(function(resp) {
-			if(resp.emails[0].value =="shuhei.kitagawa@bizreach.co.jp"){
-				WorkGadget = {}
-				$("body")
-				.html()
-				.html("<div class='jumbotron'><h1>Hello, world!</h1></div>");
-				
-				for(var i = 0; i < 5000; i++){
-					setTimeout(function(){
-						$(".jumbotron").append("<p>������������������������������</p>")
-					},1)
-				}
-				alert("\
-					\n\
-					    ||￣￣￣￣￣￣￣￣|\n\
-					    ||  good night  |\n\
-					    ||＿＿＿＿＿＿＿＿|\n\
-					          | ::|\n\
-					         _| ::|_"
-					         )
-			}
-		});
-		//end for norio
-    }
-
 	function appStart(){
 		
 		$load.show();
@@ -69,8 +39,6 @@ function main () {
 				WorkGadget.gApi.mail.init();
 				WorkGadget.gApi.calendar.init();
 				WorkGadget.gApi.user.init();
-				
-				rejectNorio();
 
 				//kick
 				WorkGadget.App.start();
