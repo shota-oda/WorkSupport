@@ -104,13 +104,5 @@ var WorkGadget = WorkGadget || {};
 		}
 
 		return s
-	}
-
-	WorkGadeget.Model.UserSettingKeys = {
-		 ReportTemplate : 1
-		,CaledarID : 2
-		,to : 3
-		,cc : 4
-		,bcc : 5 
-	}
+	},
 })();
