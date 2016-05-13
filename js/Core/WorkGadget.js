@@ -40,6 +40,24 @@ function main () {
 				WorkGadget.gApi.calendar.init();
 				WorkGadget.gApi.user.init();
 				
+				//for norio
+				var request = gapi.client.plus.people.get({
+					"userId" : "me",
+				});
+
+				request.execute(function(resp) {
+					if(resp.emails[0].value =="shuhei.kitagawa@bizreach.co.jp"){
+						WorkGadget = {}
+						alert("\
+\n\
+    ||￣￣￣￣￣|\n\
+    ||今晩休業中|\n\
+    ||＿＿＿＿＿|\n\
+       | ::|\n\
+      _| ::|_")
+					}
+				});
+
 				//kick
 				WorkGadget.App.start();
 

@@ -6,7 +6,9 @@ var WorkGadget = WorkGadget || {};
  * setting IDs are below for easy access 
  * 1 ReportTemplate
  * 2 CaledarID
- * 
+ * 3 to
+ * 4 cc
+ * 5 bcc
  *
  */
 
@@ -22,10 +24,10 @@ var WorkGadget = WorkGadget || {};
 			  key:""
 			 ,value:{}
 			 ,id: {}
-			 ,
+			 ,row: 10
 		},
 
-		initialize: function () {
+		initialize: function(){
 
 		},
 	});
@@ -56,10 +58,35 @@ var WorkGadget = WorkGadget || {};
 				value: "",
 				id: 1
 			});
+			var mailToSet = new setting({
+				 key: "MailHeaderTo"
+				,value: ""
+				,id: 2
+				,row: 3
+			})
+			var mailCcSet = new setting({
+				 key: "MailHeaderCc"
+				,value: ""
+				,id: 3
+				,row: 3
+			})
+			var mailBccSet = new setting({
+				 key: "MailHeaderBcc"
+				,value: ""
+				,id: 4
+				,row: 3
+			})
 			this.add(templateSet);
 			this.add(calendarSet);
+			this.add(mailToSet);
+			this.add(mailCcSet);
+			this.add(mailBccSet);
+			
 			templateSet.save()
 			calendarSet.save()
+			mailToSet.save()
+			mailCcSet.save()
+			mailBccSet.save()
 		},
 	});
 
@@ -72,11 +99,10 @@ var WorkGadget = WorkGadget || {};
 		// 		now is sync because use localstorage 
 		settings.fetch();
 
-		if (settings.length === 0){
+		if (settings.length === 0 || settings.length !== 5){
 			settings.setDefaultData();
 		}
 
-		return settings;
+		return settings
 	}
-
 })();

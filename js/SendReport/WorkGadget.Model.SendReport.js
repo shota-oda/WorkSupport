@@ -13,6 +13,7 @@ var WorkGadget = WorkGadget || {};
 		defaults: {
 			 to:''
 			,cc: ''
+			,bcc: ''
 			,subject: ''
 			,col1: ''
 			,col2: ''
@@ -24,16 +25,19 @@ var WorkGadget = WorkGadget || {};
 
 		initialize: function () {
 			this.cal = new Date();
+
+			var settings = WorkGadget.Model.UserSettingList();
 			
 			this.set('subject', this.getSubject())
-			this.set('to', 'daily_report_rookie2016@bizreach.co.jp');
-			this.set('cc', 'rookie_2016@bizreach.co.jp');
-			
+			this.set('to', settings.get(2).get("value"));
+			this.set('cc', settings.get(3).get("value"));
+			this.set('bcc', settings.get(4).get("value"))
+
 			this.col1 = this.getColumn(1, '勤怠', this.getDateString() + '\n出勤:' + (this.isMonday() ? '08:30' : '09:30') + '\n退社:' + (this.isMonday() ? '17:30' : '18:30'));
 			this.col2 = this.getColumnHeader(2, '本日の業務');
 			this.col3 = this.getColumnHeader(3, '明日の業務と直近の主な完了予定');
 			this.col4 = this.getColumnHeader(4, '本日の気づきと学び・明日への宣言');
-			this.input = WorkGadget.Model.UserSettingList().get(0).get("value");
+			this.input = settings.get(0).get("value");
 
 			//for use this in done callback
 			var thisModel = this;
@@ -43,7 +47,7 @@ var WorkGadget = WorkGadget || {};
 					thisModel.set("subject", thisModel.getSubject() + name);
 				});
 
-			var calIDs = WorkGadget.Model.UserSettingList().get(1).get("value");
+			var calIDs = settings.get(1).get("value");
 			if(calIDs){
 				var calIDs = calIDs.split(/\r\n|\r|\n/);
 				WorkGadget.gApi.calendar.getTodayEvents(calIDs)
@@ -56,15 +60,23 @@ var WorkGadget = WorkGadget || {};
 					thisModel.trigger("change");
 				});
 
-				WorkGadget.gApi.calendar.getTommorrowEvents(calIDs)
-				.done(function (data){
+				var doneFunc = function (data){
 					var taskListStr = data.reduce(function(p, c){
 						return p + '\n' + c;
 					});
 
 					thisModel.col3 = thisModel.getColumn(3, "明日の業務と直近の主な完了予定", taskListStr);
 					thisModel.trigger("change");
-				});
+				};
+
+				if (this.isFriday()){
+					var monday = new Date(this.cal.getFullYear(), this.cal.getMonth(), this.cal.getDate() + 3);
+					WorkGadget.gApi.calendar.getEventsAt(monday,calIDs)
+					.done(doneFunc);
+				} else {
+					WorkGadget.gApi.calendar.getTommorrowEvents(calIDs)
+					.done(doneFunc);
+				}
 			}
 		},
 
@@ -110,6 +122,10 @@ var WorkGadget = WorkGadget || {};
 		isMonday: function () {
 			return this.cal.getDay() === 1;
 		},
+
+		isFriday: function () {
+			return this.cal.getDay() === 5;
+		}
 	});
 
 })();

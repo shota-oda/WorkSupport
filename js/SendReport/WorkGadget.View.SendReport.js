@@ -35,7 +35,7 @@ var WorkGadget = WorkGadget || {};
 			
 		},
 
-		templateHelpers: function () {
+		templateHelpers: function(){
 			return {
 				 inputTemplate: this.model.input
 				,body: this.getBody()
@@ -62,8 +62,9 @@ var WorkGadget = WorkGadget || {};
 		onPreviewClick: function(e){
 			
 			var $e = $(e.target)
-			
-			if(!$e.prop("tagName") == "TEXTAREA" && !$e.hasClass('on')){
+			console.log($e.prop("tagName"))
+
+			if(!($e.prop("tagName") == "TEXTAREA") && !$e.hasClass('on')){
 			   //to edit mode
 			    $e
 			    .addClass('on')
