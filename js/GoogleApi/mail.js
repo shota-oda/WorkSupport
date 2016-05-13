@@ -19,9 +19,9 @@ WorkGadget.gApi.mail.init = function () {
 
 
     mail = mail
-      .replace("$to", Array.isArray(tos.To) ? tos.To.join(",") : tos.To)
-      .replace("$cc", Array.isArray(tos.Cc) ? tos.Cc.join(",") : tos.Cc || "")
-      .replace("$bcc", Array.isArray(tos.Bcc) ? tos.Bcc.join(",") : tos.Bcc  || "")
+      .replace("$to", tos.To.replace(/\r?\n/g, ","))
+      .replace("$cc", tos.Cc.replace(/\r?\n/g, ",") || "")
+      .replace("$bcc", tos.Bcc.replace(/\r?\n/g, ",")  || "")
       .replace("$subject", window.btoa(unescape(encodeURIComponent(subject))))
       .replace("$body", body);
 
