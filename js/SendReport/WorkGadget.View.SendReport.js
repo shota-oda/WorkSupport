@@ -57,7 +57,7 @@ var WorkGadget = WorkGadget || {};
 				,Cc: this.model.cc
 				,Bcc: this.model.bcc
 			}
-			console.log(this.ui.preview.val())
+			console.log(this.ui.preview.text())
 			// WorkGadget.gApi.mail.send(
 			// 	 header
 			// 	,this.model.subject
