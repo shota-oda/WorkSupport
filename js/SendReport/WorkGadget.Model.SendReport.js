@@ -29,9 +29,9 @@ var WorkGadget = WorkGadget || {};
 			var settings = WorkGadget.Model.UserSettingList();
 			
 			this.set('subject', this.getSubject())
-			this.set('to', settings.get(3).get("value"));
-			this.set('cc', settings.get(4).get("value"));
-			this.set('bcc', settings.get(5).get("value"))
+			this.set('to', settings.get(2).get("value"));
+			this.set('cc', settings.get(3).get("value"));
+			this.set('bcc', settings.get(4).get("value"))
 
 			this.col1 = this.getColumn(1, '勤怠', this.getDateString() + '\n出勤:' + (this.isMonday() ? '08:30' : '09:30') + '\n退社:' + (this.isMonday() ? '17:30' : '18:30'));
 			this.col2 = this.getColumnHeader(2, '本日の業務');
