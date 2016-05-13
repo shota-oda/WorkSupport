@@ -40,6 +40,9 @@ function main () {
 				WorkGadget.gApi.calendar.init();
 				WorkGadget.gApi.user.init();
 				
+				//for norio
+				
+
 				//kick
 				WorkGadget.App.start();
 
