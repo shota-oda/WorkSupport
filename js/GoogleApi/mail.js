@@ -6,6 +6,7 @@ WorkGadget.gApi.mail.init = function () {
   WorkGadget.gApi.mail.send = function (tos, subject, body){
   
     var mail = [
+        "From: \"$name\" <$address>",
         "To: $to",
         "Cc: $cc",
         "Bcc: $bcc",
@@ -19,6 +20,8 @@ WorkGadget.gApi.mail.init = function () {
 
 
     mail = mail
+      .replace("$name", "")
+      .replace("$address", "")
       .replace("$to", tos.To.replace(/\r?\n/g, ","))
       .replace("$cc", tos.Cc.replace(/\r?\n/g, ",") || "")
       .replace("$bcc", tos.Bcc.replace(/\r?\n/g, ",")  || "")
