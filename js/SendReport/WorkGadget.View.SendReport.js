@@ -49,7 +49,6 @@ var WorkGadget = WorkGadget || {};
 		onInputKeyUp: function () {
 			this.model.set("input" ,this.ui.input.val(), {silent: true});
 			WorkGadget.static = this.ui.preview;
-			console.log(this.getBody())
 			this.ui.preview.text(this.getBody());
 		},
 
@@ -60,10 +59,13 @@ var WorkGadget = WorkGadget || {};
 				,Bcc: this.model.get("bcc")
 			}
 			console.log(this.ui.preview.text())
-			// WorkGadget.gApi.mail.send(
-			// 	 header
-			// 	,this.model.subject
-			// 	,this.ui.preview.val())
+			if (WorkGadget.TestMode){
+				WorkGadget.gApi.mail.send(
+				 header
+				,this.model.subject
+				,this.ui.preview.text())
+
+			}
 		},
 
 		onResetClick: function() {
@@ -73,7 +75,6 @@ var WorkGadget = WorkGadget || {};
 		onPreviewClick: function(e){
 			
 			var $e = $(e.target)
-			console.log($e.prop("tagName"))
 
 			if(!($e.prop("tagName") == "TEXTAREA") && !$e.hasClass('on')){
 			   //to edit mode
