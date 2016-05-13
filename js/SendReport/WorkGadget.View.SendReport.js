@@ -61,7 +61,9 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		onInputKeyUp: function () {
-			this.model.set("input",this.ui.input.val(), {silent: true});
+			this.model.set("input" ,this.ui.input.val(), {silent: true});
+			WorkGadget.static = this.ui.preview;
+			console.log(this.getBody())
 			this.ui.preview.text(this.getBody());
 		},
 
