@@ -99,7 +99,7 @@ var WorkGadget = WorkGadget || {};
 		// 		now is sync because use localstorage 
 		settings.fetch();
 
-		if (settings.length === 0){
+		if (settings.length === 0 || settings.length !== 5){
 			settings.setDefaultData();
 		}
 

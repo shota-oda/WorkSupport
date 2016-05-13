@@ -47,7 +47,7 @@ var WorkGadget = WorkGadget || {};
 					thisModel.set("subject", thisModel.getSubject() + name);
 				});
 
-			var calIDs = WorkGadget.Model.UserSettingList().get(1).get("value");
+			var calIDs = settings.get(1).get("value");
 			if(calIDs){
 				var calIDs = calIDs.split(/\r\n|\r|\n/);
 				WorkGadget.gApi.calendar.getTodayEvents(calIDs)
@@ -60,15 +60,23 @@ var WorkGadget = WorkGadget || {};
 					thisModel.trigger("change");
 				});
 
-				WorkGadget.gApi.calendar.getTommorrowEvents(calIDs)
-				.done(function (data){
+				var doneFunc = function (data){
 					var taskListStr = data.reduce(function(p, c){
 						return p + '\n' + c;
 					});
 
 					thisModel.col3 = thisModel.getColumn(3, "明日の業務と直近の主な完了予定", taskListStr);
 					thisModel.trigger("change");
-				});
+				};
+
+				if (isFriday()){
+					var monday = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 3);
+					WorkGadget.gApi.calendar.getEventsAt(monday,calIDs)
+					.done();					
+				} else {
+					WorkGadget.gApi.calendar.getTommorrowEvents(calIDs)
+					.done();
+				}
 			}
 		},
 
@@ -114,6 +122,10 @@ var WorkGadget = WorkGadget || {};
 		isMonday: function () {
 			return this.cal.getDay() === 1;
 		},
+
+		isFriday: function () {
+			return this.cal.getDay() === 5;
+		}
 	});
 
 })();
