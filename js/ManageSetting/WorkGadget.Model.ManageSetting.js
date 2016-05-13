@@ -103,6 +103,6 @@ var WorkGadget = WorkGadget || {};
 			settings.setDefaultData();
 		}
 
-		return s
+		return settings
 	}
 })();
