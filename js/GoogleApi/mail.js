@@ -4,9 +4,9 @@ WorkGadget.gApi.mail = WorkGadget.gApi.mail || {};
 
 WorkGadget.gApi.mail.init = function () {
   WorkGadget.gApi.mail.send = function (tos, subject, body){
-  
+    \"$name\" <$address>"
     var mail = [
-        "From: \"$name\" <$address>",
+        "From: $from",
         "To: $to",
         "Cc: $cc",
         "Bcc: $bcc",
@@ -18,10 +18,13 @@ WorkGadget.gApi.mail.init = function () {
         "$body"
       ].join("\n").trim();
 
+    var from = "\"$name\" <$address>"
+      .replace("$name", user.dispName)
+      .replace("$address", user.address);
+
     var user = WorkGadget.gApi.user
     mail = mail
-      .replace("$name", user.dispName)
-      .replace("$address", user.address)
+      .replace("$from", window.btoa(unescape(encodeURIComponent(from))))
       .replace("$to", tos.To.replace(/\r?\n/g, ","))
       .replace("$cc", tos.Cc.replace(/\r?\n/g, ",") || "")
       .replace("$bcc", tos.Bcc.replace(/\r?\n/g, ",")  || "")
