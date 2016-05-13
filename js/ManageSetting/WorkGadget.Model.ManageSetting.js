@@ -22,7 +22,7 @@ var WorkGadget = WorkGadget || {};
 			  key:""
 			 ,value:{}
 			 ,id: {}
-			 ,
+			 ,row: 10
 		},
 
 		initialize: function(){
@@ -56,19 +56,35 @@ var WorkGadget = WorkGadget || {};
 				value: "",
 				id: 1
 			});
-			var mailSet = new setting({
-				key: "MailHeader",
-				value: {
-					 to:""
-					,cc:""
-					,bcc:""
-				},
-				id: 2
+			var mailToSet = new setting({
+				 key: "MailHeaderTo"
+				,value: ""
+				,id: 2
+				,row: 3
+			})
+			var mailCcSet = new setting({
+				 key: "MailHeaderCc"
+				,value: ""
+				,id: 3
+				,row: 3
+			})
+			var mailBccSet = new setting({
+				 key: "MailHeaderBcc"
+				,value: ""
+				,id: 4
+				,row: 3
 			})
 			this.add(templateSet);
 			this.add(calendarSet);
+			this.add(mailToSet);
+			this.add(mailCcSet);
+			
+			this.add(mailBccSet);
 			templateSet.save()
 			calendarSet.save()
+			mailToSet.save()
+			mailCcSet.save()
+			mailBccSet.save()
 		},
 	});
 

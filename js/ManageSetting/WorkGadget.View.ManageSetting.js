@@ -25,9 +25,7 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		templateHelpers: function(){
-			return {
-				
-			}
+			
 		},
 
 		update: function(){
