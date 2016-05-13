@@ -4,7 +4,7 @@ WorkGadget.gApi.mail = WorkGadget.gApi.mail || {};
 
 WorkGadget.gApi.mail.init = function () {
   WorkGadget.gApi.mail.send = function (tos, subject, body){
-    \"$name\" <$address>"
+    
     var mail = [
         "From: $from",
         "To: $to",
