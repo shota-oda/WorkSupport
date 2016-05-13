@@ -6,7 +6,7 @@ WorkGadget.gApi.mail.init = function () {
   WorkGadget.gApi.mail.send = function (tos, subject, body){
     
     var mail = [
-        "From: $from",
+        "From: =?utf-8?B?$from?=",
         "To: $to",
         "Cc: $cc",
         "Bcc: $bcc",
