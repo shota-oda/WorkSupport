@@ -53,7 +53,7 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		onInputKeyUp: function () {
-			this.model.set("input",this.ui.input.val());
+			this.model.set("input",this.ui.input.val(), {silent: true});
 			this.ui.preview.text(this.getBody());
 		},
 
