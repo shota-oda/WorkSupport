@@ -69,7 +69,7 @@ var WorkGadget = WorkGadget || {};
 					thisModel.trigger("change");
 				};
 
-				if (isFriday()){
+				if (this.isFriday()){
 					var monday = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 3);
 					WorkGadget.gApi.calendar.getEventsAt(monday,calIDs)
 					.done();					
