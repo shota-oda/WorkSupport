@@ -89,7 +89,6 @@ var WorkGadget = WorkGadget || {};
 					// trimming signature
 					// if there's trimSign, do trim
 					var trimIndex = model.content.indexOf(signForTrim);
-					console.log(trimIndex)
 					if (trimIndex > 0){
 						model.content = model.content.substring(0, trimIndex);	
 					}
