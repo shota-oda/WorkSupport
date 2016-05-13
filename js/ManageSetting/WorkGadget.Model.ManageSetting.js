@@ -104,5 +104,5 @@ var WorkGadget = WorkGadget || {};
 		}
 
 		return s
-	},
+	}
 })();
