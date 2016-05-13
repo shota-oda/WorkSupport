@@ -43,27 +43,12 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		getBody: function () {
-			console.log(
-				this.model.get("col1")
-				+ this.model.get("col2")
-				+ this.model.get("col3")
-				+ this.model.get("col4")
-				+ this.model.get("input")
-				+ '\n\n'
-				)
-			return 
-				this.model.get("col1")
-				+ this.model.get("col2")
-				+ this.model.get("col3")
-				+ this.model.get("col4")
-				+ this.model.get("input")
-				+ '\n\n';
+			return this.model.get("col1") + this.model.get("col2") + this.model.get("col3") + this.model.get("col4") + this.model.get("input") + '\n\n';
 		},
 
 		onInputKeyUp: function () {
 			this.model.set("input" ,this.ui.input.val(), {silent: true});
 			WorkGadget.static = this.ui.preview;
-			console.log(this.getBody())
 			this.ui.preview.text(this.getBody());
 		},
 
@@ -73,11 +58,11 @@ var WorkGadget = WorkGadget || {};
 				,Cc: this.model.get("cc")
 				,Bcc: this.model.get("bcc")
 			}
-			console.log(this.ui.preview.text())
-			// WorkGadget.gApi.mail.send(
-			// 	 header
-			// 	,this.model.subject
-			// 	,this.ui.preview.val())
+		
+			WorkGadget.gApi.mail.send(
+			 header
+			,this.model.get("subject")
+			,this.ui.preview.text())
 		},
 
 		onResetClick: function() {
@@ -87,7 +72,6 @@ var WorkGadget = WorkGadget || {};
 		onPreviewClick: function(e){
 			
 			var $e = $(e.target)
-			console.log($e.prop("tagName"))
 
 			if(!($e.prop("tagName") == "TEXTAREA") && !$e.hasClass('on')){
 			   //to edit mode

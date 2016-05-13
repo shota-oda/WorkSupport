@@ -38,14 +38,15 @@ function main () {
 				//google api faced
 				WorkGadget.gApi.mail.init();
 				WorkGadget.gApi.calendar.init();
-				WorkGadget.gApi.user.init();
+				WorkGadget.gApi.user.init()
+				.done(function(){
+					//kick
+					WorkGadget.App.start();
 
-				//kick
-				WorkGadget.App.start();
-
-				//ui elements
-				$load.hide();
-				$filter.hide();
+					//ui elements
+					$load.hide();
+					$filter.hide();
+				})
 			})
 			.fail(function () {
 				console.log("fail");

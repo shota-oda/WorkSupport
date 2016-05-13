@@ -6,6 +6,7 @@ WorkGadget.gApi.mail.init = function () {
   WorkGadget.gApi.mail.send = function (tos, subject, body){
   
     var mail = [
+        "From: \"$name\" <$address>",
         "To: $to",
         "Cc: $cc",
         "Bcc: $bcc",
@@ -17,10 +18,13 @@ WorkGadget.gApi.mail.init = function () {
         "$body"
       ].join("\n").trim();
 
+    var user = WorkGadget.gApi.user
     mail = mail
-      .replace("$to", tos.To)
-      .replace("$cc", tos.Cc || "")
-      .replace("$bcc", tos.Bcc || "")
+      .replace("$name", user.dispName)
+      .replace("$address", user.address)
+      .replace("$to", tos.To.replace(/\r?\n/g, ","))
+      .replace("$cc", tos.Cc.replace(/\r?\n/g, ",") || "")
+      .replace("$bcc", tos.Bcc.replace(/\r?\n/g, ",")  || "")
       .replace("$subject", window.btoa(unescape(encodeURIComponent(subject))))
       .replace("$body", body);
 
@@ -31,7 +35,10 @@ WorkGadget.gApi.mail.init = function () {
       }
     });
 
-    request.execute();
+    console.log(mail);
+    if(WorkGadget.TestMode == true){
+      request.execute();
+    }
   }
 
   WorkGadget.gApi.mail.list = function (query) {
@@ -81,6 +88,5 @@ WorkGadget.gApi.mail.init = function () {
     });
 
     return d;
-}
-
+  }
 }
