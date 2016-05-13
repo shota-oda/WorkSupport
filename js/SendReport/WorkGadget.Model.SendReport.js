@@ -72,10 +72,10 @@ var WorkGadget = WorkGadget || {};
 				if (this.isFriday()){
 					var monday = new Date(this.cal.getFullYear(), this.cal.getMonth(), this.cal.getDate() + 3);
 					WorkGadget.gApi.calendar.getEventsAt(monday,calIDs)
-					.done(doneFunc(data));					
+					.done(doneFunc;					
 				} else {
 					WorkGadget.gApi.calendar.getTommorrowEvents(calIDs)
-					.done(doneFunc(data));
+					.done(doneFunc);
 				}
 			}
 		},
