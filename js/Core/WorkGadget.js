@@ -17,7 +17,7 @@ function main () {
 		$load.show();
 
 	    WorkGadget.App = new Backbone.Marionette.Application()
-		
+
 		WorkGadget.App.on('before:start', function () {
 			WorkGadget.App.View = WorkGadget.App.View || {};
 			WorkGadget.App.View.Root = new WorkGadget.View.RootLayoutView();
@@ -30,7 +30,6 @@ function main () {
 			});
 
 			Backbone.history.start();
-			
 		});
 
 		WorkGadget.gApi.loadSubClients()
