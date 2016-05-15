@@ -2,8 +2,8 @@
 
 var WorkGadget = WorkGadget || {};
 
-/* 
- * setting IDs are below for easy access 
+/*
+ * setting IDs are below for easy access
  * 1 ReportTemplate
  * 2 CaledarID
  * 3 to
@@ -16,7 +16,7 @@ var WorkGadget = WorkGadget || {};
 	'use strict';
 
 	WorkGadget.Model = WorkGadget.Model || {};
-	
+
 	// IMPL Setting Model
 	// ----------
 	WorkGadget.Model.UserSettingItem = Backbone.Model.extend({
@@ -25,10 +25,6 @@ var WorkGadget = WorkGadget || {};
 			 ,value:{}
 			 ,id: {}
 			 ,row: 10
-		},
-
-		initialize: function(){
-
 		},
 	});
 
@@ -45,8 +41,20 @@ var WorkGadget = WorkGadget || {};
 		initialize: function () {
 
 		},
+	});
 
-		setDefaultData: function(){
+	// FUNC Setting Collection
+	// ----------
+	WorkGadget.Model.UserSettingList = function(){
+		var settings = new WorkGadget.Model.UserSettingCollection();
+
+		//warn: fetch/save/get is async
+		// 		now is sync because use localstorage
+		settings.fetch();
+
+		if (settings.length === 0 || settings.length !== 5){
+			//reset default datas
+			settings.reset();
 			var setting = WorkGadget.Model.UserSettingItem
 			var templateSet = new setting({
 				key: "ReportTemplateContent",
@@ -76,31 +84,18 @@ var WorkGadget = WorkGadget || {};
 				,id: 4
 				,row: 3
 			})
+
 			this.add(templateSet);
 			this.add(calendarSet);
 			this.add(mailToSet);
 			this.add(mailCcSet);
 			this.add(mailBccSet);
-			
+
 			templateSet.save()
 			calendarSet.save()
 			mailToSet.save()
 			mailCcSet.save()
 			mailBccSet.save()
-		},
-	});
-
-	// FUNC Setting Collection
-	// ----------
-	WorkGadget.Model.UserSettingList = function(){
-		var settings = new WorkGadget.Model.UserSettingCollection();
-		
-		//warn: fetch/save/get is async
-		// 		now is sync because use localstorage 
-		settings.fetch();
-
-		if (settings.length === 0 || settings.length !== 5){
-			settings.setDefaultData();
 		}
 
 		return settings

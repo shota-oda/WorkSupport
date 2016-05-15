@@ -13,7 +13,7 @@ function main () {
     WorkGadget.gApi.init()
 
 	function appStart(){
-		
+
 		$load.show();
 
 	    WorkGadget.App = new Backbone.Marionette.Application()
@@ -24,7 +24,7 @@ function main () {
 		});
 
 		WorkGadget.App.on('start', function () {
-			
+
 			WorkGadget.App.Router = new WorkGadget.Router({
 				controller: new WorkGadget.Controller()
 			});
