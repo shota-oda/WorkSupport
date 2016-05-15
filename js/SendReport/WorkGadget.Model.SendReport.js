@@ -6,7 +6,7 @@ var WorkGadget = WorkGadget || {};
 	'use strict';
 
 	WorkGadget.Model = WorkGadget.Model || {};
-	
+
 	// IMPL SendReport Model
 	// ----------
 	WorkGadget.Model.SendReport = Backbone.Model.extend({
@@ -27,22 +27,22 @@ var WorkGadget = WorkGadget || {};
 			this.cal = new Date();
 
 			var settings = WorkGadget.Model.UserSettingList();
-			
+
 			this.set('subject', this.getSubject() + WorkGadget.gApi.user.name)
-			this.set('to', settings.get(2).get("value"));
-			this.set('cc', settings.get(3).get("value"));
-			this.set('bcc', settings.get(4).get("value"))
+			this.set('to', settings.where({key : "MailHeaderTo"}).get("value"));
+			this.set('cc', settings.where({key : "MailHeaderCc"}).get("value"));
+			this.set('bcc', settings.where({key : "MailHeaderBcc"}).get("value"))
 
 			this.set("col1", this.getColumn(1, '勤怠', this.getDateString() + '\n出勤:' + (this.isMonday() ? '08:30' : '09:30') + '\n退社:' + (this.isMonday() ? '17:30' : '18:30')));
 			this.set("col2", this.getColumnHeader(2, '本日の業務'));
 			this.set("col3", this.getColumnHeader(3, '明日の業務と直近の主な完了予定'));
 			this.set("col4", this.getColumnHeader(4, '本日の気づきと学び・明日への宣言'));
-			this.set("input", settings.get(0).get("value"));
+			this.set("input", settings.where({key : "ReportTemplateHead"}).get("value"));
 
 			//for use this in done callback
 			var thisModel = this;
 
-			var calIDs = settings.get(1).get("value");
+			var calIDs = settings.where({key : "CalendarIDs"}).get("value");
 			if(calIDs){
 				var calIDs = calIDs.split(/\r\n|\r|\n/);
 				WorkGadget.gApi.calendar.getTodayEvents(calIDs)

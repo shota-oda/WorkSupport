@@ -4,11 +4,13 @@ var WorkGadget = WorkGadget || {};
 
 /*
  * setting IDs are below for easy access
- * 1 ReportTemplate
- * 2 CaledarID
- * 3 to
- * 4 cc
- * 5 bcc
+ * 0 ReportTemplate
+ * 1 ReportTemplateHead
+ * 2 ReportTemplateFoot
+ * 3 CaledarID
+ * 4 to
+ * 5 cc
+ * 6 bcc
  *
  */
 
@@ -52,47 +54,61 @@ var WorkGadget = WorkGadget || {};
 		// 		now is sync because use localstorage
 		settings.fetch();
 
-		if (settings.length === 0 || settings.length !== 5){
+		if (settings.length === 0 || settings.length !== 7){
 			//reset default datas
 			settings.reset();
 			var setting = WorkGadget.Model.UserSettingItem
-			var templateSet = new setting({
+			var templateSetC = new setting({
 				key: "ReportTemplateContent",
 				value: "",
 				id: 0
 			});
+			var templateSetH = new setting({
+				key: "ReportTemplateHead",
+				value: "",
+				id: 1
+			});
+			var templateSetF = new setting({
+				key: "ReportTemplateFoot",
+				value: "",
+				id: 2
+			});
 			var calendarSet = new setting({
 				key: "CalendarIDs"
 				,value: ""
-				,id: 1
+				,id: 3
 				,row: 3
 			});
 			var mailToSet = new setting({
 				 key: "MailHeaderTo"
 				,value: ""
-				,id: 2
+				,id: 4
 				,row: 3
 			})
 			var mailCcSet = new setting({
 				 key: "MailHeaderCc"
 				,value: ""
-				,id: 3
+				,id: 5
 				,row: 3
 			})
 			var mailBccSet = new setting({
 				 key: "MailHeaderBcc"
 				,value: ""
-				,id: 4
+				,id: 6
 				,row: 3
 			})
 
-			settings.add(templateSet);
+			settings.add(templateSetC);
+			settings.add(templateSetH);
+			settings.add(templateSetF);
 			settings.add(calendarSet);
 			settings.add(mailToSet);
 			settings.add(mailCcSet);
 			settings.add(mailBccSet);
 
-			templateSet.save()
+			templateSetC.save()
+			templateSetH.save()
+			templateSetF.save()
 			calendarSet.save()
 			mailToSet.save()
 			mailCcSet.save()

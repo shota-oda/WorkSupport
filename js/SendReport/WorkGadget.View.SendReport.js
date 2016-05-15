@@ -32,7 +32,7 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		initialize: function () {
-			
+
 		},
 
 		templateHelpers: function(){
@@ -48,7 +48,6 @@ var WorkGadget = WorkGadget || {};
 
 		onInputKeyUp: function () {
 			this.model.set("input" ,this.ui.input.val(), {silent: true});
-			WorkGadget.static = this.ui.preview;
 			this.ui.preview.text(this.getBody());
 		},
 
@@ -58,7 +57,7 @@ var WorkGadget = WorkGadget || {};
 				,Cc: this.model.get("cc")
 				,Bcc: this.model.get("bcc")
 			}
-		
+
 			WorkGadget.gApi.mail.send(
 			 header
 			,this.model.get("subject")
@@ -66,11 +65,11 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		onResetClick: function() {
-			console.log("click2")
+			
 		},
 
 		onPreviewClick: function(e){
-			
+
 			var $e = $(e.target)
 
 			if(!($e.prop("tagName") == "TEXTAREA") && !$e.hasClass('on')){
