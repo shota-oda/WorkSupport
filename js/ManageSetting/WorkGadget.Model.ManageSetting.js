@@ -62,9 +62,10 @@ var WorkGadget = WorkGadget || {};
 				id: 0
 			});
 			var calendarSet = new setting({
-				key: "CalendarIDs",
-				value: "",
-				id: 1
+				key: "CalendarIDs"
+				,value: ""
+				,id: 1
+				,row: 3
 			});
 			var mailToSet = new setting({
 				 key: "MailHeaderTo"
