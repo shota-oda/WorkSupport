@@ -85,11 +85,11 @@ var WorkGadget = WorkGadget || {};
 				,row: 3
 			})
 
-			this.add(templateSet);
-			this.add(calendarSet);
-			this.add(mailToSet);
-			this.add(mailCcSet);
-			this.add(mailBccSet);
+			settings.add(templateSet);
+			settings.add(calendarSet);
+			settings.add(mailToSet);
+			settings.add(mailCcSet);
+			settings.add(mailBccSet);
 
 			templateSet.save()
 			calendarSet.save()
