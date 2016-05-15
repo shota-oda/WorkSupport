@@ -43,7 +43,7 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		getBody: function () {
-			return this.model.get("col1") + this.model.get("col2") + this.model.get("col3") + this.model.get("col4") + this.model.get("input") + '\n\n';
+			return this.model.get("head") + this.model.get("col1") + this.model.get("col2") + this.model.get("col3") + this.model.get("col4") + this.model.get("input") + this.model.get("foot") + '\n\n';
 		},
 
 		onInputKeyUp: function () {
@@ -65,7 +65,7 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		onResetClick: function() {
-			
+
 		},
 
 		onPreviewClick: function(e){
