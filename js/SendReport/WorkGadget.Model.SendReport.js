@@ -15,6 +15,8 @@ var WorkGadget = WorkGadget || {};
 			,cc: ''
 			,bcc: ''
 			,subject: ''
+			,head:''
+			,foot:''
 			,col1: ''
 			,col2: ''
 			,col3: ''
@@ -33,6 +35,8 @@ var WorkGadget = WorkGadget || {};
 			this.set('cc', settings.where({key : "MailHeaderCc"}).get("value"));
 			this.set('bcc', settings.where({key : "MailHeaderBcc"}).get("value"))
 
+			this.set('head', settings.where({key : "ReportTemplateHead"}).get("value"));
+			this.set('foot', settings.where({key : "ReportTemplateFoot"}).get("value"));
 			this.set("col1", this.getColumn(1, '勤怠', this.getDateString() + '\n出勤:' + (this.isMonday() ? '08:30' : '09:30') + '\n退社:' + (this.isMonday() ? '17:30' : '18:30')));
 			this.set("col2", this.getColumnHeader(2, '本日の業務'));
 			this.set("col3", this.getColumnHeader(3, '明日の業務と直近の主な完了予定'));
