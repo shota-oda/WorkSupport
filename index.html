@@ -74,7 +74,7 @@
             <div class="panel-body">
               <textarea id="Report-Content" class="form-control" rows="10"><%- inputTemplate %></textarea>
               <div class="btn-group" role="group" aria-label="...">
-                <button type="button" id="Report-Send" class="btn btn-default">Send</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#SendConfirm">send</button>
                 <button type="button" id="Report-Reset" class="btn btn-default">Reset</button>
               </div>
             </div>
@@ -95,6 +95,19 @@
           </div>
         </div>
       </div>
+      <div id="SendConfirm" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+              <p>Are you sure to send Report</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" id="Report-Send" class="btn btn-primary">Send</button>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
     </script>
     <script type="text/html" id="template-ReadReport">
       <div class="row">
