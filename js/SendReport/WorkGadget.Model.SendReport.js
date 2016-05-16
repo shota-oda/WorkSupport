@@ -41,7 +41,7 @@ var WorkGadget = WorkGadget || {};
 			this.set("col2", this.getColumnHeader(2, '本日の業務'));
 			this.set("col3", this.getColumnHeader(3, '明日の業務と直近の主な完了予定'));
 			this.set("col4", this.getColumnHeader(4, '本日の気づきと学び・明日への宣言'));
-			this.set("input", settings.findWhere({key : "ReportTemplateHead"}).get("value"));
+			this.set("input", settings.findWhere({key : "ReportTemplateContent"}).get("value"));
 
 			//for use this in done callback
 			var thisModel = this;
