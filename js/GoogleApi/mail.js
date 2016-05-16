@@ -36,10 +36,7 @@ WorkGadget.gApi.mail.init = function () {
       }
     });
 
-    console.log(mail);
-    if(WorkGadget.TestMode == true){
-      request.execute();
-    }
+    request.execute();
   }
 
   WorkGadget.gApi.mail.list = function (query) {
