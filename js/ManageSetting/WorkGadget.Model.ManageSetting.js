@@ -58,11 +58,6 @@ var WorkGadget = WorkGadget || {};
 			//reset default datas
 			settings.reset();
 			var setting = WorkGadget.Model.UserSettingItem
-			var templateSetC = new setting({
-				key: "ReportTemplateContent",
-				value: "",
-				id: 1,
-			});
 			var templateSetH = new setting({
 				key: "ReportTemplateHead",
 				value: "",
@@ -74,6 +69,11 @@ var WorkGadget = WorkGadget || {};
 				value: "",
 				id: 1,
 				row:5,
+			});
+			var templateSetC = new setting({
+				key: "ReportTemplateContent",
+				value: "",
+				id: 2,
 			});
 			var calendarSet = new setting({
 				key: "CalendarIDs"
