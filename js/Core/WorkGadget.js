@@ -13,24 +13,23 @@ function main () {
     WorkGadget.gApi.init()
 
 	function appStart(){
-		
+
 		$load.show();
 
 	    WorkGadget.App = new Backbone.Marionette.Application()
-		
+
 		WorkGadget.App.on('before:start', function () {
 			WorkGadget.App.View = WorkGadget.App.View || {};
 			WorkGadget.App.View.Root = new WorkGadget.View.RootLayoutView();
 		});
 
 		WorkGadget.App.on('start', function () {
-			
+
 			WorkGadget.App.Router = new WorkGadget.Router({
 				controller: new WorkGadget.Controller()
 			});
 
 			Backbone.history.start();
-			
 		});
 
 		WorkGadget.gApi.loadSubClients()

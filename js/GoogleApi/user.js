@@ -16,4 +16,6 @@ WorkGadget.gApi.user.init = function () {
 			WorkGadget.gApi.user.address = resp.emails[0].value;
 			d.resolve();
 		});
+
+		return d;
 }

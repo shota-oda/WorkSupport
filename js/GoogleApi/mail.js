@@ -4,9 +4,9 @@ WorkGadget.gApi.mail = WorkGadget.gApi.mail || {};
 
 WorkGadget.gApi.mail.init = function () {
   WorkGadget.gApi.mail.send = function (tos, subject, body){
-  
+
     var mail = [
-        "From: \"$name\" <$address>",
+        "From: =?utf-8?B?$dispName?=<$address>",
         "To: $to",
         "Cc: $cc",
         "Bcc: $bcc",
@@ -18,9 +18,10 @@ WorkGadget.gApi.mail.init = function () {
         "$body"
       ].join("\n").trim();
 
-    var user = WorkGadget.gApi.user
+    var user = WorkGadget.gApi.user;
+
     mail = mail
-      .replace("$name", user.dispName)
+      .replace("$dispName", window.btoa(unescape(encodeURIComponent(user.dispName))))
       .replace("$address", user.address)
       .replace("$to", tos.To.replace(/\r?\n/g, ","))
       .replace("$cc", tos.Cc.replace(/\r?\n/g, ",") || "")
@@ -35,10 +36,7 @@ WorkGadget.gApi.mail.init = function () {
       }
     });
 
-    console.log(mail);
-    if(WorkGadget.TestMode == true){
-      request.execute();
-    }
+    request.execute();
   }
 
   WorkGadget.gApi.mail.list = function (query) {
@@ -47,7 +45,7 @@ WorkGadget.gApi.mail.init = function () {
 
     var getPageOfMessages = function(request) {
       request.execute(function(resp) {
-          
+
           if (resp.resultSizeEstimate === 0) return;
 
           d.resolve(resp.messages);
@@ -72,6 +70,37 @@ WorkGadget.gApi.mail.init = function () {
     getPageOfMessages(initialRequest);
 
     return d;
+  }
+
+  WorkGadget.gApi.mail.getBody =  function(message) {
+    function getHTMLPart(arr) {
+      for(var x = 0; x <= arr.length; x++)
+      {
+        if(typeof arr[x].parts === 'undefined')
+        {
+          if(arr[x].mimeType === 'text/html')
+          {
+            return arr[x].body.data;
+          }
+        }
+        else
+        {
+          return getHTMLPart(arr[x].parts);
+        }
+      }
+      return '';
+    }
+    var encodedBody = '';
+    if(typeof message.parts === 'undefined')
+    {
+      encodedBody = message.body.data;
+    }
+    else
+    {
+      encodedBody = getHTMLPart(message.parts);
+    }
+    encodedBody = encodedBody.replace(/-/g, '+').replace(/_/g, '/').replace(/\s/g, '');
+    return decodeURIComponent(escape(window.atob(encodedBody)));
   }
 
   WorkGadget.gApi.mail.getMessage = function (messageId) {

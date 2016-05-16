@@ -18,6 +18,7 @@ var WorkGadget = WorkGadget || {};
 			send: '#Report-Send',
 			reset:'#Report-Reset',
 			preview: '#Report-Preview',
+			confirm: '#Report-Modal',
 		},
 
 		events: {
@@ -32,7 +33,7 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		initialize: function () {
-			
+
 		},
 
 		templateHelpers: function(){
@@ -43,22 +44,22 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		getBody: function () {
-			return this.model.get("col1") + this.model.get("col2") + this.model.get("col3") + this.model.get("col4") + this.model.get("input") + '\n\n';
+			return this.model.get("head") + this.model.get("col1") + this.model.get("col2") + this.model.get("col3") + this.model.get("col4") + this.model.get("input") + this.model.get("foot") + '\n\n';
 		},
 
 		onInputKeyUp: function () {
 			this.model.set("input" ,this.ui.input.val(), {silent: true});
-			WorkGadget.static = this.ui.preview;
 			this.ui.preview.text(this.getBody());
 		},
 
 		onSendClick: function() {
+			//this.ui.confirm.modal("hide");
 			var header = {
 				 To: this.model.get("to")
 				,Cc: this.model.get("cc")
 				,Bcc: this.model.get("bcc")
 			}
-		
+
 			WorkGadget.gApi.mail.send(
 			 header
 			,this.model.get("subject")
@@ -66,11 +67,11 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		onResetClick: function() {
-			console.log("click2")
+
 		},
 
 		onPreviewClick: function(e){
-			
+
 			var $e = $(e.target)
 
 			if(!($e.prop("tagName") == "TEXTAREA") && !$e.hasClass('on')){
