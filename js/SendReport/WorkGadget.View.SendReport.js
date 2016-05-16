@@ -18,6 +18,7 @@ var WorkGadget = WorkGadget || {};
 			send: '#Report-Send',
 			reset:'#Report-Reset',
 			preview: '#Report-Preview',
+			modal: '#Report-Modal',
 		},
 
 		events: {
@@ -52,6 +53,7 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		onSendClick: function() {
+			this.ui.modal("hide");
 			var header = {
 				 To: this.model.get("to")
 				,Cc: this.model.get("cc")

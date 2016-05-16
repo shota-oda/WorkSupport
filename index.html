@@ -74,7 +74,7 @@
             <div class="panel-body">
               <textarea id="Report-Content" class="form-control" rows="10"><%- inputTemplate %></textarea>
               <div class="btn-group" role="group" aria-label="...">
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#SendConfirm">send</button>
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#Report-Modal">send</button>
                 <button type="button" id="Report-Reset" class="btn btn-default">Reset</button>
               </div>
             </div>
@@ -95,7 +95,7 @@
           </div>
         </div>
       </div>
-      <div id="SendConfirm" class="modal fade" tabindex="-1" role="dialog">
+      <div id="Report-Modal" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-sm">
           <div class="modal-content">
             <div class="modal-header">
@@ -109,7 +109,7 @@
             -->
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-              <button type="button" id="Report-Send" class="btn btn-primary">Send</button>
+              <button type="button" id="Report-Send" class="btn btn-primary" data-dismiss="modal">Send</button>
             </div>
           </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
