@@ -18,7 +18,7 @@ var WorkGadget = WorkGadget || {};
 			send: '#Report-Send',
 			reset:'#Report-Reset',
 			preview: '#Report-Preview',
-			modal: '#Report-Modal',
+			confirm: '#Report-Modal',
 		},
 
 		events: {
@@ -53,7 +53,7 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		onSendClick: function() {
-			this.ui.modal("hide");
+			this.ui.confirm.modal("hide");
 			var header = {
 				 To: this.model.get("to")
 				,Cc: this.model.get("cc")
