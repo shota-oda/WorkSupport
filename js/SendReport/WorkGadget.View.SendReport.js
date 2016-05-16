@@ -53,7 +53,7 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		onSendClick: function() {
-			this.ui.confirm.modal("hide");
+			//this.ui.confirm.modal("hide");
 			var header = {
 				 To: this.model.get("to")
 				,Cc: this.model.get("cc")
