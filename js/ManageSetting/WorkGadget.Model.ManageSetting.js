@@ -61,18 +61,18 @@ var WorkGadget = WorkGadget || {};
 			var templateSetC = new setting({
 				key: "ReportTemplateContent",
 				value: "",
-				id: 0
+				id: 1,
 			});
 			var templateSetH = new setting({
 				key: "ReportTemplateHead",
 				value: "",
-				id: 1,
+				id: 0,
 				row:5,
 			});
 			var templateSetF = new setting({
 				key: "ReportTemplateFoot",
 				value: "",
-				id: 2,
+				id: 1,
 				row:5,
 			});
 			var calendarSet = new setting({
