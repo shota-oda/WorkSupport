@@ -82,7 +82,7 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		getSubject: function () {
-			return '【新卒日報】' + this.getDateString();
+			return '【新卒日誌】' + this.getDateString();
 		},
 
 		getColumnHeader: function (colNum, colTitle) {
@@ -113,7 +113,7 @@ var WorkGadget = WorkGadget || {};
 					return "土"
 				}
 			}
-			return this.cal.getFullYear() + "/" + (this.cal.getMonth() + 1) + "/" + this.cal.getDate() + "(" + getJaDay_Short(this.cal.getDay()) + ")"
+			return this.cal.getFullYear() + "/" + (this.cal.getMonth() + 1) + "/" + this.cal.getDate() + "（" + getJaDay_Short(this.cal.getDay()) + "）"
 		},
 
 		isMonday: function () {

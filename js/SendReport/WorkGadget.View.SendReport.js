@@ -67,7 +67,7 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		onResetClick: function() {
-
+			
 		},
 
 		onPreviewClick: function(e){

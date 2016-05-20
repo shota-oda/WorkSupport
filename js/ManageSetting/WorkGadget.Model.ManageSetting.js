@@ -41,7 +41,6 @@ var WorkGadget = WorkGadget || {};
 		comparator: "id",
 
 		initialize: function () {
-
 		},
 	});
 
