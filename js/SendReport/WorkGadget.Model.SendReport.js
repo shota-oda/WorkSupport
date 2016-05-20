@@ -82,13 +82,12 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		getSubject: function () {
+			return
 			WorkGadget.Model.UserSettingList()
 				.findWhere({key : "MailSubject"})
 				.get("value")
 				.replace("$name", WorkGadget.gApi.user.name)
-				.replace("$date", this.getDateString())
-
-			return '【新卒日誌】' + this.getDateString();
+				.replace("$date", this.getDateString());
 		},
 
 		getColumnHeader: function (colNum, colTitle) {
