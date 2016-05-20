@@ -17,6 +17,7 @@ var WorkGadget = WorkGadget || {};
 			input: '#Report-Content',
 			send: '#Report-Send',
 			reset:'#Report-Reset',
+			subject: '#Report-Subject',
 			preview: '#Report-Preview',
 			confirm: '#Report-Modal',
 		},
@@ -61,13 +62,14 @@ var WorkGadget = WorkGadget || {};
 			}
 
 			WorkGadget.gApi.mail.send(
-			 header
-			,this.model.get("subject")
-			,this.ui.preview.text())
+				 header
+				,this.ui.subject.text()
+				,this.ui.preview.text()
+			)
 		},
 
 		onResetClick: function() {
-			
+
 		},
 
 		onPreviewClick: function(e){
