@@ -30,7 +30,7 @@ var WorkGadget = WorkGadget || {};
 
 			var settings = WorkGadget.Model.UserSettingList();
 
-			this.set('subject', this.getSubject() + WorkGadget.gApi.user.name)
+			this.set('subject', this.getSubject())
 			this.set('to', settings.findWhere({key : "MailHeaderTo"}).get("value"));
 			this.set('cc', settings.findWhere({key : "MailHeaderCc"}).get("value"));
 			this.set('bcc', settings.findWhere({key : "MailHeaderBcc"}).get("value"))
@@ -82,6 +82,12 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		getSubject: function () {
+			WorkGadget.Model.UserSettingList()
+				.findWhere({key : "MailSubject"})
+				.get("value")
+				.replace("$name", WorkGadget.gApi.user.name)
+				.replace("$date", this.getDateString())
+
 			return '【新卒日誌】' + this.getDateString();
 		},
 

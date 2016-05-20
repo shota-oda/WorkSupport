@@ -11,7 +11,7 @@ var WorkGadget = WorkGadget || {};
  * 4 to
  * 5 cc
  * 6 bcc
- *
+ * 7 subject
  */
 
 (function () {
@@ -53,69 +53,98 @@ var WorkGadget = WorkGadget || {};
 		// 		now is sync because use localstorage
 		settings.fetch();
 
-		if (settings.length === 0 || settings.length !== 7){
-			//reset default datas
+		var setting = WorkGadget.Model.UserSettingItem
+
+		if (settings.length === 0){
 			settings.reset();
-			var setting = WorkGadget.Model.UserSettingItem
-			var templateSetH = new setting({
+		}
+
+		if (settings.findWhere({key : "ReportTemplateHead"}).get("value") == undefined){
+			var set = new setting({
 				key: "ReportTemplateHead",
 				value: "",
 				id: 0,
 				row:5,
 			});
-			var templateSetF = new setting({
+			settings.add(set);
+			set.save()
+		}
+
+		if (settings.findWhere({key : "ReportTemplateFoot"}).get("value") == undefined){
+			var set = new setting({
 				key: "ReportTemplateFoot",
 				value: "",
 				id: 1,
 				row:5,
 			});
-			var templateSetC = new setting({
+			settings.add(set);
+			set.save()
+		}
+
+		if (settings.findWhere({key : "ReportTemplateContent"}).get("value") == undefined){
+			var set = new setting({
 				key: "ReportTemplateContent",
 				value: "",
 				id: 2,
 			});
-			var calendarSet = new setting({
+			settings.add(set);
+			set.save()
+		}
+
+		if (settings.findWhere({key : "CalendarIDs"}).get("value") == undefined){
+			var set = new setting({
 				key: "CalendarIDs"
 				,value: ""
 				,id: 3
 				,row: 3
 			});
-			var mailToSet = new setting({
+			settings.add(set);
+			set.save()
+		}
+
+		if (settings.findWhere({key : "MailHeaderTo"}).get("value") == undefined){
+			var set = new setting({
 				 key: "MailHeaderTo"
 				,value: ""
 				,id: 4
 				,row: 3
 			})
-			var mailCcSet = new setting({
+			settings.add(set);
+			set.save()
+		}
+
+		if (settings.findWhere({key : "MailHeaderCc"}).get("value") == undefined){
+			var set = new setting({
 				 key: "MailHeaderCc"
 				,value: ""
 				,id: 5
 				,row: 3
 			})
-			var mailBccSet = new setting({
+			settings.add(set);
+			set.save()
+		}
+
+		if (settings.findWhere({key : "MailHeaderBcc"}).get("value") == undefined){
+			var set = new setting({
 				 key: "MailHeaderBcc"
 				,value: ""
 				,id: 6
 				,row: 3
 			})
-
-			settings.add(templateSetC);
-			settings.add(templateSetH);
-			settings.add(templateSetF);
-			settings.add(calendarSet);
-			settings.add(mailToSet);
-			settings.add(mailCcSet);
-			settings.add(mailBccSet);
-
-			templateSetC.save()
-			templateSetH.save()
-			templateSetF.save()
-			calendarSet.save()
-			mailToSet.save()
-			mailCcSet.save()
-			mailBccSet.save()
+			settings.add(set);
+			set.save()
 		}
 
+		if (settings.findWhere({key : "MailSubject"}).get("value") == undefined){
+			var set = new setting({
+				key: "MailSubject"
+			 ,value: ""
+			 ,id: 7
+			 ,row: 1
+			})
+			settings.add(set);
+			set.save()
+		}
 		return settings
 	}
 })();
