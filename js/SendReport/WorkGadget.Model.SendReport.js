@@ -82,8 +82,7 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		getSubject: function () {
-			return
-			WorkGadget.Model.UserSettingList()
+			return WorkGadget.Model.UserSettingList()
 				.findWhere({key : "MailSubject"})
 				.get("value")
 				.replace("$name", WorkGadget.gApi.user.name)
