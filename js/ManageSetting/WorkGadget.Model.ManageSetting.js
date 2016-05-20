@@ -59,7 +59,7 @@ var WorkGadget = WorkGadget || {};
 			settings.reset();
 		}
 
-		if (settings.findWhere({key : "ReportTemplateHead"}).get("value") == undefined){
+		if (settings.findWhere({key : "ReportTemplateHead"}) == undefined){
 			var set = new setting({
 				key: "ReportTemplateHead",
 				value: "",
@@ -70,7 +70,7 @@ var WorkGadget = WorkGadget || {};
 			set.save()
 		}
 
-		if (settings.findWhere({key : "ReportTemplateFoot"}).get("value") == undefined){
+		if (settings.findWhere({key : "ReportTemplateFoot"}) == undefined){
 			var set = new setting({
 				key: "ReportTemplateFoot",
 				value: "",
@@ -81,7 +81,7 @@ var WorkGadget = WorkGadget || {};
 			set.save()
 		}
 
-		if (settings.findWhere({key : "ReportTemplateContent"}).get("value") == undefined){
+		if (settings.findWhere({key : "ReportTemplateContent"}) == undefined){
 			var set = new setting({
 				key: "ReportTemplateContent",
 				value: "",
@@ -91,7 +91,7 @@ var WorkGadget = WorkGadget || {};
 			set.save()
 		}
 
-		if (settings.findWhere({key : "CalendarIDs"}).get("value") == undefined){
+		if (settings.findWhere({key : "CalendarIDs"}) == undefined){
 			var set = new setting({
 				key: "CalendarIDs"
 				,value: ""
@@ -102,7 +102,7 @@ var WorkGadget = WorkGadget || {};
 			set.save()
 		}
 
-		if (settings.findWhere({key : "MailHeaderTo"}).get("value") == undefined){
+		if (settings.findWhere({key : "MailHeaderTo"}) == undefined){
 			var set = new setting({
 				 key: "MailHeaderTo"
 				,value: ""
@@ -113,7 +113,7 @@ var WorkGadget = WorkGadget || {};
 			set.save()
 		}
 
-		if (settings.findWhere({key : "MailHeaderCc"}).get("value") == undefined){
+		if (settings.findWhere({key : "MailHeaderCc"}) == undefined){
 			var set = new setting({
 				 key: "MailHeaderCc"
 				,value: ""
@@ -124,7 +124,7 @@ var WorkGadget = WorkGadget || {};
 			set.save()
 		}
 
-		if (settings.findWhere({key : "MailHeaderBcc"}).get("value") == undefined){
+		if (settings.findWhere({key : "MailHeaderBcc"}) == undefined){
 			var set = new setting({
 				 key: "MailHeaderBcc"
 				,value: ""
@@ -135,7 +135,7 @@ var WorkGadget = WorkGadget || {};
 			set.save()
 		}
 
-		if (settings.findWhere({key : "MailSubject"}).get("value") == undefined){
+		if (settings.findWhere({key : "MailSubject"}) == undefined){
 			var set = new setting({
 				key: "MailSubject"
 			 ,value: ""
