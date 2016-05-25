@@ -38,7 +38,7 @@ var WorkGadget = WorkGadget || {};
 
 		onShow : function(){
 			this.ui.LeaveModal.modal();
-		}
+		},
 
 		navTo: function(hash){
 			this.$("li.active").toggleClass("active", false);
