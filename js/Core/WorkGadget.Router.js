@@ -44,12 +44,12 @@ var WorkGadget = WorkGadget || {};
 		SetRemoveAlert : function(mes){
 			this.showRemoveAlert = true;
 			this.removeAlertMessage = mes;
-		}
+		},
 
 		SendReport: function(){
 			this.ObserveHash();
 			this.SetRemoveAlert("Are you sure?\nDid you send or save message?");
-			
+
 			var content = new WorkGadget.View.SendReport({
 						model: new WorkGadget.Model.SendReport()
 					})
