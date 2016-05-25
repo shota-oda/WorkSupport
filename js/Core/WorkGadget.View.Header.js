@@ -64,7 +64,7 @@ var WorkGadget = WorkGadget || {};
 		shouldCheckLeave: function(hash){
 			if (Backbone.history.getFragment() == "Send"){
 				this.reservedHash = hash;
-				this.ui.LeaveModal.modal('show');
+				$("#LeaveModal").modal('show');
 				return true;
 			}
 			return false;
