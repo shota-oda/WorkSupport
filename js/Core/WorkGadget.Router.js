@@ -24,9 +24,9 @@ var WorkGadget = WorkGadget || {};
 
 		initialize: function () {
 			WorkGadget.App.View.Header = new WorkGadget.View.Header();
-
+			var self = this;
 			$(window).on("beforeunload", function() {
-				if (this.showRemoveAlert){
+				if (self.showRemoveAlert){
 					return this.removeAlertMessage;
 				}
 	  	});
