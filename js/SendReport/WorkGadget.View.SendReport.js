@@ -34,7 +34,6 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		initialize: function () {
-
 		},
 
 		templateHelpers: function(){

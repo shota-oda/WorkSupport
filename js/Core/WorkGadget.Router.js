@@ -16,7 +16,7 @@ var WorkGadget = WorkGadget || {};
 			 'Setting' : 'ManageSetting',
 		}
 	});
-	
+
 	// IMPL
 	// Controller is just Object
 	// For store routing inner logic
@@ -24,15 +24,32 @@ var WorkGadget = WorkGadget || {};
 
 		initialize: function () {
 			WorkGadget.App.View.Header = new WorkGadget.View.Header();
+
+			$(window).on("beforeunload", function() {
+				if (this.showRemoveAlert){
+					return this.removeAlertMessage;
+				}
+	  	});
 		},
+
+		showRemoveAlert : false,
+		removeAlertMessage : "",
+
 
 		ObserveHash: function(){
 			WorkGadget.App.View.Header.navTo(Backbone.history.getFragment());
+			this.showRemoveAlert = false;
 		},
+
+		SetRemoveAlert : function(mes){
+			this.showRemoveAlert = true;
+			this.removeAlertMessage = mes;
+		}
 
 		SendReport: function(){
 			this.ObserveHash();
-
+			this.SetRemoveAlert("Are you sure?\nDid you send or save message?");
+			
 			var content = new WorkGadget.View.SendReport({
 						model: new WorkGadget.Model.SendReport()
 					})
@@ -42,13 +59,13 @@ var WorkGadget = WorkGadget || {};
 
 		ReadReport: function(){
 			this.ObserveHash();
-			
+
 			var reports = new Backbone.Collection();
 			var content = new WorkGadget.View.ReadReport({collection : reports})
 			WorkGadget.Model.ReadReportItems(new Date(), function (report){
 				reports.add(report);
 			});
-			
+
 			WorkGadget.App.View.Root.showChildView('main', content);
 		},
 
