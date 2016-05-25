@@ -34,7 +34,10 @@ var WorkGadget = WorkGadget || {};
 		initialize: function(){
 			this.bindUIElements();
 
-			$("#LeaveModal").modal();
+			$("#LeaveModal").modal({
+				 show : false
+				,
+			});
 			$("#LeaveButton").on("click", this.navToReserved());
 		},
 
