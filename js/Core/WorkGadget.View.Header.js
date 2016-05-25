@@ -66,19 +66,19 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		navToSend: function(){
-			if (shouldCheckLeave('Send')) return;
+			if (this.shouldCheckLeave('Send')) return;
 			this.ui.CollapseMenu.collapse("hide")
 			Backbone.history.navigate('Send', true);
 		},
 
 		navToRead: function(){
-			if (shouldCheckLeave('Read')) return;
+			if (this.shouldCheckLeave('Read')) return;
 			this.ui.CollapseMenu.collapse("hide")
 			Backbone.history.navigate('Read', true);
 		},
 
 		navToSetting: function(){
-			if (shouldCheckLeave('Setting')) return;
+			if (this.shouldCheckLeave('Setting')) return;
 			this.ui.CollapseMenu.collapse("hide")
 			Backbone.history.navigate('Setting', true);
 		},
