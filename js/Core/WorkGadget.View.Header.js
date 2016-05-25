@@ -38,7 +38,11 @@ var WorkGadget = WorkGadget || {};
 				 show : false
 				,
 			});
-			$("#LeaveButton").on("click", this.navToReserved());
+			var self = this;
+			$("#LeaveButton").on("click", function(){
+				console.log("reserve");
+				self.navToReserved();
+			});
 		},
 
 		onShow : function(){
@@ -57,7 +61,7 @@ var WorkGadget = WorkGadget || {};
 		},
 
 		navToReserved: function(){
-			this.ui.CollapseMenu.collapse("hide")
+			this.ui.CollapseMenu.collapse("hide");
 			Backbone.history.navigate(this.reservedHash, true);
 		},
 
