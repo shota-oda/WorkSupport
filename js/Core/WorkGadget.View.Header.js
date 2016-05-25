@@ -16,8 +16,7 @@ var WorkGadget = WorkGadget || {};
 			,ReadReport: "#ReadReport"
 			,ManageSetting: "#ManageSetting"
 			,CollapseMenu: "#MenuCollapse"
-			,LeaveModal: "#LeaveModal"
-			,LeaveButton: "#LeaveButton"
+			,
 		},
 
 		events: {
@@ -34,10 +33,13 @@ var WorkGadget = WorkGadget || {};
 		//so call this.bindUIElements() in your initialize method when need to attach a view to an existing element.
 		initialize: function(){
 			this.bindUIElements();
+
+			$("#LeaveModal").modal();
+			$("#LeaveButton").on("click", this.navToReserved());
 		},
 
 		onShow : function(){
-			this.ui.LeaveModal.modal();
+			//this.ui.LeaveModal.modal();
 		},
 
 		navTo: function(hash){
