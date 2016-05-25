@@ -27,7 +27,7 @@ var WorkGadget = WorkGadget || {};
 			var self = this;
 			$(window).on("beforeunload", function() {
 				if (self.showRemoveAlert){
-					return this.removeAlertMessage;
+					return self.removeAlertMessage;
 				}
 	  	});
 		},
